@@ -18,8 +18,8 @@
       $resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {
           echo "ingresado   ";
-          $data = 1;
-          return $data;
+         
+          return 1;
          
         
 		     }

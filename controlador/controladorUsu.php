@@ -7,6 +7,7 @@
     $pass = (isset($_POST['pass'])) ? $_POST['pass'] : '';
     
     $consulta=$mu->agregarUsuario($usu, $pass);
+	echo $consulta;
     
     
 
