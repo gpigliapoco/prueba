@@ -15,9 +15,7 @@ function verificarUsuario(){
           
 	 }
 	}).done(function(resp){
-		if(resp>0){
-			Swal.fire("estan vacios algun campo","warning");
-		}
+		alert("funciona"+resp);
 		
 	});
 

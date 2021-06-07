@@ -17,7 +17,7 @@
   		$consulta = "INSERT INTO usuarios (nombre,contra) VALUES('$usu', '$pass') ";	
       $resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {
-          echo "ingresado   ";
+         
          
           return 1;
          
