@@ -18,10 +18,8 @@
       $resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {
           echo "ingresado   ";
-          $new_id = $resultado->last_insert_id();
-          
-          echo mysqli_insert_id($resultado);
-           print_r($data);
+          $data = 1;
+          return $data;
          
         
 		     }
@@ -31,8 +29,7 @@
 
   }
 
-  $r=new modelo_usuario();
-  $r->agregarUsuario("pablo1","pablo1111");
+ 
 
 
 
@@ -51,18 +48,7 @@
 
  //        return $data = print json_encode($resultado);
 	
-/*if ($consulta = $this->conexion->conexion->query($sql)) {
-        if ($row = mysqli_fetch_array($consulta)) {
-                        return $id= trim($row[0]);
-        }
-        $this->conexion->cerrar();
-      }
-*/
- /* $resultado=$conexion->prepare($consulta);
-        $resultado->execute(); 
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-        
-        return $data;*/
+
 
 
 
