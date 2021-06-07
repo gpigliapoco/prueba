@@ -31,25 +31,4 @@
 
  
 
-
-
-	// include_once 'conexion.php';
-
-	// $objeto=new Conexion();
-	// $conexion=$objeto->Conectar();
-
-	// $usu = (isset($_POST['usu'])) ? $_POST['usu'] : '';
-	// $pass = (isset($_POST['pass'])) ? $_POST['pass'] : '';
-
-	
-	// 	$consulta = "INSERT INTO usuarios (nombre,contra) VALUES('$usu', '$pass') ";			
- //        $resultado = $conexion->prepare($consulta);
- //        $resultado->execute(); 
-
- //        return $data = print json_encode($resultado);
-	
-
-
-
-
  ?>
