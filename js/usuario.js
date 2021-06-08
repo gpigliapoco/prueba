@@ -16,6 +16,7 @@ function verificarUsuario(){
 	 }
 	}).done(function(resp){
 		alert("funciona"+resp);
+		alert("   dale");
 		
 	});
 

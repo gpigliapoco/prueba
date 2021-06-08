@@ -1,5 +1,5 @@
 <?php 
-/*class Conexion{   
+/* class Conexion{   
     public  function conectar() {        
         define('servidor', 'localhost');
         define('nombre_bd', 'curso');
@@ -13,9 +13,9 @@
             die("El error de Conexión es: ". $e->getMessage());
         }
     }
-}*/
+} */
 
-class Conexion{
+ class Conexion{
         private $servidor;
         private $usuario;
         private $contrasena;
@@ -34,27 +34,8 @@ class Conexion{
         function cerrar(){
             $this->conexion->close();   
         }
-    }
+    } 
 
-/*     class Conexion {
-    private $DB_HOST = 'localhost';
-    private $DB_USER = 'root';
-    private $DB_PASS = '';
-    private $DB_NAME = 'curso';
-    private $conexion;
 
-    public function __construct()
-    {
-        $conecting= "mysql:host=$this->DB_HOST;dbname=$this->DB_NAME; charset = utf8";
-        try {
-            $this->conexion = new PDO($conecting,$this->DB_USER,$this->DB_PASS);
-            $this->conexion ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            // echo "COnexion exitosa";
-        }catch(PDOException $e) {
-            $this->conexion ="Error de conexion";
-            print "¡Error!: " . $e->getMessage() . "<br/>";
-            die();
-        }
-    }  */  
 
 ?>
