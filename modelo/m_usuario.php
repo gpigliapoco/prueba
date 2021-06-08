@@ -12,6 +12,13 @@
   		$this->conexion =new Conexion();
       $this->conexion->conectar();
   	}
+	
+	  function mostrarUsuarios(){
+		  $consulta = "SELECT * FROM usuarios";
+		  $resultado=$this->conexion->conexion->prepare($consulta);
+		  $resultado->execute();
+	  }
+
 
 	function verificarUsuario($usu,$pass){
 		$consulta="SELECT nombre, contra FROM usuarios where nombre = '$usu' and contra ='$pass'";
@@ -46,7 +53,7 @@
 
 
   	function agregarUsuario($usu,$pass){
-  		$consulta = "INSERT INTO usuarios (nombre,contra) VALUES('$usu', '$pass') ";	
+  	  $consulta = "INSERT INTO usuarios (nombre,contra) VALUES('$usu', '$pass') ";	
       $resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
           return 1;                 
