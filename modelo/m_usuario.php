@@ -13,11 +13,7 @@
       $this->conexion->conectar();
   	}
 	
-	  function mostrarUsuarios(){
-		  $consulta = "SELECT * FROM usuarios";
-		  $resultado=$this->conexion->conexion->prepare($consulta);
-		  $resultado->execute();
-	  }
+	
 
 
 	function verificarUsuario($usu,$pass){
@@ -29,13 +25,7 @@
 		return print_r($resultado);
 		
 	}
-	function mostrarUsuarios(){
-		$consulta = "SELECT * FROM usuarios";
-		$resultado=$this->conexion->conexion->prepare($consulta);
-		$resultado->execute();
-		$data=$resultado->fetchAll();
-		return $data;
-	}
+	
 
 
 	function listar_usuario(){
