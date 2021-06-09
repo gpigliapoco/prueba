@@ -84,7 +84,7 @@ function verificarUsuario(){
                 }).then((result) => {
                 /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
-                    location.reload();
+                    location.reload(); //// lo mas importante es esto
                 }
 })	
 
