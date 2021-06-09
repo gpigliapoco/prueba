@@ -18,11 +18,14 @@
 
 	function verificarUsuario($usu,$pass){
 		$consulta="SELECT nombre, contra FROM usuarios where nombre = '$usu' and contra ='$pass'";
-		$data=array();
-		$resultado=$this->conexion->conexion->prepare($consulta);
-		$resultado->execute();
-		$resultado->fetchAll(PDO::FETCH_ASSOC);
-		return print_r($resultado);
+		$arreglo=array();
+		if($resultado=$this->conexion->conexion->query($consulta)){
+			while($consulta_VU=mysqli_fetch_assoc($resultado)){
+				$arreglo[]=$consulta_VU;
+			}
+			return $arreglo;
+			$this->conexion->cerrar();
+		}
 		
 	}
 	
