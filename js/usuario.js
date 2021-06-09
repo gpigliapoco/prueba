@@ -38,12 +38,58 @@ function verificarUsuario(){
 	}$.ajax({
 		url:"../controlador/control_verifica_user.php",
 		type:"POST",
-		dataType:"JSON",
+		//dataType:"JSON",  //// no anda con esto manda objeto
 		data:{
 			usu:usu,
 			pass:pass,
 		}	
 	}).done(function(resp){
-		alert(resp);
+		if(resp==0){
+			Swal.fire("usuario y pass incorrecta","error");
+		}else{
+			alert(resp);
+			var data=JSON.parse(resp);
+			alert(data);
+			$.ajax({
+				url:"../controlador/control_crear_sesion.php",
+				type:"POST",
+				
+				data:{
+					iduser:data[0],
+					usu:data[1]
+				}	
+
+			}).done(function(resp){
+				let timerInterval
+                Swal.fire({
+                title: 'BIENVENIDO AL SISTEMA',
+                html: 'Usted sera redireccionado en <b></b> milisegundos.',
+                timer: 2000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                    const content = Swal.getContent()
+                    if (content) {
+                        const b = content.querySelector('b')
+                        if (b) {
+                        b.textContent = Swal.getTimerLeft()
+                        }
+                    }
+                    }, 100)
+                },
+                onClose: () => {
+                    clearInterval(timerInterval)
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    location.reload();
+                }
+})	
+
+			})
+			
+		}
 	})
 }

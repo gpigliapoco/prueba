@@ -17,7 +17,7 @@
 
 
 	function verificarUsuario($usu,$pass){
-		$consulta="SELECT nombre, contra FROM usuarios where nombre = '$usu' and contra ='$pass'";
+		$consulta="SELECT * FROM usuarios where nombre = '$usu' and contra ='$pass'";
 		$arreglo=array();
 		if($resultado=$this->conexion->conexion->query($consulta)){
 			while($consulta_VU=mysqli_fetch_assoc($resultado)){

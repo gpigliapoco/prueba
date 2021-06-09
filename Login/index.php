@@ -1,7 +1,8 @@
 <?php
-//if(isset($_SESSION['S_IDUSUARIO'])){
-//	header('Location: ../vista/index.php');
-//}
+session_start();
+if(isset($_SESSION['S_idusuario'])){
+	header('Location: ../vista/index.php');
+}
 
 ?>
 <!DOCTYPE html>
