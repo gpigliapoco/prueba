@@ -110,33 +110,33 @@ function listar_usuario(){
 		  type:'POST'
 	  },
 	  "columns":[
+		  {"data":"id"},
 		  {"data":"nombre"},
-		  {"data":"contra"},
-		  {"data":"sexo"},
-		  {"data":"rol",
-			   render: function (data, type, row ) {////define el sexoo
-				   if(data=='M'){
-					   return "MASCULINO";                   
-				   }else{
-					   return "FEMINO";                 
-				   }
-			   }
-		  }, 
-		  {"data":"usu_estatus",
-			render: function (data, type, row ) {
-			  if(data=='ACTIVO'){
-				  return "<span class='label label-success'>"+data+"</span>";                   
-			  }else{
-				return "<span class='label label-danger'>"+data+"</span>";                 
-			  }
-			}
-		  },  
+		  {"data":"sexo",
+		  	render: function (data, type, row ) {
+				if(data=='M'){
+					return "MASCULINO";                   
+				}else{
+					return "FEMINO";                 
+				}
+			}},
+		  {"data":"rol"},		 
+		  {"data":"status"},
+		  
 		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
 	  ],
 
 	  "language":idioma_espanol,
 	  select: true
   });
+
+  document.getElementById("tabla_usuario_filter").style.display="none";
+  $('input.global_filter').on( 'keyup click', function () {
+	   filterGlobal();
+   } );
+   $('input.column_filter').on( 'keyup click', function () {
+	   filterColumn( $(this).parents('tr').attr('data-column') );
+   });
  
 
 }
