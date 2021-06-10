@@ -140,3 +140,8 @@ function listar_usuario(){
  
 
 }
+
+function AbrirModalRegistro(){
+	$("#modal_registro").modal(backdrop:'static');
+	$("#modal_registro").modal('show');
+}
