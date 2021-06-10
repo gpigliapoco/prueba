@@ -4,7 +4,7 @@
     $user=htmlspecialchars($_POST['usu'],ENT_QUOTES,"UTF-8");
     $pass=htmlspecialchars($_POST['pass'],ENT_QUOTES,"UTF-8");
     $consulta=$mu->verificarUsuario($user,$pass);
-    $data=json_encode($consulta);
+    $data=JSON_encode($consulta);
     if(count($consulta)>0){
         echo $data;
     }else{

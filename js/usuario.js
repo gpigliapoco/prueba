@@ -38,7 +38,7 @@ function verificarUsuario(){
 	}$.ajax({
 		url:"../controlador/control_verifica_user.php",
 		type:"POST",
-		//dataType:"JSON",  //// no anda con esto manda objeto
+		daType:"JSON",  //// no anda con esto manda objeto
 		data:{
 			usu:usu,
 			pass:pass,
@@ -48,15 +48,16 @@ function verificarUsuario(){
 			Swal.fire("usuario y pass incorrecta","error");
 		}else{
 			alert(resp);
-			var data=JSON.parse(resp);
+			var data=JSON.parse(resp);////devuelve objeto
 			alert(data);
+			alert(data[0].nombre);
 			$.ajax({
 				url:"../controlador/control_crear_sesion.php",
 				type:"POST",
 				
 				data:{
 					iduser:data[0],
-					usu:data[1]
+					usu:data[0].nombre,
 				}	
 
 			}).done(function(resp){
