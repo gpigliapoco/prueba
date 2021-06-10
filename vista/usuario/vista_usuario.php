@@ -28,7 +28,7 @@
                     <tr>
                         <th>#</th>
                         <th>Usuario</th>
-                        <th>Rol</th>
+                        <th>nombre</th>
                         <th>Sexo</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
@@ -38,7 +38,7 @@
                     <tr>
                         <th>#</th>
                         <th>Usuario</th>
-                        <th>Rol</th>
+                        <th>nombre</th>
                         <th>Sexo</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
@@ -94,11 +94,9 @@
     </div>
 </form>
 <script>
-$(document).ready(function() {
-    listar_usuario();
-    
-    $("#modal_registro").on('shown.bs.modal',function(){
-        $("#txt_usu").focus();  
-    })
+$(document).ready( function () {
+    $('#tabla_usuarios').DataTable();
 } );
+
+
 </script>

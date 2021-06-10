@@ -56,7 +56,7 @@ function verificarUsuario(){
 				type:"POST",
 				
 				data:{
-					iduser:data[0],
+					iduser:data[0].id,
 					usu:data[0].nombre,
 				}	
 
@@ -93,4 +93,56 @@ function verificarUsuario(){
 			
 		}
 	})
+}
+
+function listar_usuario(){
+	var table = $("#tabla_usuario").DataTable({
+	  "ordering":false,   
+	  "bLengthChange":false,
+	  "searching": { "regex": false },
+	  "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
+	  "pageLength": 10,
+	  "destroy":true,
+	  "async": false ,
+	  "processing": true,
+	  "ajax":{
+		  "url":"../controlador/control_listar_usu.php",
+		  type:'POST'
+	  },
+	  "columns":[
+		  {"data":"posicion"},
+		  {"data":"usu_nombre"},
+		  {"data":"rol_nombre"},
+		  {"data":"usu_sexo",
+			   render: function (data, type, row ) {
+				   if(data=='M'){
+					   return "MASCULINO";                   
+				   }else{
+					   return "FEMINO";                 
+				   }
+			   }
+		  }, 
+		  {"data":"usu_estatus",
+			render: function (data, type, row ) {
+			  if(data=='ACTIVO'){
+				  return "<span class='label label-success'>"+data+"</span>";                   
+			  }else{
+				return "<span class='label label-danger'>"+data+"</span>";                 
+			  }
+			}
+		  },  
+		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
+	  ],
+
+	  "language":idioma_espanol,
+	  select: true
+  });
+  document.getElementById("tabla_usuario_filter").style.display="none";
+  $('input.global_filter').on( 'keyup click', function () {
+	   filterGlobal();
+   } );
+   $('input.column_filter').on( 'keyup click', function () {
+	   filterColumn( $(this).parents('tr').attr('data-column') );
+   });
+
 }

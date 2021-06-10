@@ -34,6 +34,7 @@ if(!isset($_SESSION['S_idusuario'])){
   <link rel="stylesheet" href="../plantilla/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../plantilla/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  \<link rel="stylesheet" href="../plantilla/plugins/datatables/datatables.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -754,6 +755,33 @@ if(!isset($_SESSION['S_idusuario'])){
 <script src="../plantilla/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
+  var idioma_espanol = {
+			select: {
+			rows: "%d fila seleccionada"
+			},
+			"sProcessing":     "Procesando...",
+			"sLengthMenu":     "Mostrar _MENU_ registros",
+			"sZeroRecords":    "No se encontraron resultados",
+			"sEmptyTable":     "Ning&uacute;n dato disponible en esta tabla",
+			"sInfo":           "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+			"sInfoEmpty":      "Registros del (0 al 0) total de 0 registros",
+			"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+			"sInfoPostFix":    "",
+			"sSearch":         "Buscar:",
+			"sUrl":            "",
+			"sInfoThousands":  ",",
+			"sLoadingRecords": "<b>No se encontraron datos</b>",
+			"oPaginate": {
+					"sFirst":    "Primero",
+					"sLast":     "Último",
+					"sNext":     "Siguiente",
+					"sPrevious": "Anterior"
+			},
+			"oAria": {
+					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			}
+	 }
 
   function cargar_contenido(contenido,contenedor){
     $("#"+contenido).load(contenedor);
@@ -790,5 +818,6 @@ if(!isset($_SESSION['S_idusuario'])){
 <script src="../plantilla/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../plantilla/dist/js/demo.js"></script>
+<script src="../plantilla/plugins/datatables/datatables.min.js"></script>
 </body>
 </html>
