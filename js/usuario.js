@@ -106,15 +106,15 @@ function listar_usuario(){
 	  "async": false ,
 	  "processing": true,
 	  "ajax":{
-		  "url":"../controlador/control_listar_usu.php",
+		   url:"../controlador/control_listar_usu.php",
 		  type:'POST'
 	  },
 	  "columns":[
-		  {"data":"posicion"},
-		  {"data":"usu_nombre"},
-		  {"data":"rol_nombre"},
-		  {"data":"usu_sexo",
-			   render: function (data, type, row ) {
+		  {"data":"nombre"},
+		  {"data":"contra"},
+		  {"data":"sexo"},
+		  {"data":"rol",
+			   render: function (data, type, row ) {////define el sexoo
 				   if(data=='M'){
 					   return "MASCULINO";                   
 				   }else{
@@ -137,12 +137,6 @@ function listar_usuario(){
 	  "language":idioma_espanol,
 	  select: true
   });
-  document.getElementById("tabla_usuario_filter").style.display="none";
-  $('input.global_filter').on( 'keyup click', function () {
-	   filterGlobal();
-   } );
-   $('input.column_filter').on( 'keyup click', function () {
-	   filterColumn( $(this).parents('tr').attr('data-column') );
-   });
+ 
 
 }
