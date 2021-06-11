@@ -13,7 +13,7 @@ function registrarUsuario(){
 		 }
 		 $.ajax({
 			 url:"../controlador/controladorUsu.php",
-			 type: "post",
+			 type: "POST",
 			 data:{
 				 usu:usu,
 				 pass:pass,
@@ -21,7 +21,8 @@ function registrarUsuario(){
 				 rol:rol,
 			 }
 		 }).done(function(resp){
-			 
+			 alert(resp);
+
 		 })
 		
 	

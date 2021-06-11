@@ -8,7 +8,7 @@
 	$sexo = (isset($_POST['sexo'])) ? $_POST['sexo'] : '';
 	$rol = (isset($_POST['rol'])) ? $_POST['rol'] : '';
     
-    $consulta=$mu->agregarUsuario($usu, $pass,$sexo,$rol);
+    $consulta=$mu->agregarUsuario($usu,$pass,$sexo,$rol);
 	echo $consulta;
     
     
