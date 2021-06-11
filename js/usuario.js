@@ -120,7 +120,14 @@ function listar_usuario(){
 					return "FEMINO";                 
 				}
 			}},
-		  {"data":"rol"},		 
+		  {"data":"idrol_usuario",
+		  render: function (data, type, row ) {
+			if(data=='1'){
+				return "administrador";                   
+			}else{
+				return "mantenimiento";                 
+				}
+		    }},		 
 		  {"data":"status"},
 		  
 		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
