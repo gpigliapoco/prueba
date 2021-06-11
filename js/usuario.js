@@ -1,25 +1,32 @@
-function verificarUsuario1(){
+function registrarUsuario(){
 	
 	var usu=$("#txt_usu").val();
 	var pass=$("#txt_con").val();
+	var pass1=$("#txt_con1").val();
+	var sexo=$("#cbm_sexo").val();
+	var rol=$("#cbm_rol").val();
+	if (usu.length==0 || pass.length==0 || pass1.length==0 || sexo.length==0 || rol.length==0) {
+		return Swal.fire("llenar campos vacios","warning");
+	 	}
+		 if(pass.length != pass1.length) {
+			return Swal.fire("las claves no coinciden","warning");
+		 }
+		 $.ajax({
+			 url:"../controlador/controladorUsu.php",
+			 type: "post",
+			 data:{
+				 usu:usu,
+				 pass:pass,
+				 sexo:sexo,
+				 rol:rol,
+			 }
+		 }).done(function(resp){
+			 
+		 })
+		
+	
 
-	if (usu.length == 0 || pass.length==0) {
-		return Swal.fire("estan vacios algun campo","warning");
-	}$.ajax({
-		url:"../controlador/controladorUsu.php",
-        type:'POST',
-        
-        data:{
-            usu:usu,
-            pass:pass,
-          
-	 }
-	}).done(function(resp){
-		alert("funciona"+resp);
-		alert("   dale");
-		limpiarRegistros();
-	});
-
+	
 	
 
 }
@@ -156,5 +163,20 @@ function comboRol(){
 	$.ajax({
 		url: "../controlador/control_combo_rol.php",
 		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idrol_usuario+"'>"+data[i].rol+"</option>";
+			}
+			$("#cbm_rol").html(cadena);
+		}
 	})
 }

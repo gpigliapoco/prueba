@@ -87,7 +87,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Registrar_Usuario()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick=""><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
@@ -97,6 +97,7 @@
 <script>
 $(document).ready(function() {
     listar_usuario();
+    comboRol();
 } );
 
 
