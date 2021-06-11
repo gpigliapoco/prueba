@@ -56,7 +56,7 @@ function verificarUsuario(){
 				type:"POST",
 				
 				data:{
-					iduser:data[0].id,
+					iduser:data[0].idusuarios,
 					usu:data[0].nombre,
 				}	
 
@@ -110,7 +110,7 @@ function listar_usuario(){
 		  type:'POST'
 	  },
 	  "columns":[
-		  {"data":"id"},
+		  {"data":"idusuarios"},
 		  {"data":"nombre"},
 		  {"data":"sexo",
 		  	render: function (data, type, row ) {
@@ -141,7 +141,7 @@ function listar_usuario(){
 
 }
 
-function AbrirModalRegistro(){
-	$("#modal_registro").modal(backdrop:'static');
+ function AbrirModalRegistro(){
+	$("#modal_registro").modal({backdrop:'static',keyboard:false});
 	$("#modal_registro").modal('show');
-}
+} 
