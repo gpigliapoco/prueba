@@ -21,8 +21,14 @@ function registrarUsuario(){
 				 rol:rol,
 			 }
 		 }).done(function(resp){
-			 alert(resp);
-			location.reload();
+			if(resp==1){
+				$("#modal_registro").modal('hide');
+				Swal.fire("Mensaje De Confirmacion","Datos correctamente, Nuevo Usuario Registrado","success")            
+                .then ( ( value ) =>  {
+                    
+                    table.ajax.reload();
+                }); 
+			}
 		 })
 		
 	
@@ -103,8 +109,10 @@ function verificarUsuario(){
 	})
 }
 
+var table; //// para poder llamar al reload en otra funcion.
+
 function listar_usuario(){
-	var table = $("#tabla_usuario").DataTable({
+	table = $("#tabla_usuario").DataTable({
 	  "ordering":false,   
 	  "bLengthChange":false,
 	  "searching": { "regex": false },
