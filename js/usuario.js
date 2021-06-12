@@ -1,8 +1,8 @@
 function registrarUsuario(){
 	
 	var usu=$("#txt_usu").val();
-	var pass=$("#txt_con").val();
-	var pass1=$("#txt_con1").val();
+	var pass=$("#txt_con1").val();
+	var pass1=$("#txt_con2").val();
 	var sexo=$("#cbm_sexo").val();
 	var rol=$("#cbm_rol").val();
 	if (usu.length==0 || pass.length==0 || pass1.length==0 || sexo.length==0 || rol.length==0) {
