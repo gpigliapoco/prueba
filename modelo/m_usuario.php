@@ -48,16 +48,15 @@
   	function agregarUsuario($usu,$pass,$sexo,$rol){
   	  $consulta = "INSERT INTO usuarios (nombre,contra,sexo,status,idrol_usuario) VALUES('$usu', '$pass','$sexo','activo','$rol') ";	
 		
-		if ($resultado = $this->conexion->conexion->query($consulta)) {
-			while ($consulta_VU = mysqli_fetch_array($resultado)) {
-				return $id=1;
-
-			}
-			
-			$this->conexion->cerrar();
-		}
-	  
+		$resultado=$this->conexion->conexion->prepare($consulta);
+        if ($resultado->execute()) {                 
+          return 1;                 
+		     }
+			 $this->conexion->cerrar();
   	}
+
+	  
+  	
 
 	  function listar_combo(){
 		$consulta = "SELECT * FROM rol_usuario";

@@ -22,7 +22,7 @@ function registrarUsuario(){
 			 }
 		 }).done(function(resp){
 			 alert(resp);
-
+			location.reload();
 		 })
 		
 	
