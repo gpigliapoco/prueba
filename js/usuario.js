@@ -285,3 +285,28 @@ function comboRol(){
 		}
 	})
 }
+
+function traerDatos(){
+	var usuario= $('#txtuser').val();
+	$.ajax({
+		url:"../controlador/control_traerUsu.php",
+			 type: "POST",
+			 data:{
+				 usuario:usuario,				 				 
+			 }
+	}).done(function(resp){
+		
+		var data=JSON.parse(resp);
+				
+		if(data[0].sexo== "m"){
+			$("#img_subnav").attr("src","../plantilla/dist/img/avatar5.png");
+			$("#img_nav").attr("src","../plantilla/dist/img/avatar5.png");
+			$("#img_lateral").attr("src","../plantilla/dist/img/avatar5.png");
+		}else{
+			$("#img_subnav").attr("src","../plantilla/dist/img/avatar3.png");
+			$("#img_nav").attr("src","../plantilla/dist/img/avatar3.png");
+			$("#img_lateral").attr("src","../plantilla/dist/img/avatar3.png");
+		}
+	})
+
+}

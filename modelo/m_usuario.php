@@ -87,6 +87,20 @@
 		}
 	}  
 	
+	
+	function traerDatos($usuario){
+		$consulta="SELECT * FROM usuarios where nombre = '$usuario' ";
+		$arreglo=array();
+		if($resultado=$this->conexion->conexion->query($consulta)){
+			while($consulta_VU=mysqli_fetch_assoc($resultado)){
+				$arreglo[]=$consulta_VU;
+			}
+			return $arreglo;
+			$this->conexion->cerrar();
+		}
+		
+	}
+
   }
 
  
