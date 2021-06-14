@@ -368,6 +368,8 @@ if(!isset($_SESSION['S_idusuario'])){
         <div class="row" id="contenido_principal">
         <div class="col-md-12">
           <div class="box box-warning box-solid">
+          <input type="text" id="txtIdprincipal" value="<?php echo $_SESSION['S_idusuario'] ?>">
+          <input type="text" id="txtuser" value="<?php echo $_SESSION['S_user'] ?>">
             <div class="box-header with-border">
               <h3 class="box-title">principal</h3>
 
