@@ -165,10 +165,60 @@ function listar_usuario(){
 
 }
 
+$('#tabla_usuario').on('click','.activar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idusuarios);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de activar al usuario?',
+        text: "Una vez hecho esto el usuario  tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idusuarios,'ACTIVO');
+        }
+      })
+
+})
+
 $('#tabla_usuario').on('click','.desactivar',function(){
 	var data =table.row($(this).parents('tr')).data();
 	alert(data.idusuarios);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de activar al usuario?',
+        text: "Una vez hecho esto el usuario  tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idusuarios,'INACTIVO');
+        }
+      })
+
 })
+
+function modificarStatus(idUsu,status){	
+	
+		 $.ajax({
+			 url:"../controlador/control_modificarStatus.php",
+			 type: "POST",
+			 data:{
+				 idUsu:idUsu,
+				 status:status
+				 
+			 }
+		 }).done(function(resp){
+			 alert(resp);
+			table.ajax.reload();
+		 })
+
+}
 
 
  function AbrirModalRegistro(){

@@ -55,7 +55,15 @@
 			 $this->conexion->cerrar();
   	}
 
-	  
+	  function modificarStatus($idUsu,$status){
+  	  $consulta = "UPDATE usuarios SET status = '$status' WHERE idusuarios = '$idUsu'  ";	
+		
+		$resultado=$this->conexion->conexion->prepare($consulta);
+        if ($resultado->execute()) {                 
+          return 1;                 
+		     }
+			 $this->conexion->cerrar();
+  	}	  
   	
 
 	  function listar_combo(){
