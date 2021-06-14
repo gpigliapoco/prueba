@@ -152,6 +152,7 @@ function listar_usuario(){
 	  "language":idioma_espanol,
 	  select: true
   });
+  
 
   document.getElementById("tabla_usuario_filter").style.display="none";
   $('input.global_filter').on( 'keyup click', function () {
@@ -163,6 +164,12 @@ function listar_usuario(){
  
 
 }
+
+$('#tabla_usuario').on('click','.desactivar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idusuarios);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+})
+
 
  function AbrirModalRegistro(){
 	$("#modal_registro").modal({backdrop:'static',keyboard:false});
