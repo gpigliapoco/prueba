@@ -64,7 +64,15 @@
 		     }
 			 $this->conexion->cerrar();
   	}	  
-  	
+	  function modificarUsuario($idUsuario,$sexo,$rol){
+  	  $consulta = "UPDATE usuarios SET sexo = '$sexo', idrol_usuario ='$rol' WHERE idusuarios = '$idUsuario'  ";	
+		
+		$resultado=$this->conexion->conexion->prepare($consulta);
+        if ($resultado->execute()) {                 
+          return 1;                 
+		     }
+			 $this->conexion->cerrar();
+  	}	  
 
 	  function listar_combo(){
 		$consulta = "SELECT * FROM rol_usuario";

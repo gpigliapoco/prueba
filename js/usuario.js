@@ -30,13 +30,9 @@ function registrarUsuario(){
                 }); 
 			}
 		 })
-		
 	
-
-	
-	
-
 }
+
 
 function limpiarRegistros(){
 	$("#txt_usu").val("");
@@ -130,7 +126,7 @@ function listar_usuario(){
 		  {"data":"nombre"},
 		  {"data":"sexo",
 		  	render: function (data, type, row ) {
-				if(data=='M'){
+				if(data=='m'){
 					return "MASCULINO";                   
 				}else{
 					return "FEMINO";                 
@@ -139,9 +135,9 @@ function listar_usuario(){
 		  {"data":"idrol_usuario",
 		  render: function (data, type, row ) {
 			if(data=='1'){
-				return "administrador";                   
+				return "mantenimiento";                   
 			}else{
-				return "mantenimiento";                 
+				return "administrador";                 
 				}
 		    }},		 
 		  {"data":"status"},
@@ -209,12 +205,41 @@ $('#tabla_usuario').on('click','.editar',function(){
 	alert(data.sexo);
 	$("#modal_editar").modal({backdrop:'static',keyboard:false});
 	$("#modal_editar").modal('show');
-	$("#txtIdusuario").val(data.idusuarios);
+	$("#txtIdusuario").val(data.idusuarios);  //// tare los datos de la tabla y los agrega en los input
 	$("#txt_usuEditar").val(data.nombre);
-	$("#cbm_sexo_editar").val(data.sexo).trigger("change");
-	$("#cbm_rol_editar").val(data.idrol_usuario);
+	$("#cbm_sexo_editar").val(data.sexo).trigger("change");/// funcion para el combo box ponga el dato que viene del data
+	$("#cbm_rol_editar").val(data.idrol_usuario).trigger("change");
 
 })
+
+function modificarUsuario(){
+	
+	var idUsuario=$("#txtIdusuario").val();	
+	var sexo=$("#cbm_sexo_editar").val();
+	var rol=$("#cbm_rol_editar").val();
+	if (idUsuario.length==0 ||  sexo.length==0 || rol.length==0) {
+		return Swal.fire("llenar campos vacios","warning");
+	 	}
+		$.ajax({
+			 url:"../controlador/controlUsuModificar.php",
+			 type: "POST",
+			 data:{
+				 idUsuario:idUsuario,
+				 sexo:sexo,
+				 rol:rol,
+			 }
+		 }).done(function(resp){
+			if(resp==1){
+				$("#modal_editar").modal('hide');
+				Swal.fire("Mensaje De Confirmacion","Datos Actualizados","success")            
+                .then ( ( value ) =>  {
+                    
+                    table.ajax.reload();
+                }); 
+			}
+		 })
+	
+}
 
 function modificarStatus(idUsu,status){	
 	
@@ -256,6 +281,7 @@ function comboRol(){
 				cadena+="<option value='"+data[i].idrol_usuario+"'>"+data[i].rol+"</option>";
 			}
 			$("#cbm_rol").html(cadena);
+			$("#cbm_rol_editar").html(cadena);
 		}
 	})
 }

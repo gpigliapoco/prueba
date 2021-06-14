@@ -104,7 +104,7 @@
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <input type="text" id="txtIdusuario"> 
+                    <input type="text" id="txtIdusuario" hidden> 
                     <label for="">Usuario</label>
                     <input type="text" class="form-control" id="txt_usuEditar" placeholder="Ingrese usuario" disabled><br>
                 </div>                
