@@ -396,6 +396,7 @@ function restablecerPassword(){
 		$data=JSON.parse(resp);
 		alert($data);
 		alert($data[0].email);
+		alert($data.length);
 		//alert($data[0].nombre);
 	})
 }

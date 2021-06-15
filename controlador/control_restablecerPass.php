@@ -9,10 +9,6 @@
     $consulta1=$mu->traerEmail($email);
     $data=JSON_encode($consulta1);
 	echo $data;
-   // echo $consulta1;
-    
-  ///  $consulta=$mu->restablecerPassword($email,$password);
-	
     
     
 
