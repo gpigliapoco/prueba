@@ -330,6 +330,40 @@ function editarContra(){
 		if(contraNew != contraRepeat){
 			return Swal.fire("las claves no coinciden","warning");
 		}
+		$.ajax({
+			url:"../controlador/control_modificarPassword.php",
+			type:"POST",
+			data:{
+				idUsu:idUsu,
+				contraDb:contraDb,
+				contraEscrita:contraEscrita,
+				contraNew:contraNew
+			}
+		}).done(function(resp){
+			alert(resp);
+			if(resp==1){
+				$("#modal_password").modal('hide');
+				Swal.fire("Mensaje De Confirmacion","Datos Actualizados","success")            
+                .then ( ( value ) =>  {
+                    
+                    traerDatos();
+					limpiarRegistrosPass();
+					
+                }); 
+
+			}
+			if(resp==2){
+				
+				return Swal.fire("las password registrada  no es la real","warning");          
+               
+			}
+		})
 
 
+}	
+
+function limpiarRegistrosPass(){
+	$("#txt_password_actual").val("");
+	$("#txt_password_nueva").val("");
+	$("#txt_password_repeat").val("");
 }

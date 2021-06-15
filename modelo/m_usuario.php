@@ -101,8 +101,17 @@
 		
 	}
 
+	function modificarPassword($idUsu,$contraNew){
+  	  $consulta = "UPDATE usuarios SET contra = '$contraNew' WHERE idusuarios = '$idUsu'  ";	
+		
+		$resultado=$this->conexion->conexion->prepare($consulta);
+        if ($resultado->execute()) {                 
+          return 1;                 
+		     }
+			 $this->conexion->cerrar();
+
   }
 
- 
+}
 
  ?>
