@@ -101,6 +101,17 @@
 		
 	}
 
+	function traerEmail($email){
+		$consulta="SELECT email FROM usuarios where email = '$email' ";
+		$resultado=$this->conexion->conexion->prepare($consulta);
+        if ($resultado->execute()) {                 
+          return $resultado;                
+		     }
+			 
+			 $this->conexion->cerrar();
+		
+	}
+
 	function modificarPassword($idUsu,$contraNew){
   	  $consulta = "UPDATE usuarios SET contra = '$contraNew' WHERE idusuarios = '$idUsu'  ";	
 		
