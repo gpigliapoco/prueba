@@ -303,7 +303,7 @@ function traerDatos(){
 	}).done(function(resp){
 		
 		var data=JSON.parse(resp);
-		$("#txtPassbd").val(data[0].contra);		
+		$("#txtPassbd").val(data[0].contra);		////muestra dato de contrasena
 		if(data[0].sexo== "m"){
 			$("#img_subnav").attr("src","../plantilla/dist/img/avatar5.png");
 			$("#img_nav").attr("src","../plantilla/dist/img/avatar5.png");
@@ -314,5 +314,22 @@ function traerDatos(){
 			$("#img_lateral").attr("src","../plantilla/dist/img/avatar3.png");
 		}
 	})
+
+}
+
+function editarContra(){
+	var idUsu=$("#txtIdprincipal").val();
+	var contraDb=$("#txtPassbd").val();
+	var contraEscrita=$("#txt_password_actual").val();
+	var contraNew=$("#txt_password_nueva").val();
+	var contraRepeat=$("#txt_password_repeat").val();
+
+	if(contraEscrita.length==0 || contraNew.length==0 || contraRepeat.length==0){
+		return Swal.fire("llenar campos vacios","warning");
+	}
+		if(contraNew != contraRepeat){
+			return Swal.fire("las claves no coinciden","warning");
+		}
+
 
 }
