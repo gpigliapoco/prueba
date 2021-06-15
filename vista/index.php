@@ -170,7 +170,7 @@ if(!isset($_SESSION['S_idusuario'])){
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Editar Perfil</a>
+                  <a href="#" onclick="AbrirModalPassword()" class="btn btn-default btn-flat">Cambiar password</a>
                 </div>
                 <div class="pull-right">
                   <a href="../controlador/control_cerrar_sesion.php" class="btn btn-default btn-flat">Salir</a>
@@ -468,6 +468,41 @@ if(!isset($_SESSION['S_idusuario'])){
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+<form autocomplete="false" onsubmit="return false">
+    <div class="modal fade" id="modal_password" role="dialog">
+        <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>Editar password</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    
+                    <label for="">Password</label>
+                    <input type="text" class="form-control" id="txt_password_actual" placeholder="password actual" ><br>
+                </div> 
+                <div class="col-lg-12">
+                    
+                    <label for="">Password nueva</label>
+                    <input type="text" class="form-control" id="txt_password_nueva" placeholder="password nueva" ><br>
+                </div> 
+                <div class="col-lg-12">
+                    
+                    <label for="">Repite Password</label>
+                    <input type="text" class="form-control" id="txt_password_repeat" placeholder="password repeat" ><br>
+                </div>                                
+            
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="modificarUsuario()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
 
 <!-- jQuery 3 -->
 <script src="../plantilla/bower_components/jquery/dist/jquery.min.js"></script>

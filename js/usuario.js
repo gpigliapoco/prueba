@@ -262,7 +262,13 @@ function modificarStatus(idUsu,status){
  function AbrirModalRegistro(){
 	$("#modal_registro").modal({backdrop:'static',keyboard:false});
 	$("#modal_registro").modal('show');
-} 
+}  
+
+function AbrirModalPassword(){
+	$("#modal_password").modal({backdrop:'static',keyboard:false});
+	$("#modal_password").modal('show');
+}  
+ 
 function comboRol(){
 	$.ajax({
 		url: "../controlador/control_combo_rol.php",
