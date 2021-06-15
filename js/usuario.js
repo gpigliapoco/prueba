@@ -184,8 +184,8 @@ $('#tabla_usuario').on('click','.desactivar',function(){
 	var data =table.row($(this).parents('tr')).data();
 	alert(data.idusuarios);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
 	Swal.fire({
-        title: 'Esta seguro de activar al usuario?',
-        text: "Una vez hecho esto el usuario  tendra acceso al sistema",
+        title: 'Esta seguro de desactivar al usuario?',
+        text: "Una vez hecho esto el usuario  no tendra acceso al sistema",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -303,7 +303,7 @@ function traerDatos(){
 	}).done(function(resp){
 		
 		var data=JSON.parse(resp);
-				
+		$("#txtPassbd").val(data[0].contra);		
 		if(data[0].sexo== "m"){
 			$("#img_subnav").attr("src","../plantilla/dist/img/avatar5.png");
 			$("#img_nav").attr("src","../plantilla/dist/img/avatar5.png");

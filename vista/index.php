@@ -478,7 +478,7 @@ if(!isset($_SESSION['S_idusuario'])){
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    
+                    <input type="text" id="txtPassbd">
                     <label for="">Password</label>
                     <input type="text" class="form-control" id="txt_password_actual" placeholder="password actual" ><br>
                 </div> 
