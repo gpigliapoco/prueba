@@ -268,6 +268,11 @@ function AbrirModalPassword(){
 	$("#modal_password").modal({backdrop:'static',keyboard:false});
 	$("#modal_password").modal('show');
 }  
+
+function modalEmail(){
+	$("#modal_email").modal({backdrop:'static',keyboard:false});
+	$("#modal_email").modal('show');
+}
  
 function comboRol(){
 	$.ajax({
@@ -366,4 +371,31 @@ function limpiarRegistrosPass(){
 	$("#txt_password_actual").val("");
 	$("#txt_password_nueva").val("");
 	$("#txt_password_repeat").val("");
+}
+
+function restablecerPassword(){
+	var email=$("#txt_email").val();
+	if(email.length==0){
+		return Swal.fire("llenar campos vacios","warning") ;
+	}
+	var caracteres="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM123654789";
+	var password="";
+	for(var i=0;i<6;i++){
+		password+=caracteres.charAt(Math.floor(Math.random()*caracteres.length));
+	}
+	alert(password);
+	$.ajax({
+		url:"../controlador/control_restablecerPass.php",
+		type:"POST",
+		data:{
+			email:email,
+			password:password
+		}
+	}).done(function(resp){
+		alert(resp);
+		$data=JSON.parse(resp);
+		alert($data);
+		alert($data[0].email);
+		//alert($data[0].nombre);
+	})
 }

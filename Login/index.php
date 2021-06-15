@@ -56,7 +56,7 @@ if(isset($_SESSION['S_idusuario'])){
 					</div>
 					
 					<div class="text-right p-t-8 p-b-31">
-						<a href="#">
+						<a href="#" onclick="modalEmail()">
 							Olvidaste la contrase&ntilde;a?
 						</a>
 					</div>
@@ -86,7 +86,28 @@ if(isset($_SESSION['S_idusuario'])){
 			</div>
 		</div>
 	</div>
-	
+	<form autocomplete="false" onsubmit="return false">
+    <div class="modal fade" id="modal_email" role="dialog">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align:center;">            
+            <h4 class="modal-title"><b>Restablecer password</b></h4>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <label for=""><b>Ingrese email registrado para enviarle password restablecido</b></label>
+                    <input type="text" class="form-control" id="txt_email" placeholder="Ingrese email"><br>
+                </div>              
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="restablecerPassword()"><i class="fa fa-check"><b>&nbsp;Enviar</b></i></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
 
 	<div id="dropDownSelect1"></div>
 

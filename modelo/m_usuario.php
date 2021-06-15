@@ -64,6 +64,7 @@
 		     }
 			 $this->conexion->cerrar();
   	}	  
+	  
 	  function modificarUsuario($idUsuario,$sexo,$rol){
   	  $consulta = "UPDATE usuarios SET sexo = '$sexo', idrol_usuario ='$rol' WHERE idusuarios = '$idUsuario'  ";	
 		
@@ -102,13 +103,15 @@
 	}
 
 	function traerEmail($email){
-		$consulta="SELECT email FROM usuarios where email = '$email' ";
-		$resultado=$this->conexion->conexion->prepare($consulta);
-        if ($resultado->execute()) {                 
-          return $resultado;                
-		     }
-			 
-			 $this->conexion->cerrar();
+		$consulta="SELECT * FROM usuarios where email = '$email' ";
+		$arreglo=array();
+		if($resultado=$this->conexion->conexion->query($consulta)){
+			while($consulta_VU=mysqli_fetch_assoc($resultado)){
+				$arreglo[]=$consulta_VU;
+			}
+			return $arreglo;
+			$this->conexion->cerrar();
+		}
 		
 	}
 
