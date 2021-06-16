@@ -126,6 +126,17 @@
 
   }
 
+  function actulizarPassword($password,$email){
+	$consulta = "UPDATE usuarios SET contra = '$password' WHERE email = '$email'  ";	
+	
+	$resultado=$this->conexion->conexion->prepare($consulta);
+	if ($resultado->execute()) {                 
+	  return 1;                 
+		 }
+		 $this->conexion->cerrar();
+
+	}
+
 }
 
  ?>

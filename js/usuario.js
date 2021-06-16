@@ -388,14 +388,26 @@ function restablecerPassword(){
 		url:"../controlador/control_restablecerPass.php",
 		type:"POST",
 		data:{
-			email:email,
-			password:password
+			email:email,			
 		}
 	}).done(function(resp){
 		alert(resp);
 		$data=JSON.parse(resp);
 		if($data.length>0){
 			alert($data[0].email);
+			$.ajax({
+				url:"../controlador/control_restablecerPass1.php",
+				type:"POST",
+				data:{					
+					password:password,
+					email:email,
+					}
+				}).done(function(resp){
+					alert(resp);
+					$("#modal_email").modal('hide');
+					Swal.fire("Mensaje De Confirmacion","Datos Actualizados","success");
+
+				})
 		}else{
 			return Swal.fire("El email no esta registrado","warning") ;
 		}
