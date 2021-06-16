@@ -106,7 +106,7 @@
 		$consulta="SELECT email FROM usuarios where email = '$email' ";
 		$arreglo=array();
 		if($resultado=$this->conexion->conexion->query($consulta)){
-			while($consulta_VU=mysqli_fetch_array($resultado)){
+			while($consulta_VU=mysqli_fetch_assoc($resultado)){
 				$arreglo[]=$consulta_VU;
 			}
 			return $arreglo;

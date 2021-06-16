@@ -394,9 +394,15 @@ function restablecerPassword(){
 	}).done(function(resp){
 		alert(resp);
 		$data=JSON.parse(resp);
-		alert($data);
-		alert($data[0].email);
-		alert($data.length);
+		if($data.length>0){
+			alert($data[0].email);
+		}else{
+			return Swal.fire("El email no esta registrado","warning") ;
+		}
+		//alert($data.length);
+		//alert($data);
+		//alert($data[0].email);
+		//alert($data.length);
 		//alert($data[0].nombre);
 	})
 }
