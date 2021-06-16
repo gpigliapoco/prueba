@@ -51,7 +51,10 @@
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
           return 1;                 
-		     }
+		     }else {
+				return 0;
+			 }
+
 			 $this->conexion->cerrar();
   	}
 
@@ -121,7 +124,9 @@
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
           return 1;                 
-		     }
+		     }else {
+				 return 0;
+			 }
 			 $this->conexion->cerrar();
 
   }
@@ -132,6 +137,8 @@
 	$resultado=$this->conexion->conexion->prepare($consulta);
 	if ($resultado->execute()) {                 
 	  return 1;                 
+		 }else {
+			return 0;
 		 }
 		 $this->conexion->cerrar();
 
