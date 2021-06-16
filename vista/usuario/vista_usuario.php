@@ -30,6 +30,7 @@
                         <th>Usuario</th>
                         <th>sexo</th>
                         <th>rol</th>
+                        <th>email</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
                     </tr>
@@ -40,6 +41,7 @@
                         <th>Usuario</th>
                         <th>sexo</th>
                         <th>rol</th>
+                        <th>email</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
                     </tr>
@@ -65,6 +67,12 @@
                     <input type="text" class="form-control" id="txt_usu" placeholder="Ingrese usuario"><br>
                 </div>
                 <div class="col-lg-12">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" id="txt_email" placeholder="Ingrese email"><br>
+                    <label for="" id="emailOk" style="color:red;"></label>
+                    <input type="text" id="validar_email" hidden>
+                </div>
+                <div class="col-lg-12">
                     <label for="">Contrase&ntilde;a</label>
                     <input type="password" class="form-control" id="txt_con1" placeholder="Ingrese contrase&ntilde;a"><br>
                 </div>
@@ -75,8 +83,8 @@
                 <div class="col-lg-12">
                     <label for="">Sexo</label>
                     <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
-                        <option value="M">MASCULINO</option>
-                        <option value="F">FEMENINO</option>
+                        <option value="m">MASCULINO</option>
+                        <option value="f">FEMENINO</option>
                     </select><br><br>
                 </div>
                 <div class="col-lg-12">
@@ -107,7 +115,13 @@
                     <input type="text" id="txtIdusuario" hidden> 
                     <label for="">Usuario</label>
                     <input type="text" class="form-control" id="txt_usuEditar" placeholder="Ingrese usuario" disabled><br>
-                </div>                
+                </div>  
+                <div class="col-lg-12">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" id="txt_emailEditar" placeholder="Ingrese email"><br>
+                    <label for="" id="emailOkEdit" style="color:red;"></label>
+                    <input type="text" id="validar_emailEditar" hidden>
+                </div>              
                 <div class="col-lg-12">
                     <label for="">Sexo</label>
                     <select class="js-example-basic-single" name="state" id="cbm_sexo_editar" style="width:100%;">
@@ -136,5 +150,36 @@ $(document).ready(function() {
     comboRol();
 } );
 
+document.getElementById("txt_email").addEventListener('input',function(){
+    campo=event.target;
+    
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i; ///codigo para validar correo en input
+    if(emailRegex.test(campo.value)){
+       /// alert("formato correcto");
+        $(this).css("border","");
+        $("#emailOk").html("");
+        $("#validar_email").val("correcto");
+    }else{
+        $(this).css("border","1px solid red");
+        $("#emailOk").html("Email incorrecto");
+        $("#validar_email").val("incorrecto");
+    }
+})
+
+document.getElementById("txt_emailEditar").addEventListener('input',function(){
+    campo=event.target;
+    
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i; ///codigo para validar correo en input
+    if(emailRegex.test(campo.value)){
+       /// alert("formato correcto");
+        $(this).css("border","");
+        $("#emailOkEdit").html("");
+        $("#validar_emailEditar").val("correcto");
+    }else{
+        $(this).css("border","1px solid red");
+        $("#emailOkEdit").html("Email incorrecto");
+        $("#validar_emailEditar").val("incorrecto");
+    }
+})
 
 </script>

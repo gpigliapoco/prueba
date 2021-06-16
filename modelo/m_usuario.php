@@ -45,8 +45,8 @@
 	}
 
 
-  	function agregarUsuario($usu,$pass,$sexo,$rol){
-  	  $consulta = "INSERT INTO usuarios (nombre,contra,sexo,status,idrol_usuario) VALUES('$usu', '$pass','$sexo','activo','$rol') ";	
+  	function agregarUsuario($usu,$pass,$sexo,$rol,$email){
+  	  $consulta = "INSERT INTO usuarios (nombre,contra,sexo,status,idrol_usuario,email) VALUES('$usu', '$pass','$sexo','activo','$rol','$email') ";	
 		
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
@@ -65,8 +65,8 @@
 			 $this->conexion->cerrar();
   	}	  
 	  
-	  function modificarUsuario($idUsuario,$sexo,$rol){
-  	  $consulta = "UPDATE usuarios SET sexo = '$sexo', idrol_usuario ='$rol' WHERE idusuarios = '$idUsuario'  ";	
+	  function modificarUsuario($idUsuario,$sexo,$rol,$email){
+  	  $consulta = "UPDATE usuarios SET sexo = '$sexo',email = '$email', idrol_usuario ='$rol' WHERE idusuarios = '$idUsuario'  ";	
 		
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 

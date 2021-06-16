@@ -5,11 +5,16 @@ function registrarUsuario(){
 	var pass1=$("#txt_con2").val();
 	var sexo=$("#cbm_sexo").val();
 	var rol=$("#cbm_rol").val();
+	var email=$("#txt_email").val();
+	var validarEmail=$("#validar_email").val();
 	if (usu.length==0 || pass.length==0 || pass1.length==0 || sexo.length==0 || rol.length==0) {
 		return Swal.fire("llenar campos vacios","warning");
 	 	}
 		 if(pass.length != pass1.length) {
 			return Swal.fire("las claves no coinciden","warning");
+		 }
+		 if(validarEmail=="incorrecto"){
+			return Swal.fire("email incorrecto","warning");
 		 }
 		 $.ajax({
 			 url:"../controlador/controladorUsu.php",
@@ -19,6 +24,7 @@ function registrarUsuario(){
 				 pass:pass,
 				 sexo:sexo,
 				 rol:rol,
+				 email:email
 			 }
 		 }).done(function(resp){
 			if(resp==1){
@@ -139,7 +145,8 @@ function listar_usuario(){
 			}else{
 				return "administrador";                 
 				}
-		    }},		 
+		    }},	
+		  {"data":"email"},		 
 		  {"data":"status"},
 		  
 		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
@@ -209,6 +216,7 @@ $('#tabla_usuario').on('click','.editar',function(){
 	$("#txt_usuEditar").val(data.nombre);
 	$("#cbm_sexo_editar").val(data.sexo).trigger("change");/// funcion para el combo box ponga el dato que viene del data
 	$("#cbm_rol_editar").val(data.idrol_usuario).trigger("change");
+	$("#txt_emailEditar").val(data.email);
 
 })
 
@@ -217,9 +225,14 @@ function modificarUsuario(){
 	var idUsuario=$("#txtIdusuario").val();	
 	var sexo=$("#cbm_sexo_editar").val();
 	var rol=$("#cbm_rol_editar").val();
+	var email=$("#txt_emailEditar").val();
+	var validarEmail=$("#validar_emailEditar").val();
 	if (idUsuario.length==0 ||  sexo.length==0 || rol.length==0) {
 		return Swal.fire("llenar campos vacios","warning");
 	 	}
+		 if(validarEmail=="incorrecto"){
+			return Swal.fire("email incorrecto","warning");
+		 }
 		$.ajax({
 			 url:"../controlador/controlUsuModificar.php",
 			 type: "POST",
@@ -227,6 +240,7 @@ function modificarUsuario(){
 				 idUsuario:idUsuario,
 				 sexo:sexo,
 				 rol:rol,
+				 email:email
 			 }
 		 }).done(function(resp){
 			if(resp==1){

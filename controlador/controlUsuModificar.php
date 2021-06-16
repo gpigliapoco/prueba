@@ -6,8 +6,9 @@
 	$idUsuario = (isset($_POST['idUsuario'])) ? $_POST['idUsuario'] : '';
     $sexo = (isset($_POST['sexo'])) ? $_POST['sexo'] : '';
 	$rol = (isset($_POST['rol'])) ? $_POST['rol'] : '';
+	$email = (isset($_POST['email'])) ? $_POST['email'] : '';
     
-    $consulta=$mu->modificarUsuario($idUsuario,$sexo,$rol);
+    $consulta=$mu->modificarUsuario($idUsuario,$sexo,$rol,$email);
 	echo $consulta;
     
     
