@@ -140,6 +140,15 @@ if(!isset($_SESSION['S_idusuario'])){
           </a>
         
         </li>
+        <li class="active treeview">
+          <a onclick="cargar_contenido('contenido_principal','procedimientos/vista_procedimientos.php')">
+            <i class="fa fa-spinner"></i> <span>Procedimientos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        
+        </li>
  
       </ul>
     </section>
