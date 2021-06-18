@@ -26,72 +26,42 @@
             <table id="tabla_procedimientos" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>#</th>
                         <th>Nombre</th>
-                        <th>Status</th>
-                        
+                        <th>Status</th>                        
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>id</th>
+                        <th>#</th>
                         <th>Nombre</th>
-                        <th>Status</th>
-                        
+                        <th>Status</th>                        
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>
-            </table>
-           
+            </table>           
             </div>
             <!-- /.box-body -->
     </div>
           <!-- /.box -->
 </div>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_registro" role="dialog">
+    <div class="modal fade" id="modal_registro_procedimientos" role="dialog">
         <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Registro De Usuario</b></h4>
+            <h4 class="modal-title"><b>Registrar Procedimiento</b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <label for="">Usuario</label>
-                    <input type="text" class="form-control" id="txt_usu" placeholder="Ingrese usuario"><br>
-                </div>
-                <div class="col-lg-12">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" id="txt_email" placeholder="Ingrese email"><br>
-                    <label for="" id="emailOk" style="color:red;"></label>
-                    <input type="text" id="validar_email" hidden>
-                </div>
-                <div class="col-lg-12">
-                    <label for="">Contrase&ntilde;a</label>
-                    <input type="password" class="form-control" id="txt_con1" placeholder="Ingrese contrase&ntilde;a"><br>
-                </div>
-                <div class="col-lg-12">
-                    <label for="">Repita la Contrase&ntilde;a</label>
-                    <input type="password" class="form-control" id="txt_con2" placeholder="Repita contrase&ntilde;a"><br>
-                </div>
-                <div class="col-lg-12">
-                    <label for="">Sexo</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
-                        <option value="m">MASCULINO</option>
-                        <option value="f">FEMENINO</option>
-                    </select><br><br>
-                </div>
-                <div class="col-lg-12">
-                    <label for="">Rol</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
-                    </select><br><br>
-                </div>
-
+                    <label for="">procedimiento</label>
+                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
+                </div>               
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrarUsuario()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>

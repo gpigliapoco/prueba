@@ -98,7 +98,7 @@ if(!isset($_SESSION['S_idusuario'])){
                   <a href="#" onclick="AbrirModalPassword()" class="btn btn-default btn-flat">Cambiar password</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../controlador/control_cerrar_sesion.php" class="btn btn-default btn-flat">Salir</a>
+                  <a href="../controlador/usuario/control_cerrar_sesion.php" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>

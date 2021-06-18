@@ -1,5 +1,5 @@
 <?php
-require_once '../modelo/m_procedimientos.php';
+require_once '../../modelo/m_procedimientos.php';
 
 $mu= new modelo_procedimientos();
 $consulta=$mu->listar_procedimientos();

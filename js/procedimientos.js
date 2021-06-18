@@ -45,3 +45,29 @@ function listar_procedimientos(){
  
 
 }
+
+function AbrirModalRegistro(){
+	$("#modal_registro_procedimientos").modal({backdrop:'static',keyboard:false});
+	$("#modal_registro_procedimientos").modal('show');
+}  
+
+function registrarProcedimiento(){
+	
+	var nombre=$("#txt_nombre").val();
+
+	if(nombre.lenght==0){
+		return Swal.fire("Hay campos vacios","warning");
+	}
+		$.ajax({
+			url:"../controlador/procedimientos/control_registrar_proced.php",
+			type:"POST",
+			data:{
+				nombre:nombre
+			}
+		}).done(function(resp){
+			alert(resp);
+		})
+	
+	
+	
+}

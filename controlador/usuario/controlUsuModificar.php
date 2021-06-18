@@ -1,6 +1,6 @@
 <?php 
 
-	require_once '../modelo/m_usuario.php';
+	require_once '../../modelo/m_usuario.php';
 
 	$mu= new modelo_usuario();
 	$idUsuario = (isset($_POST['idUsuario'])) ? $_POST['idUsuario'] : '';
