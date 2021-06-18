@@ -23,6 +23,29 @@
             }
         }
 
+        function registrar_procedimientos($nombre){
+            $consulta = "INSERT INTO procedimientos (nombre,status) VALUES('$nombre','activo') ";	
+            
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }else {
+                    return 0;
+                 }
+    
+                 $this->conexion->cerrar();
+          }
+
+          function modificarStatus($idproc,$status){
+            $consulta = "UPDATE procedimientos SET status = '$status' WHERE idprocedimientos = '$idproc'  ";	
+            
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }
+                 $this->conexion->cerrar();
+          }	    
+
 
 
     }

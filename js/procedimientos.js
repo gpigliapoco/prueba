@@ -46,9 +46,18 @@ function listar_procedimientos(){
 
 }
 
+function limpiarRegistros(){
+	$("#txt_nombre").val();
+}
+
 function AbrirModalRegistro(){
 	$("#modal_registro_procedimientos").modal({backdrop:'static',keyboard:false});
 	$("#modal_registro_procedimientos").modal('show');
+}  
+
+function AbrirModalRegistroEditar(){
+	$("#modal_editar_procedimientos").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_procedimientos").modal('show');
 }  
 
 function registrarProcedimiento(){
@@ -65,9 +74,82 @@ function registrarProcedimiento(){
 				nombre:nombre
 			}
 		}).done(function(resp){
-			alert(resp);
+			if(resp==1){
+				$("#modal_registro_procedimientos").modal('hide');
+				return Swal.fire("Procedimiento Registrado","success")
+				.then ( ( value ) =>  {
+                    limpiarRegistros();
+                    table.ajax.reload(); /// sino esta este algorismo no refresca la tabla.
+                }); 
+			}
 		})
-	
-	
+		
 	
 }
+
+function modificarStatus(idproc,status){	
+	
+	$.ajax({
+		url:"../controlador/procedimientos/control_proced_modiStatus.php",
+		type: "POST",
+		data:{
+			idproc:idproc,
+			status:status
+			
+		}
+	}).done(function(resp){
+		alert(resp);
+	   table.ajax.reload();
+	})
+
+}
+
+$('#tabla_procedimientos').on('click','.activar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idprocedimientos);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de activar al usuario?',
+        text: "Una vez hecho esto el usuario  tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idprocedimientos,'ACTIVO');
+        }
+      })
+
+})
+
+$('#tabla_procedimientos').on('click','.desactivar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idprocedimientos);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de desactivar al usuario?',
+        text: "Una vez hecho esto el usuario  no tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idprocedimientos,'INACTIVO');
+        }
+      })
+
+})
+
+$('#tabla_procedimientos').on('click','.editar',function(){
+	var data =table.row($(this).parents('tr')).data();
+
+	alert(data.idprocedimientos);
+	$("#modal_editar_procedimientos").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_procedimientos").modal('show');
+	$("#txtIdprocedimiento").val(data.idprocedimientos);  //// tare los datos de la tabla y los agrega en los input
+	$("#txt_nombreEditar").val(data.nombre);
+	;
+
+})
