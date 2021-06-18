@@ -17,7 +17,7 @@ function registrarUsuario(){
 			return Swal.fire("email incorrecto","warning");
 		 }
 		 $.ajax({
-			 url:"../controlador/controladorUsu.php",
+			 url:"../controlador/usuario/controladorUsu.php",
 			 type: "POST",
 			 data:{
 				 usu:usu,
@@ -52,7 +52,7 @@ function verificarUsuario(){
 	if(usu.length == 0 || pass.length == 0){
 		return Swal.fire("llenar campos vacios","warning");
 	}$.ajax({
-		url:"../controlador/control_verifica_user.php",
+		url:"../controlador/usuario/control_verifica_user.php",
 		type:"POST",
 		daType:"JSON",  //// no anda con esto manda objeto
 		data:{
@@ -68,7 +68,7 @@ function verificarUsuario(){
 			alert(data);
 			alert(data[0].nombre);
 			$.ajax({
-				url:"../controlador/control_crear_sesion.php",
+				url:"../controlador/usuario/control_crear_sesion.php",
 				type:"POST",
 				
 				data:{
@@ -124,7 +124,7 @@ function listar_usuario(){
 	  "async": false ,
 	  "processing": true,
 	  "ajax":{
-		   url:"../controlador/control_listar_usu.php",
+		   url:"../controlador/usuario/control_listar_usu.php",
 		  type:'POST'
 	  },
 	  "columns":[
@@ -241,7 +241,7 @@ function modificarUsuario(){
 			return Swal.fire("email incorrecto","warning");
 		 }
 		$.ajax({
-			 url:"../controlador/controlUsuModificar.php",
+			 url:"../controlador/usuario/controlUsuModificar.php",
 			 type: "POST",
 			 data:{
 				 idUsuario:idUsuario,
@@ -265,7 +265,7 @@ function modificarUsuario(){
 function modificarStatus(idUsu,status){	
 	
 		 $.ajax({
-			 url:"../controlador/control_modificarStatus.php",
+			 url:"../controlador/usuario/control_modificarStatus.php",
 			 type: "POST",
 			 data:{
 				 idUsu:idUsu,
@@ -297,7 +297,7 @@ function modalEmail(){
  
 function comboRol(){
 	$.ajax({
-		url: "../controlador/control_combo_rol.php",
+		url: "../controlador/usuario/control_combo_rol.php",
 		type: "POST",
 	}).done(function(resp){
 	//	alert(resp);  // para ver que datos trae
@@ -321,7 +321,7 @@ function comboRol(){
 function traerDatos(){
 	var usuario= $('#txtuser').val();
 	$.ajax({
-		url:"../controlador/control_traerUsu.php",
+		url:"../controlador/usuario/control_traerUsu.php",
 			 type: "POST",
 			 data:{
 				 usuario:usuario,				 				 
@@ -357,7 +357,7 @@ function editarContra(){
 			return Swal.fire("las claves no coinciden","warning");
 		}
 		$.ajax({
-			url:"../controlador/control_modificarPassword.php",
+			url:"../controlador/usuario/control_modificarPassword.php",
 			type:"POST",
 			data:{
 				idUsu:idUsu,
@@ -406,7 +406,7 @@ function restablecerPassword(){
 	}
 	alert(password);
 	$.ajax({
-		url:"../controlador/control_restablecerPass.php",
+		url:"../controlador/usuario/control_restablecerPass.php",
 		type:"POST",
 		data:{
 			email:email,			
@@ -417,7 +417,7 @@ function restablecerPassword(){
 		if($data.length>0){
 			alert($data[0].email);
 			$.ajax({
-				url:"../controlador/control_restablecerPass1.php",
+				url:"../controlador/usuario/control_restablecerPass1.php",
 				type:"POST",
 				data:{					
 					password:password,
