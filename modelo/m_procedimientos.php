@@ -46,15 +46,15 @@
                  $this->conexion->cerrar();
           }	    
 
-          function modificarProcedimientos($nombre){
-            $consulta = "SELECT COUNT(nombre) FROM procedimientos  WHERE nombre = '$nombre'  ";	
-            
+          function modificarProcedimiento($nombre){
+            $consulta = "SELECT COUNT(*) FROM procedimientos  WHERE nombre = '$nombre'  ";	
+            $data;
             $resultado=$this->conexion->conexion->prepare($consulta);
-            if ($resultado->execute()) {                 
-              return 1;                 
-                 }else {
-                     return 0;
-                 }
+            $resultado->execute();              
+              return $data=json_encode($resultado);                 
+                 
+                
+                 
                  $this->conexion->cerrar();
     
       }

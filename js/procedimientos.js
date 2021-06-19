@@ -165,7 +165,7 @@ function modificarprocedimientos(){
 	 	}
 		
 		$.ajax({
-			 url:"../controlador/usuario/controlUsuModificar.php",
+			 url:"../controlador/procedimientos/control_modificar_proced.php",
 			 type: "POST",
 			 data:{
 				 idproc:idproc,
@@ -173,6 +173,9 @@ function modificarprocedimientos(){
 			 }
 		 }).done(function(resp){
 			 alert(resp);
+			 var data=JSON.parse(resp);
+			 alert(data);
+			 alert(data.length);
 			
 		 })
 	
