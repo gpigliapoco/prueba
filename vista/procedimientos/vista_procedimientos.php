@@ -80,7 +80,7 @@
                 <div class="col-lg-12">
                     <input type="text" id="txtIdprocedimiento" hidden> 
                     <label for="">Procedimiento</label>
-                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento" disabled><br>
+                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento" ><br>
                 </div>              
             </div>
             <div class="modal-footer">

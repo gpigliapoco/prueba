@@ -153,3 +153,27 @@ $('#tabla_procedimientos').on('click','.editar',function(){
 	;
 
 })
+
+function modificarprocedimientos(){
+	
+	var idproc=$("#txtIdprocedimiento").val();	
+	var nombre=$("#txt_nombreEditar").val();
+	
+	var validarEmail=$("#validar_emailEditar").val();
+	if (idproc.length==0 ||  nombre.length==0 ) {
+		return Swal.fire("llenar campos vacios","warning");
+	 	}
+		
+		$.ajax({
+			 url:"../controlador/usuario/controlUsuModificar.php",
+			 type: "POST",
+			 data:{
+				 idproc:idproc,
+				 nombre:nombre,
+			 }
+		 }).done(function(resp){
+			 alert(resp);
+			
+		 })
+	
+}

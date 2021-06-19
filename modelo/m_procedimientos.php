@@ -46,6 +46,18 @@
                  $this->conexion->cerrar();
           }	    
 
+          function modificarProcedimientos($nombre){
+            $consulta = "SELECT COUNT(nombre) FROM procedimientos  WHERE nombre = '$nombre'  ";	
+            
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }else {
+                     return 0;
+                 }
+                 $this->conexion->cerrar();
+    
+      }
 
 
     }
