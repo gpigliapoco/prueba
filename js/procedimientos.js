@@ -150,7 +150,7 @@ $('#tabla_procedimientos').on('click','.editar',function(){
 	$("#modal_editar_procedimientos").modal('show');
 	$("#txtIdprocedimiento").val(data.idprocedimientos);  //// tare los datos de la tabla y los agrega en los input
 	$("#txt_nombreEditar").val(data.nombre);
-	;
+	
 
 })
 
@@ -175,7 +175,11 @@ function modificarprocedimientos(){
 			 alert(resp);
 			 var data=JSON.parse(resp);
 			 alert(data);
-			 alert(data.length);
+			if(resp>0){
+				return Swal.fire("procedimiento ya existe","warning");
+			}else{
+				return Swal.fire("procedimiento se puede modificar","warning");
+			}
 			
 		 })
 	

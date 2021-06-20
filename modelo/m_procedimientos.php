@@ -47,18 +47,24 @@
           }	    
 
           function modificarProcedimiento($nombre){
-            $consulta = "SELECT COUNT(*) FROM procedimientos  WHERE nombre = '$nombre'  ";	
-            $data;
-            $resultado=$this->conexion->conexion->prepare($consulta);
-            $resultado->execute();              
-              return $data=json_encode($resultado);                 
-                 
-                
-                 
-                 $this->conexion->cerrar();
-    
-      }
+            $consulta = "SELECT COUNT(*) as cuenta FROM procedimientos  WHERE nombre = '$nombre'  ";	
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+              if ($row = mysqli_fetch_array($resultado)) {
+                              return $id= trim($row[0]); ////  devuelve la posicion 1 variable cuenta
+              }
+              $this->conexion->cerrar();
+            }
+           }
 
+           /*  function modificarProcedimiento1($nombre){
+            $consulta = "SELECT COUNT(*) as cuenta FROM procedimientos  WHERE nombre = '$nombre'  ";	
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+            $row = mysqli_fetch_array($resultado) ;
+            return $id= trim($row[0]); ////  devuelve la posicion 1 variable cuenta
+              
+              
+            }
+           } */  ////tambien funciona esta funcion 
 
     }
 
