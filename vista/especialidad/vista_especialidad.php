@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../js/medicos.js?rev=<?php echo time();?>"></script>
+<script type="text/javascript" src="../js/especialidades.js?rev=<?php echo time();?>"></script>
 <div class="col-md-12">
     <div class="box box-warning box-solid">
         <div class="box-header with-border">
@@ -23,11 +23,12 @@
                 </div>
             </div>
             <div class="box-body">
-            <table id="tabla_procedimientos" class="display responsive nowrap" style="width:100%">
+            <table id="tabla_especial" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
+                        <th>Fecha registro</th>
                         <th>Status</th>                        
                         <th>Acci&oacute;n</th>
                     </tr>
@@ -36,7 +37,8 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th>Status</th>                        
+                        <th>Status</th>   
+                        <th>Fecha registro</th>                     
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>
@@ -47,21 +49,21 @@
           <!-- /.box -->
 </div>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_registro_procedimientos" role="dialog">
+    <div class="modal fade" id="modal_registro_especial" role="dialog">
         <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Registrar Procedimiento</b></h4>
+            <h4 class="modal-title"><b>Registrar Especialidades medicas</b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <label for="">procedimiento</label>
+                    <label for="">Especialidad</label>
                     <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
                 </div>               
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="registrarEspecial()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
@@ -69,22 +71,22 @@
     </div>
 </form>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_editar_procedimientos" role="dialog">
+    <div class="modal fade" id="modal_editar_Especial" role="dialog">
         <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Editar procedimiento</b></h4>
+            <h4 class="modal-title"><b>Editar Especialidades</b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <input type="text" id="txtIdprocedimiento" hidden> 
+                    <input type="text" id="txtIdespecial" hidden> 
                     <label for="">Procedimiento</label>
                     <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento" ><br>
                 </div>              
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="modificarprocedimientos()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button class="btn btn-primary" onclick="modificarEspecial()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
@@ -93,7 +95,7 @@
 </form>
 <script>
 $(document).ready(function() {
-    listar_procedimientos();
+    listar_especial();
     
 } );
 
