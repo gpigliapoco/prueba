@@ -149,6 +149,25 @@ if(!isset($_SESSION['S_idusuario'])){
           </a>
         
         </li>
+        </li>
+        <li class="active treeview">
+          <a onclick="cargar_contenido('contenido_principal','medicos/vista_medicos.php')">
+            <i class="fa fa-user"></i> <span>Medico</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        
+        </li>
+        <li class="active treeview">
+          <a onclick="cargar_contenido('contenido_principal','medicos/vista_medicos.php')">
+            <i class="fa fa-user"></i> <span>Especialidad</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        
+        </li>
  
       </ul>
     </section>
