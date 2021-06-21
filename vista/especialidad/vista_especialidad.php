@@ -59,7 +59,13 @@
             <div class="modal-body">
                 <div class="col-lg-12">
                     <label for="">Especialidad</label>
-                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese especialidad"><br>
+                </div>               
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <label for="">Fecha de registro</label>
+                    <input type="date" class="form-control" id="txt_fecha" ><br>
                 </div>               
             </div>
             <div class="modal-footer">

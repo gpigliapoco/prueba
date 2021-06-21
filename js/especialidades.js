@@ -45,3 +45,16 @@ function listar_especial(){
  
 
 }
+
+function AbrirModalRegistro(){
+	$("#modal_registro_especial").modal({backdrop:'static',keyboard:false});
+	$("#modal_registro_especial").modal("show");
+}
+
+function registrarEspecial(){
+	var nombre= $("#txt_nombre").val();
+	var fecha= $("#txt_fecha").val();
+
+	if(nombre.lenght==0 )
+
+}
