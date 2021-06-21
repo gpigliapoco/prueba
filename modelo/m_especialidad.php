@@ -23,7 +23,7 @@
             }
         }
 
-     
+        function registrar_especialidad()
     }
 
 
