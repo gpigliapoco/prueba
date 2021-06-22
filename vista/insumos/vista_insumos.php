@@ -51,21 +51,33 @@
           <!-- /.box -->
 </div>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_registro_procedimientos" role="dialog">
+    <div class="modal fade" id="modal_registro_insumos" role="dialog">
         <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Registrar Procedimiento</b></h4>
+            <h4 class="modal-title"><b>Registrar Insumos</b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <label for="">procedimiento</label>
-                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
+                    <label for="">Insumos</label>
+                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese insumo"><br>
+                </div>               
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <label for="">Stock</label>
+                    <input type="text" class="form-control" id="txt_stock" placeholder="stock"><br>
+                </div>               
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <label for="">Fecha de registro</label>
+                    <input type="date" class="form-control" id="txt_fecha" ><br>
                 </div>               
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="registrarInsumo()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>

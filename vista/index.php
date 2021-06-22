@@ -169,7 +169,7 @@ if(!isset($_SESSION['S_idusuario'])){
         
         </li>
         <li class="active treeview">
-          <a onclick="cargar_contenido('contenido_principal','especialidad/vista_insumos.php')">
+          <a onclick="cargar_contenido('contenido_principal','insumos/vista_insumos.php')">
             <i class="fa fa-cubes"></i> <span>Insumos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

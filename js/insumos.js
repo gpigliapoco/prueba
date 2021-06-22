@@ -46,3 +46,17 @@ function listar_insumos(){
  
 
 }
+
+function AbrirModalRegistro(){
+	$("#modal_registro_insumos").modal({backdrop:'static',keyboard:false});
+	$("#modal_registro_insumos").modal('show');
+}  
+
+
+function registrarInsumo(){
+	var nombre=$("#txt_nombre").val();
+	var stock=$("#txt_stock").val();
+	var fecha=$("#txt_fecha").val();
+
+
+}
