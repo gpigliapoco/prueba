@@ -508,7 +508,7 @@ if(!isset($_SESSION['S_idusuario'])){
       tecla_final = String.fromCharCode(tecla);
       return patron.test(tecla_final);
   }
-  function soloLetras(e){
+ /*  function soloLetras(e){
       key = e.keyCode || e.which;
       tecla = String.fromCharCode(key).toLowerCase();
       letras = "áéíóúabcdefghijklmnñopqrstuvwxyz";
@@ -523,7 +523,7 @@ if(!isset($_SESSION['S_idusuario'])){
       if(letras.indexOf(tecla)==-1 && !tecla_especial){
           return false;
       }
-  }
+  } */
 
   $.widget.bridge('uibutton', $.ui.button);
 </script>

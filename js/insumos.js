@@ -36,7 +36,7 @@ function listar_insumos(){
   });
   
 
-  document.getElementById("tabla_especial_filter").style.display="none";
+  document.getElementById("tabla_insumos_filter").style.display="none";
   $('input.global_filter').on( 'keyup click', function () {
 	   filterGlobal();
    } );
@@ -52,11 +52,91 @@ function AbrirModalRegistro(){
 	$("#modal_registro_insumos").modal('show');
 }  
 
-
-function registrarInsumo(){
-	var nombre=$("#txt_nombre").val();
+function registrarInsumos(){
+	
+	var nombre=$("#txt_insumo").val();
 	var stock=$("#txt_stock").val();
 	var fecha=$("#txt_fecha").val();
 
 
+	if(nombre.lenght==0){
+		return Swal.fire("Hay campos vacios","warning");
+	}
+	if(stock.lenght==0){
+		return Swal.fire("Stock no puede ser 0","warning");
+	}
+		$.ajax({
+			url:"../controlador/insumos/control_insumos_registrar.php",
+			type:"POST",
+			data:{
+				nombre:nombre,
+				stock:stock,
+				fecha:fecha
+			}
+		}).done(function(resp){
+			if(resp==1){
+				$("#modal_registro_insumos").modal('hide');
+				return Swal.fire("Insumo Registrado","success")
+				.then ( ( value ) =>  {
+                    //limpiarRegistros();
+                    table.ajax.reload(); /// sino esta este algorismo no refresca la tabla.
+                }); 
+			}
+		})
+		
+	
 }
+function modificarStatus(idinsumos,status){	
+	
+	$.ajax({
+		url:"../controlador/insumos/control_insumos_modificarStatus.php",
+		type: "POST",
+		data:{
+			idinsumos:idinsumos,
+			status:status
+			
+		}
+	}).done(function(resp){
+		alert(resp);
+	   table.ajax.reload();
+	})
+
+}
+
+$('#tabla_insumos').on('click','.activar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idinsumos);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de activar al usuario?',
+        text: "Una vez hecho esto el usuario  tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idinsumos,'ACTIVO');
+        }
+      })
+
+})
+
+$('#tabla_insumos').on('click','.desactivar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idinsumos);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de desactivar al usuario?',
+        text: "Una vez hecho esto el usuario  no tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idinsumos,'INACTIVO');
+        }
+      })
+
+})

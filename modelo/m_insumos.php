@@ -23,8 +23,8 @@
             }
         }
 
-        function registrar_especialidad($nombre,$fecha){
-            $consulta="INSERT INTO especialidad(especialidad,fecha_registro,status) VALUES ('$nombre','$fecha','activo')";
+        function registrar_insumo($nombre,$stock,$fecha){
+            $consulta="INSERT INTO insumos(nombre,stock,fecha_registro,status) VALUES ('$nombre','$stock','$fecha','activo')";
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
               return 1;                 
@@ -35,8 +35,8 @@
                  $this->conexion->cerrar();
         }
 
-        function modificarStatus($idespe,$status){
-            $consulta = "UPDATE especialidad SET status = '$status' WHERE idespecialidad = '$idespe'  ";	
+        function modificarStatus($idinsumo,$status){
+            $consulta = "UPDATE insumos SET status = '$status' WHERE idinsumos = '$idinsumo'  ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
