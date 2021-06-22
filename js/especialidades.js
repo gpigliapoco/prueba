@@ -70,3 +70,58 @@ function registrarEspecial(){
 		})
 
 }
+
+function modificarStatus(idespe,status){	
+	
+	$.ajax({
+		url:"../controlador/especialidad/control_especial_modiStatus.php",
+		type: "POST",
+		data:{
+			idespe:idespe,
+			status:status
+			
+		}
+	}).done(function(resp){
+		alert(resp);
+	   table.ajax.reload();
+	})
+
+}
+
+$('#tabla_especial').on('click','.activar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idespecialidad);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de activar al usuario?',
+        text: "Una vez hecho esto el usuario  tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idespecialidad,'ACTIVO');
+        }
+      })
+
+})
+
+$('#tabla_especial').on('click','.desactivar',function(){
+	var data =table.row($(this).parents('tr')).data();
+	alert(data.idespecialidad);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
+	Swal.fire({
+        title: 'Esta seguro de desactivar al especialidad?',
+        text: "Una vez hecho esto el usuario  no tendra acceso al sistema",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.value) {
+            modificarStatus(data.idespecialidad,'INACTIVO');
+        }
+      })
+
+})

@@ -7,7 +7,7 @@
     $fecha = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
 
     
-    $consulta=$mu->registrar_procedimientos($nombre);
+    $consulta=$mu->registrar_especialidad($nombre,$fecha);
 	echo $consulta;
     
     
