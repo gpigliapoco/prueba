@@ -97,7 +97,7 @@
 </form>
 <script>
 $(document).ready(function() {
-    listar_procedimientos();
+    listar_insumos();
     
 } );
 
