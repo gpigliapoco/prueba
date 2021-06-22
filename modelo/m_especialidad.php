@@ -23,7 +23,17 @@
             }
         }
 
-        function registrar_especialidad()
+        function registrar_especialidad($nombre,$fecha){
+            $consulta="INSERT INTO especialidad(especialidad,fecha_registro,status) VALUES ()";
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }else {
+                    return 0;
+                 }
+    
+                 $this->conexion->cerrar();
+        }
     }
 
 

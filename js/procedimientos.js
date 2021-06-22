@@ -1,6 +1,6 @@
 var table; //// para poder llamar al reload en otra funcion.
 
-function listar_especial(){
+function listar_procedimientos(){
 	 table = $("#tabla_procedimientos").DataTable({
 	  "ordering":false,   
 	  "bLengthChange":false,
@@ -11,7 +11,7 @@ function listar_especial(){
 	  "async": false ,
 	  "processing": true,
 	  "ajax":{
-		   url:"../controlador/especialidad/control_especial_listar.php",
+		   url:"../controlador/procedimientos/control_proced_listar.php",
 		  type:'POST'
 	  },
 	  "columns":[

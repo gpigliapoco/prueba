@@ -55,6 +55,18 @@ function registrarEspecial(){
 	var nombre= $("#txt_nombre").val();
 	var fecha= $("#txt_fecha").val();
 
-	if(nombre.lenght==0 )
+	if(nombre.lenght==0 || fecha.lenght==0){
+		return Swal.fire("Hay campos vacios","warning");
+	}
+		$.ajax({
+			url: "../controlador/especialidad/control_especial_registrar.php",
+			type: "POST",
+			data: {
+				nombre:nombre,
+				fecha:fecha
+			}
+		}).done(function(resp){
+			alert(resp);
+		})
 
 }
