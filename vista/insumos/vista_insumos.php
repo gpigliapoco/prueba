@@ -61,7 +61,7 @@
             <div class="modal-body">
                 <div class="col-lg-12">
                     <label for="">Insumo</label>
-                    <input type="text" class="form-control" id="txt_insumo" placeholder="ingrese insumo"  ><br>
+                    <input type="text" class="form-control" id="txt_insumo" placeholder="ingrese insumo" maxlenght="5" onkeypress="return soloLetras(event)"  ><br>
                 </div>               
             </div>
             <div class="modal-body">
@@ -69,13 +69,7 @@
                     <label for="">Stock</label>
                     <input type="text" class="form-control" id="txt_stock" placeholder="ingrese stock" maxlenght="5" onkeypress="return soloNumeros(event)" ><br>
                 </div>               
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-12">
-                    <label for="">Fecha de registro</label>
-                    <input type="date" class="form-control" id="txt_fecha" ><br>
-                </div>               
-            </div>
+            </div>           
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarInsumos()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
@@ -85,20 +79,33 @@
     </div>
 </form>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_editar_procedimientos" role="dialog">
+    <div class="modal fade" id="modal_editar_insumos" role="dialog">
         <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Editar procedimiento</b></h4>
+            <h4 class="modal-title"><b>Editar insumos</b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <input type="text" id="txtIdprocedimiento" hidden> 
+                    <input type="text" id="txtIdinsumos" hidden> 
                     <label for="">Procedimiento</label>
-                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento" ><br>
+                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese insumos" ><br>
                 </div>              
             </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <label for="">Stock</label>
+                    <input type="text" class="form-control" id="txt_stockEditar" placeholder="ingrese stock" maxlenght="5" onkeypress="return soloNumeros(event)" ><br>
+                </div>               
+            </div>  
+            <div class="col-lg-12">
+                    <label for="">Status</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_statusEditar" style="width:100%;">
+                        <option value="activo">ACTIVO</option>
+                        <option value="inactivo">INACTIVO</option>
+                    </select><br><br>
+                </div> 
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="modificarprocedimientos()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>

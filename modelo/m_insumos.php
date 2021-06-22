@@ -23,8 +23,8 @@
             }
         }
 
-        function registrar_insumo($nombre,$stock,$fecha){
-            $consulta="INSERT INTO insumos(nombre,stock,fecha_registro,status) VALUES ('$nombre','$stock','$fecha','activo')";
+        function registrar_insumo($nombre,$stock){
+            $consulta="INSERT INTO insumos(nombre,stock,fecha_registro,status) VALUES ('$nombre','$stock',CURDATE(),'activo')";
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
               return 1;                 

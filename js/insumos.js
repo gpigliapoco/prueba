@@ -28,7 +28,7 @@ function listar_insumos(){
 				}
 			}},
 		  
-		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
+		  {"defaultContent":"</i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
 	  ],
 
 	  "language":idioma_espanol,
@@ -56,8 +56,7 @@ function registrarInsumos(){
 	
 	var nombre=$("#txt_insumo").val();
 	var stock=$("#txt_stock").val();
-	var fecha=$("#txt_fecha").val();
-
+	
 
 	if(nombre.lenght==0){
 		return Swal.fire("Hay campos vacios","warning");
@@ -70,15 +69,14 @@ function registrarInsumos(){
 			type:"POST",
 			data:{
 				nombre:nombre,
-				stock:stock,
-				fecha:fecha
+				stock:stock				
 			}
 		}).done(function(resp){
 			if(resp==1){
 				$("#modal_registro_insumos").modal('hide');
 				return Swal.fire("Insumo Registrado","success")
 				.then ( ( value ) =>  {
-                    //limpiarRegistros();
+                    limpiarRegistros();
                     table.ajax.reload(); /// sino esta este algorismo no refresca la tabla.
                 }); 
 			}
@@ -86,57 +84,53 @@ function registrarInsumos(){
 		
 	
 }
-function modificarStatus(idinsumos,status){	
-	
-	$.ajax({
-		url:"../controlador/insumos/control_insumos_modificarStatus.php",
-		type: "POST",
-		data:{
-			idinsumos:idinsumos,
-			status:status
-			
-		}
-	}).done(function(resp){
-		alert(resp);
-	   table.ajax.reload();
-	})
 
+function limpiarRegistros(){
+	$("#txt_nombre").val();
+	$("#txt_stock").val();
 }
 
-$('#tabla_insumos').on('click','.activar',function(){
+$('#tabla_insumos').on('click','.editar',function(){
 	var data =table.row($(this).parents('tr')).data();
-	alert(data.idinsumos);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
-	Swal.fire({
-        title: 'Esta seguro de activar al usuario?',
-        text: "Una vez hecho esto el usuario  tendra acceso al sistema",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si'
-      }).then((result) => {
-        if (result.value) {
-            modificarStatus(data.idinsumos,'ACTIVO');
-        }
-      })
+
+	alert(data.idinsumos);
+	$("#modal_editar_insumos").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_insumos").modal('show');
+	$("#txtIdinsumos").val(data.idinsumos);  //// tare los datos de la tabla y los agrega en los input
+	$("#txt_nombreEditar").val(data.nombre);
+	$("#txt_stockEditar").val(data.stock);
+	$("#cbm_statusEditar").val(data.status).trigger("change");
 
 })
 
-$('#tabla_insumos').on('click','.desactivar',function(){
-	var data =table.row($(this).parents('tr')).data();
-	alert(data.idinsumos);////// funcion que tomas almacena todos los datos de una fila de la tabla y almacena en data.
-	Swal.fire({
-        title: 'Esta seguro de desactivar al usuario?',
-        text: "Una vez hecho esto el usuario  no tendra acceso al sistema",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si'
-      }).then((result) => {
-        if (result.value) {
-            modificarStatus(data.idinsumos,'INACTIVO');
-        }
-      })
+function modificarinsumos(){
+	
+	var idinsumos=$("#txtIdinsumos").val();	
+	var nombre=$("#txt_nombreEditar").val();
+	var stock=$("#txt_stockEditar").val();
+	
+	
+		
+		$.ajax({
+			 url:"../controlador/procedimientos/control_modificar_proced.php",
+			 type: "POST",
+			 data:{
+				 idinsumos:idinsumos,
+				 nombre:nombre,
+				 stock:stock
+			 }
+		 }).done(function(resp){
+			 alert(resp);
+			 var data=JSON.parse(resp);
+			 alert(data);
+			if(resp>0){
+				return Swal.fire("procedimiento ya existe","warning");
+			}else{
+				return Swal.fire("procedimiento se puede modificar","warning");
+			}
+			
+		 })
+	
+}
 
-})
+
