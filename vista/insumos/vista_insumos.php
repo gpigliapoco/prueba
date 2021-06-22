@@ -107,7 +107,7 @@
                     </select><br><br>
                 </div> 
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="modificarprocedimientos()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button class="btn btn-primary" onclick="modificarinsumos()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>

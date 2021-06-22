@@ -108,16 +108,17 @@ function modificarinsumos(){
 	var idinsumos=$("#txtIdinsumos").val();	
 	var nombre=$("#txt_nombreEditar").val();
 	var stock=$("#txt_stockEditar").val();
-	
+	var status=$("#cbm_statusEditar").val();
 	
 		
 		$.ajax({
-			 url:"../controlador/procedimientos/control_modificar_proced.php",
+			 url:"../controlador/insumos/control_insumos_modificar.php",
 			 type: "POST",
 			 data:{
 				 idinsumos:idinsumos,
 				 nombre:nombre,
-				 stock:stock
+				 stock:stock,
+				 status:status
 			 }
 		 }).done(function(resp){
 			 alert(resp);

@@ -35,8 +35,8 @@
                  $this->conexion->cerrar();
         }
 
-        function modificarStatus($idinsumo,$status){
-            $consulta = "UPDATE insumos SET status = '$status' WHERE idinsumos = '$idinsumo'  ";	
+        function modificarInsumo($idinsumo,$nombre,$stock,$status){
+            $consulta = "UPDATE insumos SET status = '$status' , stock = '$stock',nombre = '$nombre' WHERE idinsumos = '$idinsumo'  ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
