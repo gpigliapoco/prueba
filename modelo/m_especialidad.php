@@ -43,7 +43,18 @@
               return 1;                 
                  }
                  $this->conexion->cerrar();
-          }	    
+          }	  
+          
+          
+          function modificarEspecialidad($idespe,$nombre){
+            $consulta = "UPDATE especialidad SET especialidad = '$nombre' WHERE idespecialidad = '$idespe'  ";	
+            
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }
+                 $this->conexion->cerrar();
+          }	  
 
     }
 

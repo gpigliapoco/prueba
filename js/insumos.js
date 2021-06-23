@@ -121,13 +121,14 @@ function modificarinsumos(){
 				 status:status
 			 }
 		 }).done(function(resp){
-			 alert(resp);
-			 var data=JSON.parse(resp);
-			 alert(data);
-			if(resp>0){
-				return Swal.fire("procedimiento ya existe","warning");
-			}else{
-				return Swal.fire("procedimiento se puede modificar","warning");
+			// alert(resp);
+			//var data=JSON.parse(resp);
+			//alert(data);
+			if(resp==1){
+				table.ajax.reload();
+				return Swal.fire("insumo modificado","success");
+				$("#modal_editar_insumos").modal('hide');
+
 			}
 			
 		 })

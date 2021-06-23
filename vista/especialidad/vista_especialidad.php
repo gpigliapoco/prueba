@@ -87,12 +87,12 @@
             <div class="modal-body">
                 <div class="col-lg-12">
                     <input type="text" id="txtIdespecial" hidden> 
-                    <label for="">Procedimiento</label>
-                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento" ><br>
+                    <label for="">Especialidad</label>
+                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese especialidad" ><br>
                 </div>              
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="modificarEspecial()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button class="btn btn-primary" onclick="modificarEspecialidad()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>

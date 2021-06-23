@@ -51,6 +51,11 @@ function AbrirModalRegistro(){
 	$("#modal_registro_especial").modal("show");
 }
 
+function AbrirModalRegistroEditar(){
+	$("#modal_editar_Especial").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_Especial").modal('show');
+}  
+
 function registrarEspecial(){
 	var nombre= $("#txt_nombre").val();
 	var fecha= $("#txt_fecha").val();
@@ -125,3 +130,46 @@ $('#tabla_especial').on('click','.desactivar',function(){
       })
 
 })
+
+$('#tabla_especial').on('click','.editar',function(){
+	var data =table.row($(this).parents('tr')).data();
+
+	//alert(data.idespecialidad);
+	$("#modal_editar_Especial").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_Especial").modal('show');
+	$("#txtIdespecial").val(data.idespecialidad);  //// tare los datos de la tabla y los agrega en los input
+	$("#txt_nombreEditar").val(data.especialidad);
+	
+
+})
+
+function modificarEspecialidad(){
+	
+	var idespecial=$("#txtIdespecial").val();	
+	var nombre=$("#txt_nombreEditar").val();
+	
+	
+	if (idespecial.length==0 ||  nombre.length==0 ) {
+		return Swal.fire("llenar campos vacios","warning");
+	 	}
+		
+		$.ajax({
+			 url:"../controlador/especialidad/control_especial_editar.php",
+			 type: "POST",
+			 data:{
+				 idespecial:idespecial,
+				 nombre:nombre,
+			 }
+		 }).done(function(resp){
+			// alert(resp);
+			 //var data=JSON.parse(resp);
+			 //alert(data);
+
+			if(resp==1){
+				table.ajax.reload();
+				return Swal.fire("Especialidad modificadad","success");
+			}
+			
+		 })
+	
+}
