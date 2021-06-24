@@ -23,20 +23,28 @@
                 </div>
             </div>
             <div class="box-body">
-            <table id="tabla_procedimientos" class="display responsive nowrap" style="width:100%">
+            <table id="tabla_medicos" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Status</th>                        
+                        <th>Medico</th>                        
+                        <th>Sexo</th>
+                        <th>Movil</th>                        
+                        <th>documento</th>
+                        <th>colegiatura</th>
+                        <th>especialidad</th>                        
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Status</th>                        
+                        <th>Medico</th>                        
+                        <th>Sexo</th>
+                        <th>Movil</th>                        
+                        <th>documento</th>
+                        <th>colegiatura</th>
+                        <th>especialidad</th>                        
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>
@@ -47,7 +55,7 @@
           <!-- /.box -->
 </div>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_registro_procedimientos" role="dialog">
+    <div class="modal fade" id="modal_registro_medicos" role="dialog">
         <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,7 +101,7 @@
 </form>
 <script>
 $(document).ready(function() {
-    listar_procedimientos();
+    listar_medicos();
     
 } );
 
