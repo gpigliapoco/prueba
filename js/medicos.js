@@ -49,3 +49,8 @@ function listar_medicos(){
  
 
 }
+
+function AbrirModalRegistro(){
+	$("#modal_registro_medicos").modal({backdrop:'static',keyboard:false});
+	$("#modal_registro_medicos").modal('show');
+} 

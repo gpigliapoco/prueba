@@ -60,13 +60,33 @@
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Registrar Procedimiento</b></h4>
+            <h4 class="modal-title"><b>Registrar medico</b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <label for="">procedimiento</label>
+                    <label for="">Nombre</label>
                     <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
-                </div>               
+                </div>  
+                <div class="col-lg-6">
+                    <label for="">Apellido</label>
+                    <input type="text" class="form-control" id="txt_apellido" placeholder="Ingrese procedimiento"><br>
+                </div>     
+                <div class="col-lg-12">
+                    <label for="">direccion</label>
+                    <input type="text" class="form-control" id="txt_direccion" placeholder="Ingrese procedimiento"><br>
+                </div>     
+                <div class="col-lg-4">
+                    <label for="">movil</label>
+                    <input type="text" class="form-control" id="txt_movil" placeholder="Ingrese procedimiento"><br>
+                </div> 
+                <div class="col-lg-4">
+                    <label for="">sexo</label>
+                    <input type="text" class="form-control" id="txt_sexo" placeholder="Ingrese procedimiento"><br>
+                </div>  
+                <div class="col-lg-4">
+                    <label for="">fecha Nacimiento</label>
+                    <input type="text" class="form-control" id="txt_fecha" placeholder="Ingrese procedimiento"><br>
+                </div>                         
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
