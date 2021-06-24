@@ -56,7 +56,7 @@
 </div>
 <form autocomplete="false" onsubmit="return false">
     <div class="modal fade" id="modal_registro_medicos" role="dialog">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -71,7 +71,7 @@
                     <label for="">Apellido</label>
                     <input type="text" class="form-control" id="txt_apellido" placeholder="Ingrese procedimiento"><br>
                 </div>     
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <label for="">direccion</label>
                     <input type="text" class="form-control" id="txt_direccion" placeholder="Ingrese procedimiento"><br>
                 </div>     
@@ -80,13 +80,33 @@
                     <input type="text" class="form-control" id="txt_movil" placeholder="Ingrese procedimiento"><br>
                 </div> 
                 <div class="col-lg-4">
-                    <label for="">sexo</label>
-                    <input type="text" class="form-control" id="txt_sexo" placeholder="Ingrese procedimiento"><br>
-                </div>  
+                    <label for="">Sexo</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
+                        <option value="m">MASCULINO</option>
+                        <option value="f">FEMENINO</option>
+                    </select><br><br>
+                </div>
                 <div class="col-lg-4">
                     <label for="">fecha Nacimiento</label>
                     <input type="text" class="form-control" id="txt_fecha" placeholder="Ingrese procedimiento"><br>
-                </div>                         
+                </div>  
+                <div class="col-lg-6">
+                    <label for="">documento</label>
+                    <input type="text" class="form-control" id="txt_dni" placeholder="Ingrese procedimiento"><br>
+                </div>   
+                <div class="col-lg-6">
+                    <label for="">colegiatura</label>
+                    <input type="text" class="form-control" id="txt_colegiatura" placeholder="Ingrese procedimiento"><br>
+                </div> 
+                <div class="col-lg-6">
+                    <label for="">especialidad</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
+                        <option value="m">MASCULINO</option>
+                        <option value="f">FEMENINO</option>
+                    </select><br><br>
+                </div> 
+                <div class="col-lg-12">
+                </div>                        
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
