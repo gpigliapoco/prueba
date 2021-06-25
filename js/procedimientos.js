@@ -16,9 +16,9 @@ function listar_procedimientos(){
 	  },
 	  "columns":[
 		  {"data":"idprocedimientos"},
-		  {"data":"nombre"},
+		  {"data":"pro_nombre"},
 		 	 
-		  {"data":"status",
+		  {"data":"pro_status",
 			render:function(data,type,row){
 				if(data=='activo'){
 					return "<span class='label label-success'>"+data+"</span>";
@@ -149,7 +149,7 @@ $('#tabla_procedimientos').on('click','.editar',function(){
 	$("#modal_editar_procedimientos").modal({backdrop:'static',keyboard:false});
 	$("#modal_editar_procedimientos").modal('show');
 	$("#txtIdprocedimiento").val(data.idprocedimientos);  //// tare los datos de la tabla y los agrega en los input
-	$("#txt_nombreEditar").val(data.nombre);
+	$("#txt_nombreEditar").val(data.pro_nombre);
 	
 
 })

@@ -16,10 +16,10 @@ function listar_medicamento(){
 	  },
 	  "columns":[
 		  {"data":"idmedicamentos"},
-		  {"data":"nombre"},
-          {"data":"stock"},
-          {"data":"fecha_registro"}, 
-		  {"data":"status",
+		  {"data":"medi_nombre"},
+          {"data":"medi_stock"},
+          {"data":"medi_fecha_registro"}, 
+		  {"data":"medi_status",
 			render:function(data,type,row){
 				if(data=='activo'){
 					return "<span class='label label-success'>"+data+"</span>";
@@ -27,7 +27,7 @@ function listar_medicamento(){
 					return "<span class='label label-danger'>"+data+"</span>";
 				}
 			}},
-			{"data":"status",
+			{"data":"medi_status",
 			render:function(data,type,row){
 				if(data=='activo'){
 					return "<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success' disabled><i class='fa fa-check'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>";
@@ -109,9 +109,9 @@ $('#tabla_medicamento').on('click','.editar',function(){
 	$("#modal_editar_medicamento").modal({backdrop:'static',keyboard:false});
 	$("#modal_editar_medicamento").modal('show');
 	$("#txtIdmedicamento").val(data.idmedicamentos);  //// tare los datos de la tabla y los agrega en los input
-	$("#txt_nombreEditar").val(data.nombre);
-	$("#txt_stockEditar").val(data.stock);
-	$("#cbm_statusEditar").val(data.status).trigger("change");
+	$("#txt_nombreEditar").val(data.medi_nombre);
+	$("#txt_stockEditar").val(data.medi_stock);
+	$("#cbm_statusEditar").val(data.medi_status).trigger("change");
 
 })
 

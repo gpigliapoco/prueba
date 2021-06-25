@@ -16,10 +16,10 @@ function listar_insumos(){
 	  },
 	  "columns":[
 		  {"data":"idinsumos"},
-		  {"data":"nombre"},
-          {"data":"stock"},
-          {"data":"fecha_registro"}, 
-		  {"data":"status",
+		  {"data":"ins_nombre"},
+          {"data":"ins_stock"},
+          {"data":"ins_fecha_registro"}, 
+		  {"data":"ins_status",
 			render:function(data,type,row){
 				if(data=='activo'){
 					return "<span class='label label-success'>"+data+"</span>";
@@ -97,9 +97,9 @@ $('#tabla_insumos').on('click','.editar',function(){
 	$("#modal_editar_insumos").modal({backdrop:'static',keyboard:false});
 	$("#modal_editar_insumos").modal('show');
 	$("#txtIdinsumos").val(data.idinsumos);  //// tare los datos de la tabla y los agrega en los input
-	$("#txt_nombreEditar").val(data.nombre);
-	$("#txt_stockEditar").val(data.stock);
-	$("#cbm_statusEditar").val(data.status).trigger("change");
+	$("#txt_nombreEditar").val(data.ins_nombre);
+	$("#txt_stockEditar").val(data.ins_stock);
+	$("#cbm_statusEditar").val(data.ins_status).trigger("change");
 
 })
 

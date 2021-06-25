@@ -24,7 +24,7 @@
         }
 
         function registrar_insumo($nombre,$stock){
-            $consulta="INSERT INTO insumos(nombre,stock,fecha_registro,status) VALUES ('$nombre','$stock',CURDATE(),'activo')";
+            $consulta="INSERT INTO insumos(ins_nombre,ins_stock,ins_fecha_registro,ins_status) VALUES ('$nombre','$stock',CURDATE(),'activo')";
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
               return 1;                 
@@ -36,7 +36,7 @@
         }
 
         function modificarInsumo($idinsumo,$nombre,$stock,$status){
-            $consulta = "UPDATE insumos SET status = '$status' , stock = '$stock',nombre = '$nombre' WHERE idinsumos = '$idinsumo'  ";	
+            $consulta = "UPDATE insumos SET ins_status = '$status' , ins_stock = '$stock',ins_nombre = '$nombre' WHERE idinsumos = '$idinsumo'  ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 

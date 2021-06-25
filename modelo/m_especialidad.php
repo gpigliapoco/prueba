@@ -24,7 +24,7 @@
         }
 
         function registrar_especialidad($nombre,$fecha){
-            $consulta="INSERT INTO especialidad(especialidad,fecha_registro,status) VALUES ('$nombre','$fecha','activo')";
+            $consulta="INSERT INTO especialidad(es_especialidad,es_fecha_registro,es_status) VALUES ('$nombre','$fecha','activo')";
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
               return 1;                 
@@ -36,7 +36,7 @@
         }
 
         function modificarStatus($idespe,$status){
-            $consulta = "UPDATE especialidad SET status = '$status' WHERE idespecialidad = '$idespe'  ";	
+            $consulta = "UPDATE especialidad SET es_status = '$status' WHERE idespecialidad = '$idespe'  ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
@@ -47,7 +47,7 @@
           
           
           function modificarEspecialidad($idespe,$nombre){
-            $consulta = "UPDATE especialidad SET especialidad = '$nombre' WHERE idespecialidad = '$idespe'  ";	
+            $consulta = "UPDATE especialidad SET es_especialidad = '$nombre' WHERE idespecialidad = '$idespe'  ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 

@@ -25,7 +25,7 @@
 
         
         function registrar_medicamento($nombre,$stock){
-            $consulta="INSERT INTO medicamentos(nombre,stock,fecha_registro,status) VALUES ('$nombre','$stock',CURDATE(),'activo')";
+            $consulta="INSERT INTO medicamentos(medi_nombre,medi_stock,medi_fecha_registro,medi_status) VALUES ('$nombre','$stock',CURDATE(),'activo')";
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
               return 1;                 
@@ -38,7 +38,7 @@
            
           
           function modificarMedicamentos($idmedica,$nombre,$stock){
-            $consulta = "UPDATE medicamentos SET nombre = '$nombre',stock= '$stock' WHERE idmedicamentos = '$idmedica'  ";	
+            $consulta = "UPDATE medicamentos SET medi_nombre = '$nombre',medi_stock= '$stock' WHERE idmedicamentos = '$idmedica'  ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 

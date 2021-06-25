@@ -24,7 +24,7 @@
         }
 
         function registrar_procedimientos($nombre){
-            $consulta = "INSERT INTO procedimientos (nombre,status) VALUES('$nombre','activo') ";	
+            $consulta = "INSERT INTO procedimientos (pro_nombre,pro_status) VALUES('$nombre','activo') ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
@@ -37,7 +37,7 @@
           }
 
           function modificarStatus($idproc,$status){
-            $consulta = "UPDATE procedimientos SET status = '$status' WHERE idprocedimientos = '$idproc'  ";	
+            $consulta = "UPDATE procedimientos SET pro_status = '$status' WHERE idprocedimientos = '$idproc'  ";	
             
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
@@ -47,7 +47,7 @@
           }	    
 
           function modificarProcedimiento($nombre){
-            $consulta = "SELECT COUNT(*) as cuenta FROM procedimientos  WHERE nombre = '$nombre'  ";	
+            $consulta = "SELECT COUNT(*) as cuenta FROM procedimientos  WHERE pro_nombre = '$nombre'  ";	
             if ($resultado = $this->conexion->conexion->query($consulta)) {
               if ($row = mysqli_fetch_array($resultado)) {
                               return $id= trim($row[0]); ////  devuelve la posicion 1 variable cuenta

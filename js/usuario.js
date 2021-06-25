@@ -66,14 +66,14 @@ function verificarUsuario(){
 			alert(resp);
 			var data=JSON.parse(resp);////devuelve objeto
 			alert(data);
-			alert(data[0].nombre);
+			alert(data[0].usu_nombre);
 			$.ajax({
 				url:"../controlador/usuario/control_crear_sesion.php",
 				type:"POST",
 				
 				data:{
 					iduser:data[0].idusuarios,
-					usu:data[0].nombre,
+					usu:data[0].usu_nombre,
 				}	
 
 			}).done(function(resp){
@@ -129,8 +129,8 @@ function listar_usuario(){
 	  },
 	  "columns":[
 		  {"data":"idusuarios"},
-		  {"data":"nombre"},
-		  {"data":"sexo",
+		  {"data":"usu_nombre"},
+		  {"data":"usu_sexo",
 		  	render: function (data, type, row ) {
 				if(data=='m'){
 					return "MASCULINO";                   
@@ -146,8 +146,8 @@ function listar_usuario(){
 				return "administrador";                 
 				}
 		    }},	
-		  {"data":"email"},		 
-		  {"data":"status",
+		  {"data":"usu_email"},		 
+		  {"data":"usu_status",
 			render:function(data,type,row){
 				if(data=='activo'){
 					return "<span class='label label-success'>"+data+"</span>";
@@ -155,7 +155,7 @@ function listar_usuario(){
 					return "<span class='label label-danger'>"+data+"</span>";
 				}
 			}},
-			{"data":"status",
+			{"data":"usu_status",
 			render:function(data,type,row){
 				if(data=='activo'){
 					return "<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success' disabled><i class='fa fa-check'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>";
@@ -224,14 +224,14 @@ $('#tabla_usuario').on('click','.desactivar',function(){
 $('#tabla_usuario').on('click','.editar',function(){
 	var data =table.row($(this).parents('tr')).data();
 
-	alert(data.sexo);
+	alert(data.usu_sexo);
 	$("#modal_editar").modal({backdrop:'static',keyboard:false});
 	$("#modal_editar").modal('show');
 	$("#txtIdusuario").val(data.idusuarios);  //// tare los datos de la tabla y los agrega en los input
-	$("#txt_usuEditar").val(data.nombre);
-	$("#cbm_sexo_editar").val(data.sexo).trigger("change");/// funcion para el combo box ponga el dato que viene del data
+	$("#txt_usuEditar").val(data.usu_nombre);
+	$("#cbm_sexo_editar").val(data.usu_sexo).trigger("change");/// funcion para el combo box ponga el dato que viene del data
 	$("#cbm_rol_editar").val(data.idrol_usuario).trigger("change");
-	$("#txt_emailEditar").val(data.email);
+	$("#txt_emailEditar").val(data.usu_email);
 
 })
 
@@ -337,8 +337,8 @@ function traerDatos(){
 	}).done(function(resp){
 		
 		var data=JSON.parse(resp);
-		$("#txtPassbd").val(data[0].contra);		////muestra dato de contrasena
-		if(data[0].sexo== "m"){
+		$("#txtPassbd").val(data[0].usu_contra);		////muestra dato de contrasena
+		if(data[0].usu_sexo== "m"){
 			$("#img_subnav").attr("src","../plantilla/dist/img/avatar5.png");
 			$("#img_nav").attr("src","../plantilla/dist/img/avatar5.png");
 			$("#img_lateral").attr("src","../plantilla/dist/img/avatar5.png");
@@ -423,7 +423,7 @@ function restablecerPassword(){
 		alert(resp);
 		$data=JSON.parse(resp);
 		if($data.length>0){
-			alert($data[0].email);
+			alert($data[0].usu_email);
 			$.ajax({
 				url:"../controlador/usuario/control_restablecerPass1.php",
 				type:"POST",

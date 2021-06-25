@@ -17,7 +17,7 @@
 
 
 	function verificarUsuario($usu,$pass){
-		$consulta="SELECT * FROM usuarios where nombre = '$usu' and contra ='$pass'";
+		$consulta="SELECT * FROM usuarios where usu_nombre = '$usu' and usu_contra ='$pass'";
 		$arreglo=array();
 		if($resultado=$this->conexion->conexion->query($consulta)){
 			while($consulta_VU=mysqli_fetch_assoc($resultado)){
@@ -46,7 +46,7 @@
 
 
   	function agregarUsuario($usu,$pass,$sexo,$rol,$email){
-  	  $consulta = "INSERT INTO usuarios (nombre,contra,sexo,status,idrol_usuario,email) VALUES('$usu', '$pass','$sexo','activo','$rol','$email') ";	
+  	  $consulta = "INSERT INTO usuarios (usu_nombre,usu_contra,usu_sexo,usu_status,idrol_usuario,usu_email) VALUES('$usu', '$pass','$sexo','activo','$rol','$email') ";	
 		
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
@@ -59,7 +59,7 @@
   	}
 
 	  function modificarStatus($idUsu,$status){
-  	  $consulta = "UPDATE usuarios SET status = '$status' WHERE idusuarios = '$idUsu'  ";	
+  	  $consulta = "UPDATE usuarios SET usu_status = '$status' WHERE idusuarios = '$idUsu'  ";	
 		
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
@@ -69,7 +69,7 @@
   	}	  
 	  
 	  function modificarUsuario($idUsuario,$sexo,$rol,$email){
-  	  $consulta = "UPDATE usuarios SET sexo = '$sexo',email = '$email', idrol_usuario ='$rol' WHERE idusuarios = '$idUsuario'  ";	
+  	  $consulta = "UPDATE usuarios SET usu_sexo = '$sexo',usu_email = '$email', idrol_usuario ='$rol' WHERE idusuarios = '$idUsuario'  ";	
 		
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
@@ -93,7 +93,7 @@
 	
 	
 	function traerDatos($usuario){
-		$consulta="SELECT * FROM usuarios where nombre = '$usuario' ";
+		$consulta="SELECT * FROM usuarios where usu_nombre = '$usuario' ";
 		$arreglo=array();
 		if($resultado=$this->conexion->conexion->query($consulta)){
 			while($consulta_VU=mysqli_fetch_assoc($resultado)){
@@ -106,7 +106,7 @@
 	}
 
 	function traerEmail($email){
-		$consulta="SELECT email FROM usuarios where email = '$email' ";
+		$consulta="SELECT usu_email FROM usuarios where usu_email = '$email' ";
 		$arreglo=array();
 		if($resultado=$this->conexion->conexion->query($consulta)){
 			while($consulta_VU=mysqli_fetch_assoc($resultado)){
@@ -119,7 +119,7 @@
 	}
 
 	function modificarPassword($idUsu,$contraNew){
-  	  $consulta = "UPDATE usuarios SET contra = '$contraNew' WHERE idusuarios = '$idUsu'  ";	
+  	  $consulta = "UPDATE usuarios SET usu_contra = '$contraNew' WHERE idusuarios = '$idUsu'  ";	
 		
 		$resultado=$this->conexion->conexion->prepare($consulta);
         if ($resultado->execute()) {                 
@@ -132,7 +132,7 @@
   }
 
   function actulizarPassword($password,$email){
-	$consulta = "UPDATE usuarios SET contra = '$password' WHERE email = '$email'  ";	
+	$consulta = "UPDATE usuarios SET usu_contra = '$password' WHERE usu_email = '$email'  ";	
 	
 	$resultado=$this->conexion->conexion->prepare($consulta);
 	if ($resultado->execute()) {                 
