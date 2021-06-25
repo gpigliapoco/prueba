@@ -114,5 +114,43 @@ function registrar_medico(){
 	var pass=$("#txt_pass").val();
 	var rol=$("#cbm_rol").val();
 	var email=$("#txt_email").val();
+
+	if(nombre.length==0 || apellido.length==0 || direccion.length==0 || movil.length==0){
+		return Swal.fire("llenar campos vacios","warning");
+	}$.ajax({
+			 url:"../controlador/usuario/controladorUsu.php",
+			 type: "POST",
+			 data:{
+				 usu:usu,
+				 pass:pass,
+				 sexo:sexo,
+				 rol:rol,
+				 email:email
+			 }
+	}).done(function(resp){
+		alert(resp);
+		if(resp==1){
+			$.ajax({
+				url:"../controlador/medicos/control_registrar_medico.php",
+				type: "POST",
+				data:{
+					nombre:nombre,
+					apellido:apellido,
+					direccion:direccion,
+					movil:movil,
+					sexo:sexo,
+					fecha:fecha,
+					dni:dni,
+					cole:cole,
+					especial:especial
+				}
+			}).done(function(resp){
+				alert(resp);
+				if(resp==1){
+					alert("registrado medico");
+				}
+			})
+		}
+	})
 	
 }

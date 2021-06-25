@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-lg-4">
                     <label for="">Fecha Nacimiento</label>
-                    <input type="text" class="form-control" id="txt_fecha" placeholder="Ingrese procedimiento"><br>
+                    <input type="date" class="form-control" id="txt_fecha" placeholder="Ingrese procedimiento"><br>
                 </div>   
                 <div class="col-lg-4">
                     <label for="">Documento</label>
@@ -97,7 +97,7 @@
                 </div>  
                 <div class="col-lg-4">
                     <label for="">Colegiatura</label>
-                    <input type="text" class="form-control" id="txt_colegiatura" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_cole" placeholder="Ingrese procedimiento"><br>
                 </div>  
                 <div class="col-lg-4">
                     <label for="">especialidad</label>
@@ -127,7 +127,7 @@
                 </div> 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="registrar_medico()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>

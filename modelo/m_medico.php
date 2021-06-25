@@ -36,8 +36,9 @@
             }
         } 
 
-        function registrar_especialidad($nombre,$fecha){
-            $consulta="INSERT INTO especialidad(especialidad,fecha_registro,status) VALUES ('$nombre','$fecha','activo')";
+        function registrar_medicos($nombre,$apellido,$direccion,$movil,$sexo,$dni,$fecha,$cole,$especial){
+            $consulta="INSERT INTO medico(nombre,apellido,direccion,movil,sexo,fecha_nac,documento,colegiatura,idespecialidad,idusuarios) 
+                            VALUES ('$nombre','$apellido','$direccion','$movil','$sexo','$fecha','$dni','$cole','$especial',(select max(idusuarios) from usuarios) )";
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
               return 1;                 
@@ -48,26 +49,7 @@
                  $this->conexion->cerrar();
         }
 
-        function modificarStatus($idespe,$status){
-            $consulta = "UPDATE especialidad SET status = '$status' WHERE idespecialidad = '$idespe'  ";	
-            
-            $resultado=$this->conexion->conexion->prepare($consulta);
-            if ($resultado->execute()) {                 
-              return 1;                 
-                 }
-                 $this->conexion->cerrar();
-          }	  
-          
-          
-          function modificarEspecialidad($idespe,$nombre){
-            $consulta = "UPDATE especialidad SET especialidad = '$nombre' WHERE idespecialidad = '$idespe'  ";	
-            
-            $resultado=$this->conexion->conexion->prepare($consulta);
-            if ($resultado->execute()) {                 
-              return 1;                 
-                 }
-                 $this->conexion->cerrar();
-          }	  
+        
 
     }
 
