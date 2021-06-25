@@ -90,26 +90,6 @@
                 <div class="col-lg-4">
                     <label for="">Fecha Nacimiento</label>
                     <input type="text" class="form-control" id="txt_fecha" placeholder="Ingrese procedimiento"><br>
-<<<<<<< HEAD
-                </div>  
-                <div class="col-lg-6">
-                    <label for="">documento</label>
-                    <input type="text" class="form-control" id="txt_dni" placeholder="Ingrese procedimiento"><br>
-                </div>   
-                <div class="col-lg-6">
-                    <label for="">colegiatura</label>
-                    <input type="text" class="form-control" id="txt_colegiatura" placeholder="Ingrese procedimiento"><br>
-                </div> 
-                <div class="col-lg-6">
-                    <label for="">especialidad</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
-                        <option value="m">MASCULINO</option>
-                        <option value="f">FEMENINO</option>
-                    </select><br><br>
-                </div> 
-                <div class="col-lg-12">
-                </div>                        
-=======
                 </div>   
                 <div class="col-lg-4">
                     <label for="">Documento</label>
@@ -145,7 +125,6 @@
                     <input type="text" class="form-control" id="txt_email" placeholder="Ingrese procedimiento"><br>
                 </div> 
                 </div> 
->>>>>>> e935f042767690aff221d34d2d93e54e705e048b
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
