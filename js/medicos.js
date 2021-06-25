@@ -147,10 +147,38 @@ function registrar_medico(){
 			}).done(function(resp){
 				alert(resp);
 				if(resp==1){
-					alert("registrado medico");
+					$("#modal_registro_medicos").modal('hide');
+				Swal.fire("Mensaje De Confirmacion","Datos correctamente, Nuevo Usuario Registrado","success")            
+                .then ( ( value ) =>  {
+                    
+                    table.ajax.reload();
+                }); 
+				}else{
+					return Swal.fire("No se puedo registar medico","warning");
 				}
 			})
+		}else{
+			return Swal.fire("No se puedo registar usuario","warning");
 		}
+		
 	})
 	
+}
+
+function limpiarRegistros(){
+	$("#txt_nombre").val("");
+	$("#txt_apellido").val("");
+	$("#txt_direccion").val("");
+	$("#txt_movil").val("");
+	$("#cmb_sexo").val("");
+	$("#txt_fecha").val("");
+	$("#txt_dni").val("");
+	$("#txt_cole").val("");
+	$("#cbm_especial").val("");
+	$("#txt_usu").val("");
+	$("#txt_pass").val("");
+	$("#cbm_rol").val("");
+	$("#txt_email").val("");
+
+
 }
