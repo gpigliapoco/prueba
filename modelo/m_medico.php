@@ -23,6 +23,19 @@
             }
         }
 
+        function listar_combo_especial(){
+            $consulta = "SELECT * FROM especialidad WHERE status='activo'";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
+
         function registrar_especialidad($nombre,$fecha){
             $consulta="INSERT INTO especialidad(especialidad,fecha_registro,status) VALUES ('$nombre','$fecha','activo')";
             $resultado=$this->conexion->conexion->prepare($consulta);

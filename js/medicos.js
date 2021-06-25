@@ -54,3 +54,49 @@ function AbrirModalRegistro(){
 	$("#modal_registro_medicos").modal({backdrop:'static',keyboard:false});
 	$("#modal_registro_medicos").modal('show');
 } 
+
+function comboRol(){
+	$.ajax({
+		url: "../controlador/usuario/control_combo_rol.php",
+		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idrol_usuario+"'>"+data[i].rol+"</option>";
+			}
+			$("#cbm_rol").html(cadena);
+			$("#cbm_rol_editar").html(cadena);
+		}
+	})
+}
+
+function comboEspecial(){
+	$.ajax({
+		url: "../controlador/medicos/control_combo_especial.php",
+		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idespecialidad+"'>"+data[i].especialidad+"</option>";
+			}
+			$("#cbm_especial").html(cadena);
+			//$("#cbm_especial_editar").html(cadena);
+		}
+	})
+}
