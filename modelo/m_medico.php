@@ -11,7 +11,9 @@
         }
 
         function listar_medicos(){
-            $consulta = "SELECT medico.idmedico,medico.nombre,medico.apellido,medico.direccion,medico.movil,medico.sexo,medico.fecha_nac,medico.documento,medico.colegiatura,medico.idespecialidad,especialidad.especialidad,CONCAT(medico.nombre,' ',medico.apellido)as medico FROM medico INNER JOIN especialidad ON medico.idespecialidad = especialidad.idespecialidad";
+            $consulta = "SELECT medico.idmedico,medico.nombre,medico.apellido,medico.direccion,medico.movil,medico.sexo,medico.fecha_nac,medico.documento,medico.colegiatura,medico.idespecialidad,especialidad.especialidad,usuarios.idusuarios,usuarios.nombre,usuarios.email,CONCAT(medico.nombre,' ',medico.apellido)as medico FROM medico 
+            INNER JOIN especialidad ON medico.idespecialidad = especialidad.idespecialidad
+            INNER JOIN usuarios ON medico.idusuarios = usuarios.idusuarios ";
             $arreglo = array();
             if ($resultado = $this->conexion->conexion->query($consulta)) {
                 while ($consulta_VU = mysqli_fetch_assoc($resultado)) {

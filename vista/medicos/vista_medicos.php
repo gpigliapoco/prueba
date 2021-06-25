@@ -135,22 +135,80 @@
     </div>
 </form>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_editar_procedimientos" role="dialog">
-        <div class="modal-dialog modal-sm">
+    <div class="modal fade" id="modal_editar_medicos" role="dialog">
+        <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Editar procedimiento</b></h4>
+            <h4 class="modal-title"><b>Registrar medico</b></h4>
             </div>
             <div class="modal-body">
-                <div class="col-lg-12">
-                    <input type="text" id="txtIdprocedimiento" hidden> 
-                    <label for="">Procedimiento</label>
-                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento" ><br>
-                </div>              
+            <div class="row">
+                <input type="text" class="form-control" id="txtidmedico" placeholder="Ingrese procedimiento"><br>
+                <div class="col-lg-6">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento"><br>
+                </div>  
+                <div class="col-lg-6">
+                    <label for="">Apellido</label>
+                    <input type="text" class="form-control" id="txt_apellidoEditar" placeholder="Ingrese procedimiento"><br>
+                </div>     
+                <div class="col-lg-6">
+                    <label for="">direccion</label>
+                    <input type="text" class="form-control" id="txt_direccionEditar" placeholder="Ingrese procedimiento"><br>
+                </div>     
+                <div class="col-lg-4">
+                    <label for="">movil</label>
+                    <input type="text" class="form-control" id="txt_movilEditar" placeholder="Ingrese procedimiento"><br>
+                </div> 
+                <div class="col-lg-4">
+                    <label for="">Sexo</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_sexoEditar" style="width:100%;">
+                        <option value="m">MASCULINO</option>
+                        <option value="f">FEMENINO</option>
+                    </select><br><br>
+                </div>
+                <div class="col-lg-4">
+                    <label for="">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" id="txt_fechaEditar" placeholder="Ingrese procedimiento"><br>
+                </div>   
+                <div class="col-lg-4">
+                    <label for="">Documento</label>
+                    <input type="text" class="form-control" id="txt_dniEditar" placeholder="Ingrese procedimiento"><br>
+                </div>  
+                <div class="col-lg-4">
+                    <label for="">Colegiatura</label>
+                    <input type="text" class="form-control" id="txt_coleEditar" placeholder="Ingrese procedimiento"><br>
+                </div>  
+                <div class="col-lg-4">
+                    <label for="">especialidad</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_especialEditar" style="width:100%;">
+                    </select><br><br>
+                </div> 
+                <div class="col-lg-12" style="text-align:center">
+                    <b>Datos Del Usuario</b>
+                </div> 
+                <div class="col-lg-6">
+                    <label for="">Usuario</label>
+                    <input type="text" class="form-control" id="txt_usuEditar" placeholder="Ingrese procedimiento"><br>
+                </div>   
+                <div class="col-lg-6">
+                    <label for="">Password</label>
+                    <input type="text" class="form-control" id="txt_passEditar" placeholder="Ingrese procedimiento"><br>
+                </div>  
+                <div class="col-lg-6">
+                    <label for="">Rol</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_rolEditar" style="width:100%;">
+                    </select><br><br>
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" id="txt_emailEditar" placeholder="Ingrese procedimiento"><br>
+                </div> 
+                </div> 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="modificarprocedimientos()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button class="btn btn-primary" onclick="editar_medico()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
@@ -162,6 +220,7 @@ $(document).ready(function() {
     listar_medicos();
     comboRol();
     comboEspecial();
+    listar();
 } );
 
 

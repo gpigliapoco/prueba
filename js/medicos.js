@@ -37,6 +37,8 @@ function listar_medicos(){
 	  "language":idioma_espanol,
 	  select: true
   });
+
+  
   
 
   document.getElementById("tabla_medicos_filter").style.display="none";
@@ -49,6 +51,20 @@ function listar_medicos(){
  
 
 }
+
+/* function listar(){
+	$.ajax({
+	  url:"../controlador/medicos/control_listar_medico.php",
+	  type:'POST'
+	}).done(function(resp){
+		alert(resp);
+		alert(resp.apellido);
+		var data=JSON.parse(resp);
+		alert(data);
+		alert(data[0].sexo);
+		
+	})
+} */
 
 function AbrirModalRegistro(){
 	$("#modal_registro_medicos").modal({backdrop:'static',keyboard:false});
@@ -182,3 +198,26 @@ function limpiarRegistros(){
 
 
 }
+
+$('#tabla_medicos').on('click','.editar',function(){
+	var data =table.row($(this).parents('tr')).data();
+
+	alert(data.medico);
+	$("#modal_editar_medico").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_medico").modal('show');
+	$("#txtidmedico").val(data.idmedico); 
+	$("#txt_nombreEditar").val(data.nombre);
+	$("#txt_apellidoEditar").val(data.apellido);
+	$("#txt_direccionEditar").val(data.direccion);
+	$("#txt_movilEditar").val(data.movil);
+	$("#cmb_sexoEditar").val(data.sexo).trigger("change");
+	$("#txt_fechaEditar").val(data.fecha_nac);
+	$("#txt_dniEditar").val(data.documento);
+	$("#txt_coleEditar").val(data.colegiatura);
+	$("#cbm_especialEditar").val(idespecialidad).trigger("change");
+	$("#txt_usuEditar").val(data.nombre);
+	$("#txt_passEditar").val("");
+	$("#cbm_rolEditar").val("");
+	$("#txt_emailEditar").val("");
+
+})
