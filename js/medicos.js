@@ -100,3 +100,19 @@ function comboEspecial(){
 		}
 	})
 }
+function registrar_medico(){
+	var nombre=$("#txt_nombre").val();
+	var apellido=$("#txt_apellido").val();
+	var direccion=$("#txt_direccion").val();
+	var movil=$("#txt_movil").val();
+	var sexo=$("#cmb_sexo").val();
+	var fecha=$("#txt_fecha").val();
+	var dni=$("#txt_dni").val();
+	var cole=$("#txt_cole").val();
+	var especial=$("#cbm_especial").val();
+	var usu=$("#txt_usu").val();
+	var pass=$("#txt_pass").val();
+	var rol=$("#cbm_rol").val();
+	var email=$("#txt_email").val();
+	
+}
