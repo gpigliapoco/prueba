@@ -63,6 +63,7 @@
             <h4 class="modal-title"><b>Registrar medico</b></h4>
             </div>
             <div class="modal-body">
+            <div class="row">
                 <div class="col-lg-6">
                     <label for="">Nombre</label>
                     <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
@@ -122,7 +123,8 @@
                 <div class="col-lg-6">
                     <label for="">Email</label>
                     <input type="text" class="form-control" id="txt_email" placeholder="Ingrese procedimiento"><br>
-                </div>  
+                </div> 
+                </div> 
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
