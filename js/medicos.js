@@ -28,7 +28,7 @@ function listar_medicos(){
 		  {"data":"doc_movil"},		 	
 		  {"data":"doc_dni"},		 
           {"data":"doc_cole"},	
-          {"data":"especialidad"},	
+          {"data":"es_especialidad"},	
 		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
 		  
 		  
@@ -89,7 +89,7 @@ function comboRol(){
 				cadena+="<option value='"+data[i].idrol_usuario+"'>"+data[i].rol+"</option>";
 			}
 			$("#cbm_rol").html(cadena);
-			$("#cbm_rol_editar").html(cadena);
+			$("#cbm_rolEditar").html(cadena);
 		}
 	})
 }
@@ -109,10 +109,10 @@ function comboEspecial(){
 		}  */
 		if(data.length>0){
 			for(var i=0;i < data.length;i++){
-				cadena+="<option value='"+data[i].idespecialidad+"'>"+data[i].especialidad+"</option>";
+				cadena+="<option value='"+data[i].idespecialidad+"'>"+data[i].es_especialidad+"</option>";
 			}
 			$("#cbm_especial").html(cadena);
-			//$("#cbm_especial_editar").html(cadena);
+			$("#cbm_especialEditar").html(cadena);
 		}
 	})
 }
@@ -168,6 +168,7 @@ function registrar_medico(){
                 .then ( ( value ) =>  {
                     
                     table.ajax.reload();
+					limpiarRegistros();
                 }); 
 				}else{
 					return Swal.fire("No se puedo registar medico","warning");
@@ -202,22 +203,89 @@ function limpiarRegistros(){
 $('#tabla_medicos').on('click','.editar',function(){
 	var data =table.row($(this).parents('tr')).data();
 
-	alert(data.medico);
-	$("#modal_editar_medico").modal({backdrop:'static',keyboard:false});
-	$("#modal_editar_medico").modal('show');
-	$("#txtidmedico").val(data.idmedico); 
-	$("#txt_nombreEditar").val(data.nombre);
-	$("#txt_apellidoEditar").val(data.apellido);
-	$("#txt_direccionEditar").val(data.direccion);
-	$("#txt_movilEditar").val(data.movil);
-	$("#cmb_sexoEditar").val(data.sexo).trigger("change");
-	$("#txt_fechaEditar").val(data.fecha_nac);
-	$("#txt_dniEditar").val(data.documento);
-	$("#txt_coleEditar").val(data.colegiatura);
-	$("#cbm_especialEditar").val(idespecialidad).trigger("change");
-	$("#txt_usuEditar").val(data.nombre);
-	$("#txt_passEditar").val("");
-	$("#cbm_rolEditar").val("");
-	$("#txt_emailEditar").val("");
+	alert(data.idespecialidad);
+	$("#modal_editar_medicos").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_medicos").modal('show');
+	$("#txtIdmedico").val(data.idmedico); 
+	$("#txt_nombreEditar").val(data.doc_nombre);
+	$("#txt_apellidoEditar").val(data.doc_apellido);
+	$("#txt_direccionEditar").val(data.doc_direccion);
+	$("#txt_movilEditar").val(data.doc_movil);
+	$("#cmb_sexoEditar").val(data.doc_sexo).trigger("change");
+	$("#txt_fechaEditar").val(data.doc_fecha_nac);
+	$("#txt_dniEditar").val(data.doc_dni);
+	$("#txt_coleEditar").val(data.doc_cole);
+	$("#cbm_especialEditar").val(data.idespecialidad).trigger("change");
+	$("#txt_usuEditar").val(data.usu_nombre);
+	$("#txt_passEditar").val(data.usu_contra);
+	$("#cbm_rolEditar").val(data.idrol_usuario).trigger("change");
+	$("#txt_emailEditar").val(data.usu_email);
 
 })
+
+function editar_medico(){
+	var nombre=$("#txt_nombreEditar").val();
+	var apellido=$("#txt_apellidoEditar").val();
+	var direccion=$("#txt_direccionEditar").val();
+	var movil=$("#txt_movilEditar").val();
+	var sexo=$("#cmb_sexoEditar").val();
+	var fecha=$("#txt_fechaEditar").val();
+	var dni=$("#txt_dniEditar").val();
+	var cole=$("#txt_coleEditar").val();
+	var especial=$("#cbm_especialEditar").val();
+	var usu=$("#txt_usuEditar").val();
+	var pass=$("#txt_passEditar").val();
+	var rol=$("#cbm_rolEditar").val();
+	var email=$("#txt_emailEditar").val();
+	var idmedico=$("#txtIdmedico").val();
+
+	if(nombre.length==0 || apellido.length==0 || direccion.length==0 || movil.length==0){
+		return Swal.fire("llenar campos vacios","warning");
+	}$.ajax({
+			 url:"../controlador/usuario/controladorUsu.php",
+			 type: "POST",
+			 data:{
+				 usu:usu,
+				 pass:pass,
+				 sexo:sexo,
+				 rol:rol,
+				 email:email
+			 }
+	}).done(function(resp){
+		alert(resp);
+		if(resp==1){
+			$.ajax({
+				url:"../controlador/medicos/control_registrar_medico.php",
+				type: "POST",
+				data:{
+					nombre:nombre,
+					apellido:apellido,
+					direccion:direccion,
+					movil:movil,
+					sexo:sexo,
+					fecha:fecha,
+					dni:dni,
+					cole:cole,
+					especial:especial
+				}
+			}).done(function(resp){
+				alert(resp);
+				if(resp==1){
+					$("#modal_registro_medicos").modal('hide');
+				Swal.fire("Mensaje De Confirmacion","Datos correctamente, Nuevo Usuario Registrado","success")            
+                .then ( ( value ) =>  {
+                    
+                    table.ajax.reload();
+					limpiarRegistros();
+                }); 
+				}else{
+					return Swal.fire("No se puedo registar medico","warning");
+				}
+			})
+		}else{
+			return Swal.fire("No se puedo registar usuario","warning");
+		}
+		
+	})
+	
+}

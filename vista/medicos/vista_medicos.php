@@ -145,8 +145,9 @@
             <div class="modal-body">
             <div class="row">
                 <input type="text" class="form-control" id="txtidmedico" placeholder="Ingrese procedimiento"><br>
-                <div class="col-lg-6">
-                    <label for="">Nombre</label>
+                <div class="col-lg-6">  
+                     <input type="text"  id="txtIdmedico" hidden>  
+                    <label for="">Nombre</label>                   
                     <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento"><br>
                 </div>  
                 <div class="col-lg-6">
