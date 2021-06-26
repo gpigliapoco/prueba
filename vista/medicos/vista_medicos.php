@@ -190,6 +190,7 @@
                     <b>Datos Del Usuario</b>
                 </div> 
                 <div class="col-lg-6">
+                    <input type="text"  id="txtIdusu" hidden> 
                     <label for="">Usuario</label>
                     <input type="text" class="form-control" id="txt_usuEditar" placeholder="Ingrese procedimiento"><br>
                 </div>   

@@ -238,6 +238,7 @@ function editar_medico(){
 	var rol=$("#cbm_rolEditar").val();
 	var email=$("#txt_emailEditar").val();
 	var idmedico=$("#txtIdmedico").val();
+	var idusu=$("#txtIdusu").val();
 
 	if(nombre.length==0 || apellido.length==0 || direccion.length==0 || movil.length==0){
 		return Swal.fire("llenar campos vacios","warning");
@@ -245,8 +246,8 @@ function editar_medico(){
 			 url:"../controlador/usuario/controladorUsu.php",
 			 type: "POST",
 			 data:{
-				 usu:usu,
-				 pass:pass,
+				 idusu:idusu,
+				 usu:usu,				 
 				 sexo:sexo,
 				 rol:rol,
 				 email:email
