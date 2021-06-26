@@ -22,7 +22,7 @@ function listar_medicos(){
 				if(data=='m'){
 					return "MASCULINO";                   
 				}else{
-					return "FEMINO";                 
+					return "FEMENINO";                 
 				}
 			}},
 		  {"data":"doc_movil"},		 	
@@ -52,19 +52,7 @@ function listar_medicos(){
 
 }
 
-/* function listar(){
-	$.ajax({
-	  url:"../controlador/medicos/control_listar_medico.php",
-	  type:'POST'
-	}).done(function(resp){
-		alert(resp);
-		alert(resp.apellido);
-		var data=JSON.parse(resp);
-		alert(data);
-		alert(data[0].sexo);
-		
-	})
-} */
+
 
 function AbrirModalRegistro(){
 	$("#modal_registro_medicos").modal({backdrop:'static',keyboard:false});
@@ -121,7 +109,7 @@ function registrar_medico(){
 	var apellido=$("#txt_apellido").val();
 	var direccion=$("#txt_direccion").val();
 	var movil=$("#txt_movil").val();
-	var sexo=$("#cmb_sexo").val();
+	var sexo=$("#cbm_sexo").val();
 	var fecha=$("#txt_fecha").val();
 	var dni=$("#txt_dni").val();
 	var cole=$("#txt_cole").val();
@@ -131,7 +119,10 @@ function registrar_medico(){
 	var rol=$("#cbm_rol").val();
 	var email=$("#txt_email").val();
 
-	if(nombre.length==0 || apellido.length==0 || direccion.length==0 || movil.length==0){
+	alert(sexo);
+	alert(fecha);
+
+	if(nombre.length==0 || apellido.length==0 || direccion.length==0 || movil.length==0 || sexo.length==0 || fecha.length==0){
 		return Swal.fire("llenar campos vacios","warning");
 	}$.ajax({
 			 url:"../controlador/usuario/controladorUsu.php",
@@ -187,7 +178,7 @@ function limpiarRegistros(){
 	$("#txt_apellido").val("");
 	$("#txt_direccion").val("");
 	$("#txt_movil").val("");
-	$("#cmb_sexo").val("");
+	$("#cbm_sexo").val("");
 	$("#txt_fecha").val("");
 	$("#txt_dni").val("");
 	$("#txt_cole").val("");
@@ -211,7 +202,7 @@ $('#tabla_medicos').on('click','.editar',function(){
 	$("#txt_apellidoEditar").val(data.doc_apellido);
 	$("#txt_direccionEditar").val(data.doc_direccion);
 	$("#txt_movilEditar").val(data.doc_movil);
-	$("#cmb_sexoEditar").val(data.doc_sexo).trigger("change");
+	$("#cbm_sexoEditar").val(data.doc_sexo).trigger("change");
 	$("#txt_fechaEditar").val(data.doc_fecha_nac);
 	$("#txt_dniEditar").val(data.doc_dni);
 	$("#txt_coleEditar").val(data.doc_cole);
@@ -228,7 +219,7 @@ function editar_medico(){
 	var apellido=$("#txt_apellidoEditar").val();
 	var direccion=$("#txt_direccionEditar").val();
 	var movil=$("#txt_movilEditar").val();
-	var sexo=$("#cmb_sexoEditar").val();
+	var sexo=$("#cbm_sexoEditar").val();
 	var fecha=$("#txt_fechaEditar").val();
 	var dni=$("#txt_dniEditar").val();
 	var cole=$("#txt_coleEditar").val();
@@ -238,15 +229,15 @@ function editar_medico(){
 	var rol=$("#cbm_rolEditar").val();
 	var email=$("#txt_emailEditar").val();
 	var idmedico=$("#txtIdmedico").val();
-	var idusu=$("#txtIdusu").val();
+	var idUsuario=$("#txtIdusu").val();
 
 	if(nombre.length==0 || apellido.length==0 || direccion.length==0 || movil.length==0){
 		return Swal.fire("llenar campos vacios","warning");
 	}$.ajax({
-			 url:"../controlador/usuario/controladorUsu.php",
+			 url:"../controlador/usuario/controlUsuModificar.php",
 			 type: "POST",
 			 data:{
-				 idusu:idusu,
+				 idUsuario:idUsuario,
 				 usu:usu,				 
 				 sexo:sexo,
 				 rol:rol,
@@ -256,9 +247,10 @@ function editar_medico(){
 		alert(resp);
 		if(resp==1){
 			$.ajax({
-				url:"../controlador/medicos/control_registrar_medico.php",
+				url:"../controlador/medicos/control_modificar_medico.php",
 				type: "POST",
 				data:{
+					idmedico:idmedico,
 					nombre:nombre,
 					apellido:apellido,
 					direccion:direccion,

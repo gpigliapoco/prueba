@@ -56,9 +56,30 @@
             }
         } 
 
-        function registrar_medicos($nombre,$apellido,$direccion,$movil,$sexo,$dni,$fecha,$cole,$especial){
-            $consulta="INSERT INTO medico(doc_nombre,doc_apellido,doc_direccion,doc_movil,doc_sexo,doc_fecha_nac,doc_dni,doc_cole,idespecialidad,idusuarios) 
-                            VALUES ('$nombre','$apellido','$direccion','$movil','$sexo','$fecha','$dni','$cole','$especial',(select max(idusuarios) from usuarios) )";
+        function registrar_medicos($nombre,$apellido,$direccion,$movil,$sexo,$fecha,$dni,$cole,$especial){
+            $consulta="INSERT INTO medico(
+                                doc_nombre,
+                                doc_apellido,
+                                doc_direccion,
+                                doc_movil,
+                                doc_sexo,
+                                doc_fecha_nac,
+                                doc_dni,
+                                doc_cole,
+                                idespecialidad,
+                                idusuarios) 
+                            VALUES (
+                                '$nombre',
+                                '$apellido',
+                                '$direccion',
+                                '$movil',
+                                '$sexo',
+                                '$fecha',
+                                '$dni',
+                                '$cole',
+                                '$especial',
+                                (select max(idusuarios) from usuarios) )";
+
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
               return 1;                 
@@ -69,8 +90,27 @@
                  $this->conexion->cerrar();
         }
 
+        function modificar_medico($idmedico,$nombre,$apellido,$direccion,$movil,$sexo,$fecha,$dni,$cole,$especial){
+            $consulta = "UPDATE medico SET 
+                                doc_nombre ='$nombre',
+                                doc_apellido = '$apellido',
+                                doc_direccion = '$direccion',
+                                doc_movil = '$movil',
+                                doc_sexo = '$sexo',
+                                doc_fecha_nac = '$fecha',
+                                doc_dni = '$dni',
+                                doc_cole = '$cole',
+                                idespecialidad = '$especial'
+                                WHERE idmedico = '$idmedico'";
+            
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }
+                 $this->conexion->cerrar();
+          }	
         
-
+             
     }
 
 

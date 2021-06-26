@@ -222,7 +222,7 @@ $(document).ready(function() {
     listar_medicos();
     comboRol();
     comboEspecial();
-    listar();
+   
 } );
 
 
