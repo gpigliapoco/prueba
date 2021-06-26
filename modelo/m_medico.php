@@ -26,7 +26,7 @@
         }
 
         function listar_combo_especial(){
-            $consulta = "SELECT * FROM especialidad WHERE status='activo'";
+            $consulta = "SELECT * FROM especialidad WHERE es_status='activo'";
             $arreglo = array();
             if ($resultado = $this->conexion->conexion->query($consulta)) {
                 while ($consulta_VU = mysqli_fetch_array($resultado)) {
@@ -39,7 +39,7 @@
         } 
 
         function registrar_medicos($nombre,$apellido,$direccion,$movil,$sexo,$dni,$fecha,$cole,$especial){
-            $consulta="INSERT INTO medico(nombre,apellido,direccion,movil,sexo,fecha_nac,documento,colegiatura,idespecialidad,idusuarios) 
+            $consulta="INSERT INTO medico(doc_nombre,doc_apellido,doc_direccion,doc_movil,doc_sexo,doc_fecha_nac,doc_dni,doc_cole,idespecialidad,idusuarios) 
                             VALUES ('$nombre','$apellido','$direccion','$movil','$sexo','$fecha','$dni','$cole','$especial',(select max(idusuarios) from usuarios) )";
             $resultado=$this->conexion->conexion->prepare($consulta);
             if ($resultado->execute()) {                 
