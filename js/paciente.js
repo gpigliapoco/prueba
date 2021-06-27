@@ -119,6 +119,12 @@ function AbrirModalRegistro(){
 	$("#modal_registro_paciente").modal("show");
 }
 
+
+function editarModalRegistro(){
+	$("#modal_editar_paciente").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_paciente").modal("show");
+}
+
 function registrar_paciente(){
 	var nombre=$("#txt_nombre").val();
 	var apellido=$("#txt_apellido").val();
@@ -152,7 +158,7 @@ function registrar_paciente(){
 		.then ( ( value ) =>  {
 			
 			table.ajax.reload();
-			//limpiarRegistros();
+			limpiarRegistros();
 		}); 
 		}else{
 			return Swal.fire("No se puedo registar medico","warning");
@@ -160,3 +166,34 @@ function registrar_paciente(){
 	})
 	
 }
+
+function limpiarRegistros(){
+	$("#txt_nombre").val("");
+	$("#txt_apellido").val("");
+	$("#txt_direccion").val("");
+	$("#txt_movil").val("");
+	$("#cbm_sexo").val("");
+	$("#txt_fecha").val("");
+	$("#txt_dni").val("");
+	
+
+
+}
+
+$('#tabla_paciente').on('click','.editar',function(){
+	var data =table.row($(this).parents('tr')).data();
+
+	alert(data.idpaciente);
+	$("#modal_editar_paciente").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_paciente").modal('show');
+	$("#txtIdpaciente").val(data.idpaciente); 
+	$("#txt_nombreEditar").val(data.pa_nombre);
+	$("#txt_apellidoEditar").val(data.pa_apellido);
+	$("#txt_direccionEditar").val(data.pa_direccion);
+	$("#txt_movilEditar").val(data.pa_movil);
+	$("#cbm_sexoEditar").val(data.pa_sexo).trigger("change");
+	$("#txt_fechaEditar").val(data.pa_fecha_nac);
+	$("#txt_dniEditar").val(data.pa_dni);
+	
+
+})
