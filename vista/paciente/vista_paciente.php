@@ -55,12 +55,12 @@
           <!-- /.box -->
 </div>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_registro_medicos" role="dialog">
+    <div class="modal fade" id="modal_registro_paciente" role="dialog">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Registrar medico</b></h4>
+            <h4 class="modal-title"><b>Registrar Paciente</b></h4>
             </div>
             <div class="modal-body">
             <div class="row">
@@ -75,7 +75,11 @@
                 <div class="col-lg-6">
                     <label for="">direccion</label>
                     <input type="text" class="form-control" id="txt_direccion" placeholder="Ingrese Direccion"><br>
-                </div>     
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Documento</label>
+                    <input type="text" class="form-control" id="txt_dni" placeholder="Ingrese Documento"><br>
+                </div>        
                 <div class="col-lg-4">
                     <label for="">movil</label>
                     <input type="text" class="form-control" id="txt_movil" placeholder="Ingrese Movil"><br>
@@ -90,44 +94,10 @@
                 <div class="col-lg-4">
                     <label for="">Fecha Nacimiento</label>
                     <input type="date" class="form-control" id="txt_fecha"><br>
-                </div>   
-                <div class="col-lg-4">
-                    <label for="">Documento</label>
-                    <input type="text" class="form-control" id="txt_dni" placeholder="Ingrese Dni"><br>
-                </div>  
-                <div class="col-lg-4">
-                    <label for="">Colegiatura</label>
-                    <input type="text" class="form-control" id="txt_cole" placeholder="Ingrese colegiatura"><br>
-                </div>  
-                <div class="col-lg-4">
-                    <label for="">especialidad</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_especial" style="width:100%;">
-                    </select><br><br>
-                </div> 
-                <div class="col-lg-12" style="text-align:center">
-                    <b>Datos Del Usuario</b>
-                </div> 
-                <div class="col-lg-6">
-                    <label for="">Usuario</label>
-                    <input type="text" class="form-control" id="txt_usu" placeholder="Ingrese usuario"><br>
-                </div>   
-                <div class="col-lg-6">
-                    <label for="">Password</label>
-                    <input type="text" class="form-control" id="txt_pass" placeholder="Ingrese pass"><br>
-                </div>  
-                <div class="col-lg-6">
-                    <label for="">Rol</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
-                    </select><br><br>
-                </div>
-                <div class="col-lg-6">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" id="txt_email" placeholder="Ingrese email"><br>
-                </div> 
-                </div> 
+                </div>                  
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrar_medico()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="registrar_paciente()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>

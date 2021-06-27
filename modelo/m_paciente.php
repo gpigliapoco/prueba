@@ -34,7 +34,35 @@
                  $this->conexion->cerrar();
           }	
        
+          function registrar_paciente($nombre,$apellido,$direccion,$movil,$sexo,$fecha,$dni){
+            $consulta="INSERT INTO paciente(
+                                pa_nombre,
+                                pa_apellido,
+                                pa_direccion,
+                                pa_movil,
+                                pa_sexo,
+                                pa_fecha_nac,
+                                pa_dni,
+                                pa_status) 
+                            VALUES (
+                                '$nombre',
+                                '$apellido',
+                                '$direccion',
+                                '$movil',
+                                '$sexo',
+                                '$fecha',
+                                '$dni',
+                                'activo')";
 
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }else {
+                    return 0;
+                 }
+    
+                 $this->conexion->cerrar();
+        }
       
         
              

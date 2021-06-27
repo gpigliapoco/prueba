@@ -113,3 +113,50 @@ function modificarStatus(idpaciente,status){
 	})
 
 }
+
+function AbrirModalRegistro(){
+	$("#modal_registro_paciente").modal({backdrop:'static',keyboard:false});
+	$("#modal_registro_paciente").modal("show");
+}
+
+function registrar_paciente(){
+	var nombre=$("#txt_nombre").val();
+	var apellido=$("#txt_apellido").val();
+	var direccion=$("#txt_direccion").val();
+	var movil=$("#txt_movil").val();
+	var sexo=$("#cbm_sexo").val();
+	var fecha=$("#txt_fecha").val();
+	var dni=$("#txt_dni").val();
+
+	
+	if(nombre.length==0 || apellido.length==0 || direccion.length==0 || movil.length==0 || sexo.length==0 || fecha.length==0){
+		return Swal.fire("llenar campos vacios","warning");
+	}$.ajax({
+			 url:"../controlador/paciente/control_registrar_paciente.php",
+			 type: "POST",
+			 data:{
+				nombre:nombre,
+				apellido:apellido,
+				direccion:direccion,
+				movil:movil,
+				sexo:sexo,
+				fecha:fecha,
+				dni:dni
+
+			 }
+	}).done(function(resp){
+		alert(resp);
+		if(resp==1){
+			$("#modal_registro_paciente").modal('hide');
+		Swal.fire("Mensaje De Confirmacion","Datos correctamente, Nuevo Usuario Registrado","success")            
+		.then ( ( value ) =>  {
+			
+			table.ajax.reload();
+			//limpiarRegistros();
+		}); 
+		}else{
+			return Swal.fire("No se puedo registar medico","warning");
+		}
+	})
+	
+}
