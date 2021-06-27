@@ -29,7 +29,7 @@ function listar_medicos(){
 		  {"data":"doc_dni"},		 
           {"data":"doc_cole"},	
           {"data":"es_especialidad"},	
-		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
+		  {"defaultContent":"</i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
 		  
 		  
 	  ],

@@ -66,19 +66,19 @@
             <div class="row">
                 <div class="col-lg-6">
                     <label for="">Nombre</label>
-                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese nombre"><br>
                 </div>  
                 <div class="col-lg-6">
                     <label for="">Apellido</label>
-                    <input type="text" class="form-control" id="txt_apellido" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_apellido" placeholder="Ingrese Apellido"><br>
                 </div>     
                 <div class="col-lg-6">
                     <label for="">direccion</label>
-                    <input type="text" class="form-control" id="txt_direccion" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_direccion" placeholder="Ingrese Direccion"><br>
                 </div>     
                 <div class="col-lg-4">
                     <label for="">movil</label>
-                    <input type="text" class="form-control" id="txt_movil" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_movil" placeholder="Ingrese Movil"><br>
                 </div> 
                 <div class="col-lg-4">
                     <label for="">Sexo</label>
@@ -89,15 +89,15 @@
                 </div>
                 <div class="col-lg-4">
                     <label for="">Fecha Nacimiento</label>
-                    <input type="date" class="form-control" id="txt_fecha" placeholder="Ingrese procedimiento"><br>
+                    <input type="date" class="form-control" id="txt_fecha"><br>
                 </div>   
                 <div class="col-lg-4">
                     <label for="">Documento</label>
-                    <input type="text" class="form-control" id="txt_dni" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_dni" placeholder="Ingrese Dni"><br>
                 </div>  
                 <div class="col-lg-4">
                     <label for="">Colegiatura</label>
-                    <input type="text" class="form-control" id="txt_cole" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_cole" placeholder="Ingrese colegiatura"><br>
                 </div>  
                 <div class="col-lg-4">
                     <label for="">especialidad</label>
@@ -109,11 +109,11 @@
                 </div> 
                 <div class="col-lg-6">
                     <label for="">Usuario</label>
-                    <input type="text" class="form-control" id="txt_usu" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_usu" placeholder="Ingrese usuario"><br>
                 </div>   
                 <div class="col-lg-6">
                     <label for="">Password</label>
-                    <input type="text" class="form-control" id="txt_pass" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_pass" placeholder="Ingrese pass"><br>
                 </div>  
                 <div class="col-lg-6">
                     <label for="">Rol</label>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-lg-6">
                     <label for="">Email</label>
-                    <input type="text" class="form-control" id="txt_email" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_email" placeholder="Ingrese email"><br>
                 </div> 
                 </div> 
             </div>
@@ -140,7 +140,7 @@
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Registrar medico</b></h4>
+            <h4 class="modal-title"><b>Editar medico</b></h4>
             </div>
             <div class="modal-body">
             <div class="row">
@@ -148,19 +148,19 @@
                 <div class="col-lg-6">  
                      <input type="text"  id="txtIdmedico" hidden>  
                     <label for="">Nombre</label>                   
-                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese nombre"><br>
                 </div>  
                 <div class="col-lg-6">
                     <label for="">Apellido</label>
-                    <input type="text" class="form-control" id="txt_apellidoEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_apellidoEditar" placeholder="Ingrese Apellido"><br>
                 </div>     
                 <div class="col-lg-6">
                     <label for="">direccion</label>
-                    <input type="text" class="form-control" id="txt_direccionEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_direccionEditar" placeholder="Ingrese direccion"><br>
                 </div>     
                 <div class="col-lg-4">
                     <label for="">movil</label>
-                    <input type="text" class="form-control" id="txt_movilEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_movilEditar" placeholder="Ingrese movil"><br>
                 </div> 
                 <div class="col-lg-4">
                     <label for="">Sexo</label>
@@ -171,15 +171,15 @@
                 </div>
                 <div class="col-lg-4">
                     <label for="">Fecha Nacimiento</label>
-                    <input type="date" class="form-control" id="txt_fechaEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="date" class="form-control" id="txt_fechaEditar" ><br>
                 </div>   
                 <div class="col-lg-4">
                     <label for="">Documento</label>
-                    <input type="text" class="form-control" id="txt_dniEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_dniEditar" placeholder="Ingrese dni"><br>
                 </div>  
                 <div class="col-lg-4">
                     <label for="">Colegiatura</label>
-                    <input type="text" class="form-control" id="txt_coleEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_coleEditar" placeholder="Ingrese colegiatura"><br>
                 </div>  
                 <div class="col-lg-4">
                     <label for="">especialidad</label>
@@ -192,11 +192,11 @@
                 <div class="col-lg-6">
                     <input type="text"  id="txtIdusu" hidden> 
                     <label for="">Usuario</label>
-                    <input type="text" class="form-control" id="txt_usuEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_usuEditar" placeholder="Ingrese usuario"><br>
                 </div>   
                 <div class="col-lg-6">
                     <label for="">Password</label>
-                    <input type="text" class="form-control" id="txt_passEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_passEditar" placeholder="Ingrese pass"><br>
                 </div>  
                 <div class="col-lg-6">
                     <label for="">Rol</label>
@@ -205,7 +205,7 @@
                 </div>
                 <div class="col-lg-6">
                     <label for="">Email</label>
-                    <input type="text" class="form-control" id="txt_emailEditar" placeholder="Ingrese procedimiento"><br>
+                    <input type="text" class="form-control" id="txt_emailEditar" placeholder="Ingrese email"><br>
                 </div> 
                 </div> 
             </div>
