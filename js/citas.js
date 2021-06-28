@@ -138,3 +138,25 @@ function comboPaciente(){
 		}
 	})
 }
+
+function registrarCita(){
+	var idPaciente= $("#cbm_paciente").val();
+	var idMedico= $("#cbm_medico").val();
+	var descripcion= $("#txt_descripcion").val();
+
+	if(idMedico.lenght==0 || idPaciente.lenght==0){
+		return Swal.fire("Hay campos vacios","warning");
+	}
+		$.ajax({
+			url: "../controlador/cita/control_cita_registrar.php",
+			type: "POST",
+			data: {
+				idMedico:idMedico,
+				idPaciente:idPaciente,
+				descripcion:descripcion
+			}
+		}).done(function(resp){
+			alert(resp);
+		})
+
+}

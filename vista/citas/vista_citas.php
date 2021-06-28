@@ -59,6 +59,7 @@
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title"><b>Registrar citas</b></h4>
+            <div class="row">
             </div>
                 <div class="col-lg-12">
                     <label for="">Paciente</label>
@@ -75,7 +76,12 @@
                     <select class="js-example-basic-single" name="state" id="cbm_medico" style="width:100%;">       
                     </select><br><br>
                 </div>
-            
+                     <div class="col-lg-12">
+                     <label for="">Descripcion</label>
+                     <textarea name="" id="txt_descripcion" rows="5" class="form-control" style="resize:none">
+                     </textarea>
+                </div>
+                </div> 
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarEspecial()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
