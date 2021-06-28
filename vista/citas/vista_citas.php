@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-lg-6">
                     <label for="">Especialidad</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_especialidad" style="width:100%;">       
+                    <select class="js-example-basic-single" name="state" id="cbm_especial" style="width:100%;">       
                     </select><br><br>
                 </div>
                 <div class="col-lg-6">
@@ -110,6 +110,7 @@
 <script>
 $(document).ready(function() {
     listar_citas();
+    comboEspecial();
     
 } );
 

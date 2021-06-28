@@ -78,7 +78,30 @@ function comboEspecial(){
 				cadena+="<option value='"+data[i].idespecialidad+"'>"+data[i].es_especialidad+"</option>";
 			}
 			$("#cbm_especial").html(cadena);
-			$("#cbm_especialEditar").html(cadena);
+			///$("#cbm_especialEditar").html(cadena);
+		}
+	})
+}
+
+function comboPacienet(){
+	$.ajax({
+		url: "../controlador/citas/control_combo_paciente.php",
+		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idespecialidad+"'>"+data[i].es_especialidad+"</option>";
+			}
+			$("#cbm_especial").html(cadena);
+			///$("#cbm_especialEditar").html(cadena);
 		}
 	})
 }

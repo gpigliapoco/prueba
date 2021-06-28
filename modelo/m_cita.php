@@ -31,6 +31,19 @@
             }
         }
 
+        function listar_combo_paciente(){
+            $consulta = "SELECT * FROM paciente WHERE es_status='activo'";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
+
       
     }
 
