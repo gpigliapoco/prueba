@@ -111,6 +111,7 @@
 $(document).ready(function() {
     listar_citas();
     comboEspecial();
+    comboPaciente();
     
 } );
 

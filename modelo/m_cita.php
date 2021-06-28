@@ -32,7 +32,26 @@
         }
 
         function listar_combo_paciente(){
-            $consulta = "SELECT * FROM paciente WHERE es_status='activo'";
+            $consulta = "SELECT paciente.idpaciente,
+                                concat(paciente.pa_nombre,' ',paciente.pa_apellido) as paciente
+                                FROM paciente 
+                                WHERE pa_status='activo'";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
+
+        function listar_combo_medico($espe){
+            $consulta = "SELECT medico.idmedico,
+                                concat(medico.doc_nombre,' ',medico.doc_apellido) as medico
+                                FROM medico 
+                                WHERE idespecialidad='$espe'";
             $arreglo = array();
             if ($resultado = $this->conexion->conexion->query($consulta)) {
                 while ($consulta_VU = mysqli_fetch_array($resultado)) {

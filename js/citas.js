@@ -76,16 +76,46 @@ function comboEspecial(){
 		if(data.length>0){
 			for(var i=0;i < data.length;i++){
 				cadena+="<option value='"+data[i].idespecialidad+"'>"+data[i].es_especialidad+"</option>";
+				
 			}
 			$("#cbm_especial").html(cadena);
+			var id=$("#cbm_especial").val();
+			comboMedico(id);
 			///$("#cbm_especialEditar").html(cadena);
 		}
 	})
 }
 
-function comboPacienet(){
+function comboMedico(espe){
 	$.ajax({
-		url: "../controlador/citas/control_combo_paciente.php",
+		url: "../controlador/cita/control_combo_medico.php",
+		type: "POST",
+		data:{
+			espe:espe
+		}
+
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idmedico+"'>"+data[i].medico+"</option>";
+			}
+			$("#cbm_medico").html(cadena);
+			///$("#cbm_especialEditar").html(cadena);
+		}
+	})
+}
+
+function comboPaciente(){
+	$.ajax({
+		url: "../controlador/cita/control_combo_paciente.php",
 		type: "POST",
 	}).done(function(resp){
 	//	alert(resp);  // para ver que datos trae
@@ -98,9 +128,9 @@ function comboPacienet(){
 		}  */
 		if(data.length>0){
 			for(var i=0;i < data.length;i++){
-				cadena+="<option value='"+data[i].idespecialidad+"'>"+data[i].es_especialidad+"</option>";
+				cadena+="<option value='"+data[i].idpaciente+"'>"+data[i].paciente+"</option>";
 			}
-			$("#cbm_especial").html(cadena);
+			$("#cbm_paciente").html(cadena);
 			///$("#cbm_especialEditar").html(cadena);
 		}
 	})
