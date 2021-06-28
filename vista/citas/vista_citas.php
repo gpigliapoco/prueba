@@ -112,6 +112,10 @@ $(document).ready(function() {
     listar_citas();
     comboEspecial();
     comboPaciente();
+    $("#cbm_especial").change(function(){ ////funcion para que cambie el combobox de medico
+        var id=$("#cbm_especial").val();
+        comboMedico(id);
+    })
     
 } );
 

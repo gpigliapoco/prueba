@@ -109,6 +109,9 @@ function comboMedico(espe){
 			}
 			$("#cbm_medico").html(cadena);
 			///$("#cbm_especialEditar").html(cadena);
+		}else{
+			cadena+="<option value=0>no hay registros</option>";
+			$("#cbm_medico").html(cadena);
 		}
 	})
 }
