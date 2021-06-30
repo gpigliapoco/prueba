@@ -63,6 +63,18 @@
             }
         } 
 
+        function registrar_cita($idPaciente,$idMedico,$descripcion){
+            $consulta = "CALL addcita('$idPaciente','$idMedico','$descripcion') ";	
+            
+            if($resultado = $this->conexion->conexion->query($consulta)){
+                if($row = mysqli_fetch_array($resultado) ){
+                    return $id = trim($row[0]);
+                }
+                $this->conexion->cerrar();
+            }
+        
+          }
+
       
     }
 

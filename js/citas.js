@@ -157,6 +157,12 @@ function registrarCita(){
 			}
 		}).done(function(resp){
 			alert(resp);
+			if(resp>0){
+				$("#modal_registro_citas").modal("hide");
+				Swal.fire("Mensaje De Confirmacion","Cita registrada","success");
+				table.ajax.reload();
+
+			}
 		})
 
 }

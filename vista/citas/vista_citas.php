@@ -83,7 +83,7 @@
                 </div>
                 </div> 
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrarEspecial()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="registrarCita()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
