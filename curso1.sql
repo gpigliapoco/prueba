@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2021 a las 03:58:03
+-- Tiempo de generación: 30-06-2021 a las 05:23:17
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 -- Base de datos: `curso1`
 --
 
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addcita`(IN `IDMEDICO` INT, IN `IDPACIENTE` INT, IN `DESCRIPCION` TEXT)
+    NO SQL
+    DETERMINISTIC
+BEGIN
+DECLARE TURNO int;
+set @TURNO:=(SELECT COUNT(*) +1 FROM cita WHERE cita.cita_fecha_registro=CURDATE());
+INSERT INTO cita(cita.cita_n_ate,cita.cita_fecha_registro,cita.cita_status,cita.idpaciente,cita.idmedico,cita.cita_descripcion) VALUES (@turno,CURDATE(),"pendiente",IDMEDICO,IDPACIENTE,DESCRIPCION);
+SELECT LAST_INSERT_ID();
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -30,10 +46,21 @@ CREATE TABLE IF NOT EXISTS `cita` (
   `idcita` int(11) NOT NULL,
   `cita_n_ate` int(11) DEFAULT NULL,
   `cita_fecha_registro` datetime DEFAULT NULL,
-  `cita_status` enum('activo','inactivo') DEFAULT NULL,
+  `cita_status` enum('activo','inactivo','pendiente') DEFAULT NULL,
   `idpaciente` int(11) NOT NULL,
-  `idmedico` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `idmedico` int(11) NOT NULL,
+  `cita_descripcion` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cita`
+--
+
+INSERT INTO `cita` (`idcita`, `cita_n_ate`, `cita_fecha_registro`, `cita_status`, `idpaciente`, `idmedico`, `cita_descripcion`) VALUES
+(1, 1, '2021-06-29 00:00:00', '', 1, 1, 'VINO POR DOLOR'),
+(2, 2, '2021-06-29 00:00:00', 'pendiente', 1, 1, 'dolor'),
+(3, 3, '2021-06-29 00:00:00', 'pendiente', 2, 1, 'por gil'),
+(4, 4, '2021-06-29 00:00:00', 'pendiente', 2, 2, 'MUELA');
 
 -- --------------------------------------------------------
 
@@ -106,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `especialidad` (
 --
 
 INSERT INTO `especialidad` (`idespecialidad`, `es_especialidad`, `es_fecha_registro`, `es_status`) VALUES
-(1, 'traumatologo', '2021-06-21', 'inactivo'),
+(1, 'traumatologo', '2021-06-21', 'activo'),
 (2, 'biologo', '2021-06-21', 'activo'),
 (3, 'cirujano', '2021-06-21', 'activo');
 
@@ -206,14 +233,15 @@ CREATE TABLE IF NOT EXISTS `medico` (
   `doc_cole` varchar(45) DEFAULT NULL,
   `idespecialidad` int(11) NOT NULL,
   `idusuarios` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `medico`
 --
 
 INSERT INTO `medico` (`idmedico`, `doc_nombre`, `doc_apellido`, `doc_direccion`, `doc_movil`, `doc_sexo`, `doc_fecha_nac`, `doc_dni`, `doc_cole`, `idespecialidad`, `idusuarios`) VALUES
-(1, 'leo', 'piglia', 'quesada 3209', '156611434', NULL, '2021-06-09', '29985934', '25254', 1, 1);
+(1, 'leo', 'piglia', 'quesada 3209', '156611434', NULL, '2021-06-09', '29985934', '25254', 1, 1),
+(2, 'pedro', 'perez', 'pasaje 123', '414541', 'm', '2021-06-08', '123541', '6546', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -231,7 +259,15 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   `pa_fecha_nac` date DEFAULT NULL,
   `pa_dni` varchar(45) DEFAULT NULL,
   `pa_status` enum('activo','inactivo') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `paciente`
+--
+
+INSERT INTO `paciente` (`idpaciente`, `pa_nombre`, `pa_apellido`, `pa_direccion`, `pa_movil`, `pa_sexo`, `pa_fecha_nac`, `pa_dni`, `pa_status`) VALUES
+(1, 'leo', 'piglia', 'psaje 3209', '12542146', 'm', '2021-06-09', '299854144', 'activo'),
+(2, 'pedro', 'Biscontin', 'Quesada 3209', '12346', 'm', '2021-06-22', '123541', 'activo');
 
 -- --------------------------------------------------------
 
@@ -286,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usu_status` enum('activo','inactivo') DEFAULT NULL,
   `usu_email` varchar(45) DEFAULT NULL,
   `idrol_usuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -294,7 +330,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`idusuarios`, `usu_nombre`, `usu_contra`, `usu_sexo`, `usu_status`, `usu_email`, `idrol_usuario`) VALUES
 (1, 'leo', 'leo', 'm', 'activo', 'gpigliapoco@gmail.com', 1),
-(2, 'tata', 'tata', 'f', 'activo', 'peter@gmail.com', 1);
+(2, 'tata', 'tata', 'f', 'activo', 'peter@gmail.com', 1),
+(3, 'tata', 'tata', 'm', 'activo', 'peter@gmail.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -398,7 +435,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `consulta`
 --
@@ -448,12 +485,12 @@ ALTER TABLE `medicamentos`
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `idmedico` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `idmedico` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `idpaciente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpaciente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `procedimientos`
 --
@@ -468,7 +505,7 @@ ALTER TABLE `rol_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
