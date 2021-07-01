@@ -272,3 +272,40 @@ function comboPacienteEditar(){
 		}
 	})
 }
+
+function editarCita(){
+	var idPaciente= $("#cbm_pacienteEditar").val();
+	var idMedico= $("#cbm_medicoEditar").val();
+	var descripcion= $("#txt_descripcionEditar").val();
+	var idcita=$("#txt_idCita").val();
+	var status=$("#cbm_estadoEditar").val();
+
+	if(idMedico.lenght==0 || idPaciente.lenght==0){
+		return Swal.fire("Hay campos vacios","warning");
+	}
+		$.ajax({
+			url: "../controlador/cita/control_cita_registrar.php",
+			type: "POST",
+			data: {
+				idMedico:idMedico,
+				idPaciente:idPaciente,
+				descripcion:descripcion,
+				idcita:idcita,
+				status:status	
+
+			}
+		}).done(function(resp){
+			alert(resp);
+			if(resp>0){
+				$("#modal_registro_citas").modal("hide");
+				Swal.fire("Mensaje De Confirmacion","Cita registrada","success");
+				table.ajax.reload();
+				limpiarRegistros();
+
+			}
+			else{
+				Swal.fire("Mensaje De Confirmacion","no se puede registrar cita","warning");
+			}
+		})
+
+}
