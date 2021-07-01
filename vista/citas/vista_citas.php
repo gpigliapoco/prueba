@@ -91,38 +91,61 @@
     </div>
 </form>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_editar_Especial" role="dialog">
-        <div class="modal-dialog modal-sm">
+    <div class="modal fade" id="modal_editar_citas" role="dialog">
+        <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Editar Especialidades</b></h4>
+            <h4 class="modal-title"><b>Editar citas</b></h4>
+            <div class="row">
             </div>
-            <div class="modal-body">
                 <div class="col-lg-12">
-                    <input type="text" id="txtIdespecial" hidden> 
+                    <label for="">Paciente</label>
+                    <input type="text" id="txt_idCita">
+                    <select class="js-example-basic-single" name="state" id="cbm_pacienteEditar" style="width:100%;">       
+                    </select><br><br>
+                </div>
+                <div class="col-lg-6">
                     <label for="">Especialidad</label>
-                    <input type="text" class="form-control" id="txt_nombreEditar" placeholder="Ingrese especialidad" ><br>
-                </div>              
-            </div>
+                    <select class="js-example-basic-single" name="state" id="cbm_especialEditar" style="width:100%;">       
+                    </select><br><br>
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Medico</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_medicoEditar" style="width:100%;">       
+                    </select><br><br>
+                </div>
+                     <div class="col-lg-12">
+                     <label for="">Descripcion</label>
+                     <textarea name="" id="txt_descripcionEditar" rows="5" class="form-control" style="resize:none">
+                     </textarea>
+                </div>
+                </div> 
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="modificarEspecialidad()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button class="btn btn-primary" onclick="editarCita()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
         </div>
     </div>
 </form>
+
 <script>
 $(document).ready(function() {
     listar_citas();
     comboEspecial();
     comboPaciente();
+    comboPacienteEditar();
+	comboEspecialEditar();
     $("#cbm_especial").change(function(){ ////funcion para que cambie el combobox de medico
         var id=$("#cbm_especial").val();
         comboMedico(id);
     })
-    
+    $("#cbm_especialEditar").change(function(){ ////funcion para que cambie el combobox de medico
+        var id=$("#cbm_especialEditar").val();
+        comboMedicoEditar(id);
+    })
+  
 } );
 
 

@@ -15,6 +15,9 @@
                                 cita.cita_n_ate,
                                 cita.cita_fecha_registro,
                                 cita.cita_status,
+                                cita.idpaciente,
+                                cita.idmedico,                               
+                                cita.cita_descripcion,
                                 concat(medico.doc_nombre,' ',medico.doc_apellido) as medico,
                                 concat(paciente.pa_nombre,' ',paciente.pa_apellido) as paciente 
                                 FROM cita 
