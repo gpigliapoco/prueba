@@ -105,17 +105,24 @@
                     <select class="js-example-basic-single" name="state" id="cbm_pacienteEditar" style="width:100%;">       
                     </select><br><br>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label for="">Especialidad</label>
                     <select class="js-example-basic-single" name="state" id="cbm_especialEditar" style="width:100%;">       
                     </select><br><br>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label for="">Medico</label>
                     <select class="js-example-basic-single" name="state" id="cbm_medicoEditar" style="width:100%;">       
                     </select><br><br>
                 </div>
-                     <div class="col-lg-12">
+                <div class="col-lg-4">
+                    <label for="">Estado</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_estadoEditar" style="width:100%;">       
+                    <option value="pendiente">Pendiente</option>
+                    <option value="cancelado">Cancelado</option>
+                    </select><br><br>
+                </div>
+                <div class="col-lg-12">
                      <label for="">Descripcion</label>
                      <textarea name="" id="txt_descripcionEditar" rows="5" class="form-control" style="resize:none">
                      </textarea>

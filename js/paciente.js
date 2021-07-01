@@ -114,16 +114,13 @@ function modificarStatus(idpaciente,status){
 
 }
 
-function AbrirModalRegistro(){
+function abrirModalRegistro(){
 	$("#modal_registro_paciente").modal({backdrop:'static',keyboard:false});
 	$("#modal_registro_paciente").modal("show");
 }
 
 
-function editarModalRegistro(){
-	$("#modal_editar_paciente").modal({backdrop:'static',keyboard:false});
-	$("#modal_editar_paciente").modal("show");
-}
+
 
 function registrar_paciente(){
 	var nombre=$("#txt_nombre").val();
@@ -184,8 +181,8 @@ $('#tabla_paciente').on('click','.editar',function(){
 	var data =table.row($(this).parents('tr')).data();
 
 	alert(data.idpaciente);
-	$("#modal_editar_paciente").modal({backdrop:'static',keyboard:false});
-	$("#modal_editar_paciente").modal('show');
+	$("#modal_registro_paciente").modal({backdrop:'static',keyboard:false});
+	$("#modal_registro_paciente").modal('show');
 	$("#txtIdpaciente").val(data.idpaciente); 
 	$("#txt_nombreEditar").val(data.pa_nombre);
 	$("#txt_apellidoEditar").val(data.pa_apellido);

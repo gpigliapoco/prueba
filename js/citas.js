@@ -22,7 +22,7 @@ function listar_citas(){
           {"data":"medico"},  
 		  {"data":"cita_status",
 			render:function(data,type,row){
-				if(data=='activo'){
+				if(data=='pendiente'){
 					return "<span class='label label-success'>"+data+"</span>";
 				}else{
 					return "<span class='label label-danger'>"+data+"</span>";
@@ -188,6 +188,7 @@ $("#tabla_citas").on('click','.editar',function(){
 	$("#cbm_pacienteEditar").val(data.idpaciente).trigger("change");
 	$("#cbm_medicoEditar").val(data.idmedico).trigger("change");
 	$("#cbm_especialEditar").val(data.idmedico).trigger("change");
+	$("#cbm_estadoEditar").val(data.cita_status).trigger("change");
 	$("#txt_descripcionEditar").val(data.cita_descripcion);
 })
 
