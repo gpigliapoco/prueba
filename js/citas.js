@@ -180,8 +180,8 @@ $("#tabla_citas").on('click','.editar',function(){
 
 	$("#txt_idCita").val(data.idcita);	
 	$("#cbm_pacienteEditar").val(data.idpaciente).trigger("change");
-	$("#cbm_medicoEditar").val(data.idmedico).trigger("change");
 	$("#cbm_especialEditar").val(data.idmedico).trigger("change");
+	$("#cbm_medicoEditar").val(data.idmedico).trigger("change");
 	$("#cbm_estadoEditar").val(data.cita_status).trigger("change");
 	$("#txt_descripcionEditar").val(data.cita_descripcion);
 })
@@ -235,6 +235,7 @@ function comboMedicoEditar(espe){
 				cadena+="<option value='"+data[i].idmedico+"'>"+data[i].medico+"</option>";
 			}
 			$("#cbm_medicoEditar").html(cadena);
+			
 			
 		}else{
 			cadena+="<option value=0>no hay registros</option>";
