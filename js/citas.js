@@ -284,7 +284,7 @@ function editarCita(){
 		return Swal.fire("Hay campos vacios","warning");
 	}
 		$.ajax({
-			url: "../controlador/cita/control_cita_registrar.php",
+			url: "../controlador/cita/control_cita_editar.php",
 			type: "POST",
 			data: {
 				idMedico:idMedico,
@@ -297,14 +297,14 @@ function editarCita(){
 		}).done(function(resp){
 			alert(resp);
 			if(resp>0){
-				$("#modal_registro_citas").modal("hide");
-				Swal.fire("Mensaje De Confirmacion","Cita registrada","success");
+				$("#modal_editar_citas").modal("hide");
+				Swal.fire("Mensaje De Confirmacion","Cita editada","success");
 				table.ajax.reload();
-				limpiarRegistros();
+				//limpiarRegistros();
 
 			}
 			else{
-				Swal.fire("Mensaje De Confirmacion","no se puede registrar cita","warning");
+				Swal.fire("Mensaje De Confirmacion","no se puede editar cita","warning");
 			}
 		})
 
