@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2021 a las 04:00:47
+-- Tiempo de generación: 05-07-2021 a las 19:07:35
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -50,6 +50,17 @@ SELECT 2;
 END IF;
 END IF;
 END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listar_consulta` (IN `fechaN` DATE, IN `fechaF` DATE)  SELECT consulta.idconsulta,consulta.con_descripcion,consulta.con_diagnostico,consulta.con_fecha_registro,consulta.con_status,consulta.idcita,
+cita.idcita,cita.idpaciente,cita.idmedico,cita.cita_descripcion,medico.idmedico,medico.doc_nombre,medico.doc_apellido,medico.idespecialidad,paciente.idpaciente,paciente.pa_nombre,paciente.pa_apellido,paciente.pa_dni,especialidad.idespecialidad,especialidad.es_especialidad,
+concat(paciente.pa_nombre,' ',paciente.pa_apellido) AS paciente,
+concat(medico.doc_nombre,' ',medico.doc_apellido) AS medico
+FROM consulta
+INNER JOIN cita ON cita.idcita=consulta.idcita
+INNER JOIN paciente ON paciente.idpaciente=cita.idpaciente
+INNER JOIN medico ON medico.idmedico=cita.idmedico
+INNER JOIN especialidad ON especialidad.idespecialidad=medico.idespecialidad
+WHERE consulta.con_fecha_registro BETWEEN fechaN AND fechaF$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCita` (IN `idc` INT(10), IN `pac` INT(10), IN `doc` INT(10), IN `descrip` TEXT, IN `sta` VARCHAR(250))  BEGIN
 
@@ -101,6 +112,13 @@ CREATE TABLE `consulta` (
   `con_status` enum('activo','inactivo') DEFAULT NULL,
   `idcita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `consulta`
+--
+
+INSERT INTO `consulta` (`idconsulta`, `con_descripcion`, `con_diagnostico`, `con_fecha_registro`, `con_status`, `idcita`) VALUES
+(1, 'prueba', 'prueba', '2021-07-05', 'activo', 3);
 
 -- --------------------------------------------------------
 
@@ -484,7 +502,7 @@ ALTER TABLE `cita`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_insumos`

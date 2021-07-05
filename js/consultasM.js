@@ -11,13 +11,16 @@ function listar_consultas(){
 	  "async": false ,
 	  "processing": true,
 	  "ajax":{
-		   url:"../controlador/procedimientos/control_proced_listar.php",
+		   url:"../controlador/consultas/control_consultas_listar.php",
 		  type:'POST'
 	  },
 	  "columns":[
-		  {"data":"idprocedimientos"},
-		  {"data":"pro_nombre"},
-		 	 
+		  {"data":"idconsulta"},
+		  {"data":"paciente.pa_dni"},
+		  {"data":"paciente"},
+		  {"data":"paciente.pa_dni"},	
+		  {"data":"medico"},
+		  {"data":"especialidad.esp_nombre"},	 	 
 		  {"data":"pro_status",
 			render:function(data,type,row){
 				if(data=='activo'){
