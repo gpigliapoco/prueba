@@ -3,9 +3,15 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD
 -- Tiempo de generación: 05-07-2021 a las 05:18:59
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
+=======
+-- Tiempo de generación: 05-07-2021 a las 19:07:35
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
+>>>>>>> 08120fc23c9253ea6260f9970ee96c1ab683fb58
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -52,18 +58,32 @@ END IF;
 END IF;
 END$$
 
+<<<<<<< HEAD
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_consulta`(IN `fechaN` DATE, IN `fechaF` DATE)
     NO SQL
 SELECT consulta.idconsulta,consulta.con_descripcion,consulta.con_diagnostico,consulta.con_fecha_registro,consulta.con_status,consulta.idcita,cita.cita_n_ate,cita.idpaciente,cita.idmedico,medico.idmedico,medico.doc_nombre,medico.doc_apellido,medico.idespecialidad,paciente.idpaciente,paciente.pa_nombre,paciente.pa_apellido,paciente.pa_dni,especialidad.idespecialidad,especialidad.es_especialidad,CONCAT(medico.doc_nombre,' ',medico.doc_apellido) as medico,CONCAT(paciente.pa_nombre,' ',paciente.pa_apellido) as paciente 
+=======
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listar_consulta` (IN `fechaN` DATE, IN `fechaF` DATE)  SELECT consulta.idconsulta,consulta.con_descripcion,consulta.con_diagnostico,consulta.con_fecha_registro,consulta.con_status,consulta.idcita,
+cita.idcita,cita.idpaciente,cita.idmedico,cita.cita_descripcion,medico.idmedico,medico.doc_nombre,medico.doc_apellido,medico.idespecialidad,paciente.idpaciente,paciente.pa_nombre,paciente.pa_apellido,paciente.pa_dni,especialidad.idespecialidad,especialidad.es_especialidad,
+concat(paciente.pa_nombre,' ',paciente.pa_apellido) AS paciente,
+concat(medico.doc_nombre,' ',medico.doc_apellido) AS medico
+>>>>>>> 08120fc23c9253ea6260f9970ee96c1ab683fb58
 FROM consulta
 INNER JOIN cita ON cita.idcita=consulta.idcita
 INNER JOIN paciente ON paciente.idpaciente=cita.idpaciente
 INNER JOIN medico ON medico.idmedico=cita.idmedico
+<<<<<<< HEAD
 INNER JOIN especialidad on especialidad.idespecialidad=medico.idespecialidad
 WHERE consulta.con_fecha_registro BETWEEN fechaN and fechaF$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCita`(IN `idc` INT(10), IN `pac` INT(10), IN `doc` INT(10), IN `descrip` TEXT, IN `sta` VARCHAR(250))
 BEGIN
+=======
+INNER JOIN especialidad ON especialidad.idespecialidad=medico.idespecialidad
+WHERE consulta.con_fecha_registro BETWEEN fechaN AND fechaF$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCita` (IN `idc` INT(10), IN `pac` INT(10), IN `doc` INT(10), IN `descrip` TEXT, IN `sta` VARCHAR(250))  BEGIN
+>>>>>>> 08120fc23c9253ea6260f9970ee96c1ab683fb58
 
 UPDATE cita set cita.idpaciente=pac,cita.idmedico=doc,cita.cita_descripcion=descrip,cita.cita_status=sta WHERE cita.idcita=idc;
 
@@ -113,6 +133,13 @@ CREATE TABLE IF NOT EXISTS `consulta` (
   `con_status` enum('activo','inactivo') DEFAULT NULL,
   `idcita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `consulta`
+--
+
+INSERT INTO `consulta` (`idconsulta`, `con_descripcion`, `con_diagnostico`, `con_fecha_registro`, `con_status`, `idcita`) VALUES
+(1, 'prueba', 'prueba', '2021-07-05', 'activo', 3);
 
 -- --------------------------------------------------------
 
@@ -480,7 +507,12 @@ ALTER TABLE `cita`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
+<<<<<<< HEAD
   MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT;
+=======
+  MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+>>>>>>> 08120fc23c9253ea6260f9970ee96c1ab683fb58
 --
 -- AUTO_INCREMENT de la tabla `detalle_insumos`
 --

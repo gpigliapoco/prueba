@@ -1,8 +1,8 @@
 <?php
-require_once '../../modelo/m_especialidad.php';
+require_once '../../modelo/m_consultas.php';
 
-$mu= new modelo_especialidad();
-$consulta=$mu->listar_especial();
+$mu= new modelo_consulta();
+$consulta=$mu->listar_consulta();
 if($consulta){
     echo json_encode($consulta);
 }else{
