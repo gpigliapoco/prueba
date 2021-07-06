@@ -10,8 +10,8 @@
         $this->conexion->conectar();
         }
 
-        function listar_consulta(){
-            $consulta = "SELECT * FROM especialidad";
+        function listar_consulta($fechaN,$fechaF){
+            $consulta = "call listar_consulta('$fechaN','$fechaF')";
             $arreglo = array();
             if ($resultado = $this->conexion->conexion->query($consulta)) {
                 while ($consulta_VU = mysqli_fetch_assoc($resultado)) {

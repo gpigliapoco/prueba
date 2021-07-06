@@ -12,15 +12,25 @@
         </div>
             <!-- /.box-header -->
             <div class="form-group">
-                <div class="col-lg-10">
-                <div class="input-group">
-                        <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    </div>
+                <div class="col-lg-4">
+                
+                        <label for="">Fecha inicio</label>
+                        <input type="date" id="txt_fechaN" class="form-control">
+                    
+                </div>
+                <div class="col-lg-4">
+                
+                <label for="">Fecha final</label>
+                <input type="date" id="txt_fechaF" class="form-control">
+            
+                </div>
+                <div class="col-lg-2">
+                <button class="btn btn-danger" style="width:100%" onclick="listar_consultas()"><i class="glyphicon glyphicon-search"></i>Buscar</button>
                 </div>
                 <div class="col-lg-2">
                 <button class="btn btn-danger" style="width:100%" onclick="AbrirModalRegistro()"><i class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
                 </div>
+                
             </div>
             <div class="box-body">
             <table id="tabla_consultas" class="display responsive nowrap" style="width:100%">

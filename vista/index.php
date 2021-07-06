@@ -205,7 +205,7 @@ if(!isset($_SESSION['S_idusuario'])){
         
         </li>
         <li class="active treeview">
-          <a onclick="cargar_contenido('contenido_principal','citas/vista_consultasMedicas.php')">
+          <a onclick="cargar_contenido('contenido_principal','consultas/vista_consultasMedicas.php')">
             <i class="fa fa-cubes"></i> <span>Consultas medicas</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

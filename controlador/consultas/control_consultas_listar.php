@@ -3,7 +3,9 @@
 require_once '../../modelo/m_consultas.php';
 
 $mu= new modelo_consulta();
-$consulta=$mu->listar_consulta();
+$fechaN = (isset($_POST['fechaN'])) ? $_POST['fechaN'] : '';
+$fechaF = (isset($_POST['fechaF'])) ? $_POST['fechaF'] : '';
+$consulta=$mu->listar_consulta($fechaN,$fechaF);
 if($consulta){
     echo json_encode($consulta);
 }else{

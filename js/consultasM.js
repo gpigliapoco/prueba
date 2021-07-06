@@ -1,6 +1,9 @@
 var table; //// para poder llamar al reload en otra funcion.
 
 function listar_consultas(){
+		var fechaN=$("#txt_fechaN").val();
+		var fechaF=$("#txt_fechaF").val();
+
 	 table = $("#tabla_consultas").DataTable({
 	  "ordering":false,   
 	  "bLengthChange":false,
@@ -12,16 +15,20 @@ function listar_consultas(){
 	  "processing": true,
 	  "ajax":{
 		   url:"../controlador/consultas/control_consultas_listar.php",
-		  type:'POST'
+		  type:'POST',
+		  data: {
+			  fechaN:fechaN,
+			  fechaF:fechaF
+		  }
 	  },
 	  "columns":[
 		  {"data":"idconsulta"},
-		  {"data":"paciente.pa_dni"},
+		  {"data":"pa_dni"},
 		  {"data":"paciente"},
-		  {"data":"paciente.pa_dni"},	
+		  {"data":"con_fecha_registro"},	
 		  {"data":"medico"},
-		  {"data":"especialidad.esp_nombre"},	 	 
-		  {"data":"pro_status",
+		  {"data":"es_especialidad"},	 	 
+		  {"data":"con_status",
 			render:function(data,type,row){
 				if(data=='activo'){
 					return "<span class='label label-success'>"+data+"</span>";
