@@ -14,7 +14,7 @@
             <div class="form-group">
                 <div class="col-lg-4">
                 
-                        <label for="">Fecha inicio</label>
+                      <label for="">Fecha inicio</label>
                         <input type="date" id="txt_fechaN" class="form-control">
                     
                 </div>
@@ -73,11 +73,22 @@
             <h4 class="modal-title"><b>Registrar Procedimiento</b></h4>
             </div>
             <div class="modal-body">
+            <div class="col-lg-12">
+                    <label for="">Paciente</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_paciente_consulta" style="width:100%;">       
+                    </select><br><br>
+                </div>
                 <div class="col-lg-12">
-                    <label for="">procedimiento</label>
-                    <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese procedimiento"><br>
-                </div>               
-            </div>
+                     <label for="">Descripcion</label>
+                     <textarea name="" id="txt_descripcion" rows="5" class="form-control" style="resize:none">
+                     </textarea>
+                    </div> 
+                    <div class="col-lg-12">
+                     <label for="">Descripcion</label>
+                     <textarea name="" id="txt_descripcion" rows="5" class="form-control" style="resize:none">
+                     </textarea>
+                    </div>          
+                  </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>

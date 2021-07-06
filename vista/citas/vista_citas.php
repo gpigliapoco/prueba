@@ -80,7 +80,7 @@
                      <label for="">Descripcion</label>
                      <textarea name="" id="txt_descripcion" rows="5" class="form-control" style="resize:none">
                      </textarea>
-                </div>
+                    </div>
                 </div> 
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="registrarCita()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
