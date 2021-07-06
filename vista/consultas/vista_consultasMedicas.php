@@ -111,7 +111,21 @@
 </form>
 <script>
 $(document).ready(function() {
-   // listar_procedimientos();
+   var n=new Date();
+   var y=n.getFullYear();
+   var m=n.getMonth()+1;
+   var d=n.getDate();
+   if(d<10){
+       d='0'+d;
+   }
+   if(m<10){
+       m='0'+m;
+   }
+
+   document.getElementById("txt_fechaN").value =y +"-"+m+"-"+d;
+   document.getElementById("txt_fechaF").value =y +"-"+m+"-"+d;
+
+   listar_consultas();
     
 } );
 
