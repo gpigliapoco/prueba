@@ -65,12 +65,12 @@
           <!-- /.box -->
 </div>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_registro_procedimientos" role="dialog">
-        <div class="modal-dialog modal-sm">
+    <div class="modal fade" id="modal_registro_consultas" role="dialog">
+        <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Registrar Procedimiento</b></h4>
+            <h4 class="modal-title"><b>Registrar Consulta</b></h4>
             </div>
             <div class="modal-body">
             <div class="col-lg-12">
@@ -84,13 +84,13 @@
                      </textarea>
                     </div> 
                     <div class="col-lg-12">
-                     <label for="">Descripcion</label>
-                     <textarea name="" id="txt_descripcion" rows="5" class="form-control" style="resize:none">
-                     </textarea>
+                     <label for="">Diagnostico</label>
+                     <textarea name="" id="txt_diagnostico" rows="5" class="form-control" style="resize:none">
+                     </textarea><br><br>
                     </div>          
                   </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrarProcedimiento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="registrarConsulta()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
@@ -137,6 +137,7 @@ $(document).ready(function() {
    document.getElementById("txt_fechaF").value =y +"-"+m+"-"+d;
 
    listar_consultas();
+   comboPacienteConsulta();
     
 } );
 

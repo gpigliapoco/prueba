@@ -58,7 +58,7 @@ function listar_consultas(){
 
 function comboPacienteConsulta(){
 	$.ajax({
-		url: "../controlador/cita/control_combo_paciente.php",
+		url: "../controlador/consultas/control_combo_paciente_consulta.php",
 		type: "POST",
 	}).done(function(resp){
 	//	alert(resp);  // para ver que datos trae
@@ -78,3 +78,10 @@ function comboPacienteConsulta(){
 		}
 	})
 }
+
+
+
+function AbrirModalRegistro(){
+	$("#modal_registro_consultas").modal({backdrop:'static',keyboard:false});
+	$("#modal_registro_consultas").modal('show');
+} 

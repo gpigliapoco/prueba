@@ -23,6 +23,18 @@
             }
         }
 
+        function listar_combo_paciente_consulta(){
+            $consulta = "call Listar_paciente";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
        
     }
 
