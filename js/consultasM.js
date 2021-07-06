@@ -55,3 +55,26 @@ function listar_consultas(){
  
 
 }
+
+function comboPacienteConsulta(){
+	$.ajax({
+		url: "../controlador/cita/control_combo_paciente.php",
+		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idpaciente+"'>"+data[i].paciente+"</option>";
+			}
+			$("#cbm_paciente_consulta").html(cadena);
+			//$("#cbm_pacienteEditar").html(cadena);
+		}
+	})
+}
