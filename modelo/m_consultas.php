@@ -35,8 +35,22 @@
                 $this->conexion->cerrar();
             }
         } 
+
+        function registrar_consulta($idCita,$descripcion,$diagnostico){
+            $consulta = "CALL registrar_consulta('$idCita','$descripcion','$diagnostico') ";	
+            
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }else {
+                    return 0;
+                 }
+    
+                 $this->conexion->cerrar();
+        }
        
     }
+
 
 
 

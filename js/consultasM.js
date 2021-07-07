@@ -30,7 +30,7 @@ function listar_consultas(){
 		  {"data":"es_especialidad"},	 	 
 		  {"data":"con_status",
 			render:function(data,type,row){
-				if(data=='activo'){
+				if(data=='pendiente'){
 					return "<span class='label label-success'>"+data+"</span>";
 				}else{
 					return "<span class='label label-danger'>"+data+"</span>";
@@ -61,17 +61,17 @@ function comboPacienteConsulta(){
 		url: "../controlador/consultas/control_combo_paciente_consulta.php",
 		type: "POST",
 	}).done(function(resp){
-	//	alert(resp);  // para ver que datos trae
+		//alert(resp);  // para ver que datos trae
 		var data=JSON.parse(resp);
 		var cadena="";
-	/* 	 alert(data);
-		alert(data[0].rol);
-		for(var i=0;i < data.length;i++){
-			alert(data[i].rol);			// prueba de recorrido de datos.
-		}  */
+	 	// alert(data);
+		//alert(data[0].idcita);
+		//for(var i=0;i < data.length;i++){
+	//		alert(data[i].rol);			// prueba de recorrido de datos.
+	//	}  
 		if(data.length>0){
 			for(var i=0;i < data.length;i++){
-				cadena+="<option value='"+data[i].idpaciente+"'>"+data[i].paciente+"</option>";
+				cadena+="<option value='"+data[i].idcita+"'>"+data[i].paciente+"</option>";
 			}
 			$("#cbm_paciente_consulta").html(cadena);
 			//$("#cbm_pacienteEditar").html(cadena);
@@ -87,34 +87,30 @@ function AbrirModalRegistro(){
 } 
 
 function registrarConsulta(){
-	var idPaciente= $("#cbm_paciente").val();
+	var idCita= $("#cbm_paciente_consulta").val();
 	var diagnostico= $("#txt_diagnostico").val();
 	var descripcion= $("#txt_descripcion").val();
-	var idCita=
-
-	if(idMedico.lenght==0 || idPaciente.lenght==0){
-		return Swal.fire("Hay campos vacios","warning");
-	}
+		
 		$.ajax({
-			url: "../controlador/cita/control_cita_registrar.php",
+			url: "../controlador/consultas/control_registrar_consulta.php",
 			type: "POST",
 			data: {
-				idMedico:idMedico,
-				idPaciente:idPaciente,
+				idCita:idCita,
+				diagnostico:diagnostico,
 				descripcion:descripcion
 			}
 		}).done(function(resp){
 			alert(resp);
 			if(resp>0){
-				$("#modal_registro_citas").modal("hide");
-				Swal.fire("Mensaje De Confirmacion","Cita registrada","success");
+				$("#modal_registro_consultas").modal("hide");
+				Swal.fire("Mensaje De Confirmacion","Consulta registrada","success");
 				table.ajax.reload();
-				limpiarRegistros();
+				//limpiarRegistros();
 
 			}
 			else{
-				Swal.fire("Mensaje De Confirmacion","no se puede registrar cita","warning");
+				Swal.fire("Mensaje De Confirmacion","no se puede registrar consulta","warning");
 			}
 		})
 
-}
+} 
