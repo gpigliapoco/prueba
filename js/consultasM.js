@@ -114,3 +114,45 @@ function registrarConsulta(){
 		})
 
 } 
+
+$("#tabla_consultas").on('click','.editar',function(){
+	var data =table.row($(this).parents('tr')).data();
+
+	//alert(data.idpaciente);
+	$("#modal_editar_consultas").modal({backdrop:'static',keyboard:false});
+	$("#modal_editar_consultas").modal('show')
+	$("#txt_idconsulta").val(data.idconsulta);	
+	$("#txt_pacienteEditar").val(data.paciente);
+	$("#txt_descripcionEditar").val(data.con_descripcion);
+	$("#txt_diagnosticoEditar").val(data.con_diagnostico);
+	
+})
+
+function editarConsulta(){
+	var idconsulta= $("#txt_idconsulta").val();
+	var diagnostico= $("#txt_diagnosticoEditar").val();
+	var descripcion= $("#txt_descripcionEditar").val();
+		
+		$.ajax({
+			url: "../controlador/consultas/control_editar_consulta.php",
+			type: "POST",
+			data: {
+				idconsulta:idconsulta,
+				diagnostico:diagnostico,
+				descripcion:descripcion
+			}
+		}).done(function(resp){
+			alert(resp);
+			if(resp>0){
+				$("#modal_editar_consultas").modal("hide");
+				Swal.fire("Mensaje De Confirmacion","Consulta editada","success");
+				table.ajax.reload();
+				//limpiarRegistros();
+
+			}
+			else{
+				Swal.fire("Mensaje De Confirmacion","no se puede registrar consulta","warning");
+			}
+		})
+
+} 

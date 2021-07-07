@@ -48,6 +48,19 @@
     
                  $this->conexion->cerrar();
         }
+
+        function editar_consulta($idconsulta,$descripcion,$diagnostico){
+            $consulta = "CALL editar_consulta('$idconsulta','$descripcion','$diagnostico') ";	
+            
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }else {
+                    return 0;
+                 }
+    
+                 $this->conexion->cerrar();
+        }
        
     }
 
