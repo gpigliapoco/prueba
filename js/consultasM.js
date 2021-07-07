@@ -85,3 +85,36 @@ function AbrirModalRegistro(){
 	$("#modal_registro_consultas").modal({backdrop:'static',keyboard:false});
 	$("#modal_registro_consultas").modal('show');
 } 
+
+function registrarConsulta(){
+	var idPaciente= $("#cbm_paciente").val();
+	var diagnostico= $("#txt_diagnostico").val();
+	var descripcion= $("#txt_descripcion").val();
+	var idCita=
+
+	if(idMedico.lenght==0 || idPaciente.lenght==0){
+		return Swal.fire("Hay campos vacios","warning");
+	}
+		$.ajax({
+			url: "../controlador/cita/control_cita_registrar.php",
+			type: "POST",
+			data: {
+				idMedico:idMedico,
+				idPaciente:idPaciente,
+				descripcion:descripcion
+			}
+		}).done(function(resp){
+			alert(resp);
+			if(resp>0){
+				$("#modal_registro_citas").modal("hide");
+				Swal.fire("Mensaje De Confirmacion","Cita registrada","success");
+				table.ajax.reload();
+				limpiarRegistros();
+
+			}
+			else{
+				Swal.fire("Mensaje De Confirmacion","no se puede registrar cita","warning");
+			}
+		})
+
+}
