@@ -24,7 +24,7 @@
                 <button class="btn btn-danger" style="width:100%" onclick="listar_historial()"><i class="glyphicon glyphicon-search"></i>Buscar</button>
                 </div>
                 <div class="col-lg-2">
-                <button class="btn btn-danger" style="width:100%" onclick="AbrirModalRegistro()"><i class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
+                <button class="btn btn-danger" style="width:100%" onclick="cargar_contenido('contenido_principal','historial/vista_historialManten.php')"><i class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
                 </div>
                 
             </div>
