@@ -210,10 +210,16 @@ if(!isset($_SESSION['S_idusuario'])){
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-        
-        </li>
- 
+          </a>        
+        </li> 
+        <li class="active treeview">
+          <a onclick="cargar_contenido('contenido_principal','historial/vista_historial.php')">
+            <i class="fa fa-cubes"></i> <span>Historial medico</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>        
+        </li> 
       </ul>
     </section>
     <!-- /.sidebar -->
