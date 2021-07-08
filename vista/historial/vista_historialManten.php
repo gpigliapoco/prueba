@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-lg-2">
                     <label for="">&nbsp;</label><br>
-                    <button class="btn btn-success"><i class="fa fa-search"></i>Buscar Consultas</button>
+                    <button class="btn btn-success" onclick="AbrirModalHistorial()" ><i class="fa fa-search"></i>Buscar Consultas</button>
                 </div>
                 <div class="col-lg-6">
                     <label for="">Descripcion cita</label>
@@ -90,7 +90,7 @@
           <!-- /.box -->
 </div>
 <form autocomplete="false" onsubmit="return false">
-    <div class="modal fade" id="modal_registro_consultas" role="dialog">
+    <div class="modal fade" id="modal_historialDia_consultas" role="dialog">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

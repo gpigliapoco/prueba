@@ -48,3 +48,56 @@ function listar_historial(){
  
 
 }
+
+/////////////////tabla mantenimiento/////////////
+
+
+var tableConsultas; //// para poder llamar al reload en otra funcion.
+
+function listar_historialDia(){
+		
+
+	 tableConsultas = $("#tabla_Consultahistorial").DataTable({
+	  "ordering":false,   
+	  "bLengthChange":false,
+	  "searching": { "regex": false },
+	  "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
+	  "pageLength": 10,
+	  "destroy":true,
+	  "async": false ,
+	  "processing": true,
+	  "ajax":{
+		   url:"../controlador/historial/control_historialDia.php",
+		  type:'POST',
+		 
+	  },
+	  "columns":[
+		  {"data":"idconsulta"},
+          {"data":"con_fecha_registro"},
+		  {"data":"idhistoria_clinica"},
+		  {"data":"paciente"},
+
+		  {"defaultContent":"<button style='font-size:13px;' type='button' class='enviar btn btn-primary'><i class='fa fa-edit'></i>enviar</button>"}
+	  ],
+
+	  "language":idioma_espanol,
+	  select: true
+  });
+  
+
+  document.getElementById("tabla_Consultahistorial_filter").style.display="none";
+  $('input.global_filter').on( 'keyup click', function () {
+	   filterGlobal();
+   } );
+   $('input.column_filter').on( 'keyup click', function () {
+	   filterColumn( $(this).parents('tr').attr('data-column') );
+   });
+ 
+
+}
+
+function AbrirModalHistorial(){
+	$("#modal_historialDia_consultas").modal({backdrop:'static',keyboard:false});
+	$("#modal_historialDia_consultas").modal('show');
+	listar_historialDia();
+} 
