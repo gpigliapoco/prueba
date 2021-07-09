@@ -77,7 +77,7 @@ function listar_historialDia(){
 		  {"data":"idhistoria_clinica"},
 		  {"data":"paciente"},
 
-		  {"defaultContent":"<button style='font-size:13px;' type='button' class='enviar btn btn-primary'><i class='fa fa-edit'></i>enviar</button>"}
+		  {"defaultContent":"</i></button>&nbsp;<button style='font-size:13px;' type='button' class='enviar btn btn-primary'><i class='fa fa-edit'></i></button>"}
 	  ],
 
 	  "language":idioma_espanol,
@@ -101,3 +101,10 @@ function AbrirModalHistorial(){
 	$("#modal_historialDia_consultas").modal('show');
 	listar_historialDia();
 } 
+
+$("#tabla_Consultahistorial").on('click','.enviar',function(){
+	//var data =tableConsultas.row($(this).parents('tr')).data();
+
+	alert("funciona");
+	
+})

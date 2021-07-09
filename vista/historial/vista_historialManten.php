@@ -105,22 +105,14 @@
                         <th>Fecha</th>
                         <th>Codigo Historial</th>
                         <th>Paciente</th>                                                                        
-                        <th>Enviar</th>
+                        <th>Accion</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Fecha</th>
-                        <th>Codigo Historial</th>
-                        <th>Paciente</th>                                                                        
-                        <th>Enviar</th>
-                    </tr>
-                </tfoot>
+                
             </table>        
                 </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registrarConsulta()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
