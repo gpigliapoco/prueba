@@ -65,7 +65,7 @@
               <div class="row">
                       <div class="col-lg-6">
                       <label for="">Insumos</label>
-                        <select class="js-example-basic-single" name="state" id="cbm_procedimientos" style="width:100%;"> 
+                        <select class="js-example-basic-single" name="state" id="cbm_insumos" style="width:100%;"> 
                         
                         </select><br><br>
                       </div>
@@ -155,7 +155,9 @@
 
 <script>
 $(document).ready(function() {
-  
+  comboMedicamentos();
+  comboInsumos();
+  comboProcedimientos();
     
 } );
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2021 a las 20:14:07
+-- Tiempo de generación: 12-07-2021 a las 19:37:19
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -33,6 +33,15 @@ set @TURNO:=(SELECT COUNT(*) +1 FROM cita WHERE cita.cita_fecha_registro=CURDATE
 INSERT INTO cita(cita.cita_n_ate,cita.cita_fecha_registro,cita.cita_status,cita.idpaciente,cita.idmedico,cita.cita_descripcion) VALUES (@turno,CURDATE(),"pendiente",IDMEDICO,IDPACIENTE,DESCRIPCION);
 SELECT LAST_INSERT_ID();
 END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `comboInsumos` ()  SELECT insumos.idinsumos,insumos.ins_nombre
+FROM insumos$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `comboMedicamentos` ()  SELECT medicamentos.idmedicamentos,medicamentos.medi_nombre
+FROM medicamentos$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `comboProcedimientos` ()  SELECT procedimientos.idprocedimientos,procedimientos.pro_nombre
+FROM procedimientos$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `editar_consulta` (IN `id` INT, IN `descrip` VARCHAR(250), IN `diagn` VARCHAR(250))  UPDATE consulta
 SET consulta.con_descripcion=descrip,consulta.con_diagnostico=diagn
@@ -92,7 +101,7 @@ WHERE cita.cita_fecha_registro=CURDATE() AND cita.cita_status='PENDIENTE'$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_consulta` (IN `id` INT, IN `descrip` VARCHAR(250), IN `diagno` VARCHAR(250))  NO SQL
 BEGIN
 INSERT INTO consulta(consulta.con_descripcion,consulta.con_diagnostico,consulta.con_fecha_registro,consulta.con_status,consulta.idcita)
-VALUES(descrip,diagno,CURDATE(),"PENDIENTE",id);
+VALUES(descrip,diagno,CURDATE(),"atendida",id);
 UPDATE cita 
 SET cita.cita_status = "ATENDIDO"
 WHERE cita.idcita=id;
@@ -136,8 +145,10 @@ INSERT INTO `cita` (`idcita`, `cita_n_ate`, `cita_fecha_registro`, `cita_status`
 (6, 2, '2021-07-01', 'pendiente', 3, 3, 'asdasdasd'),
 (7, 1, '2021-07-06', 'pendiente', 1, 3, 'dolor'),
 (8, 2, '2021-07-06', 'pendiente', 2, 3, 'prueba'),
-(9, 1, '2021-07-07', 'atendido', 2, 2, 'dolor de panza'),
-(10, 2, '2021-07-07', 'atendido', 1, 3, 'muela');
+(9, 1, '2021-07-07', 'pendiente', 2, 3, 'dolor de panza'),
+(10, 2, '2021-07-07', 'atendido', 1, 3, 'muela'),
+(11, 1, '2021-07-12', 'atendido', 2, 3, 'MUELA'),
+(12, 2, '2021-07-12', 'atendido', 3, 2, 'prueba 15');
 
 -- --------------------------------------------------------
 
@@ -150,7 +161,7 @@ CREATE TABLE `consulta` (
   `con_descripcion` text DEFAULT NULL,
   `con_diagnostico` text DEFAULT NULL,
   `con_fecha_registro` date DEFAULT NULL,
-  `con_status` enum('pendiente','cancelado') DEFAULT NULL,
+  `con_status` enum('atendida','cancelado') DEFAULT NULL,
   `idcita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -159,10 +170,12 @@ CREATE TABLE `consulta` (
 --
 
 INSERT INTO `consulta` (`idconsulta`, `con_descripcion`, `con_diagnostico`, `con_fecha_registro`, `con_status`, `idcita`) VALUES
-(1, 'prueba', 'prueba', '2021-07-05', '', 3),
-(2, 'dolor 5', 'prueba 5', '2021-07-07', 'pendiente', 2),
-(3, 'prueba 1', 'prueba 2                     ', '2021-07-08', 'pendiente', 10),
-(4, 'prueba 3', 'prueba 3                     ', '2021-07-07', 'pendiente', 9);
+(1, 'prueba', 'prueba', '2021-07-05', 'atendida', 3),
+(2, 'dolor 5', 'prueba 5', '2021-07-07', 'atendida', 2),
+(3, 'prueba 1', 'prueba 2                     ', '2021-07-08', 'atendida', 10),
+(4, 'prueba 3', 'prueba 3                     ', '2021-07-07', 'atendida', 9),
+(5, 'DOLOR                   ', 'DOLOR                     ', '2021-07-12', 'atendida', 11),
+(6, 'prueba 16', 'prueba 16                     ', '2021-07-12', 'atendida', 12);
 
 -- --------------------------------------------------------
 
@@ -553,13 +566,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_insumos`

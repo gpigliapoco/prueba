@@ -35,6 +35,45 @@
                 $this->conexion->cerrar();
             }
         }
+
+        function listar_combo_insumos(){
+            $consulta = "call comboInsumos";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
+
+        function listar_combo_procedimientos(){
+            $consulta = "call comboProcedimientos";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
+
+        function listar_combo_medicamentos(){
+            $consulta = "call comboMedicamentos";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
        
  
        

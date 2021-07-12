@@ -119,3 +119,71 @@ $('#tabla_Consultahistorial').on('click','.enviar',function(){
 
 })
 
+function comboInsumos(){
+	$.ajax({
+		url: "../controlador/historial/control_combo_insumos.php",
+		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idinsumos+"'>"+data[i].ins_nombre+"</option>";
+			}
+			$("#cbm_insumos").html(cadena);
+			//$("#cbm_pacienteEditar").html(cadena);
+		}
+	})
+}
+
+function comboProcedimientos(){
+	$.ajax({
+		url: "../controlador/historial/control_combo_procedimientos.php",
+		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idprocedimientos+"'>"+data[i].pro_nombre+"</option>";
+			}
+			$("#cbm_procedimientos").html(cadena);
+			//$("#cbm_pacienteEditar").html(cadena);
+		}
+	})
+}
+
+function comboMedicamentos(){
+	$.ajax({
+		url: "../controlador/historial/control_combo_medicamentos.php",
+		type: "POST",
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	/* 	 alert(data);
+		alert(data[0].rol);
+		for(var i=0;i < data.length;i++){
+			alert(data[i].rol);			// prueba de recorrido de datos.
+		}  */
+		if(data.length>0){
+			for(var i=0;i < data.length;i++){
+				cadena+="<option value='"+data[i].idmedicamentos+"'>"+data[i].medi_nombre+"</option>";
+			}
+			$("#cbm_medicamento").html(cadena);
+			//$("#cbm_pacienteEditar").html(cadena);
+		}
+	})
+}
