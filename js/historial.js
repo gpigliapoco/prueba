@@ -30,7 +30,7 @@ function listar_historial(){
 		  {"data":"con_diagnostico"},	 	 
 		
 		  
-		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
+		  {"defaultContent":"<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>"}
 	  ],
 
 	  "language":idioma_espanol,
@@ -76,8 +76,7 @@ function listar_historialDia(){
           {"data":"con_fecha_registro"},
 		  {"data":"idhistoria_clinica"},
 		  {"data":"paciente"},
-
-		  {"defaultContent":"</i></button>&nbsp;<button style='font-size:13px;' type='button' class='enviar btn btn-primary'><i class='fa fa-edit'></i></button>"}
+		  {"defaultContent":"<button style='font-size:13px;' type='button' class='enviar btn btn-success' title='enviar'><i class='fa fa-play-circle'></i>enviar</button>"}
 	  ],
 
 	  "language":idioma_espanol,
@@ -102,9 +101,21 @@ function AbrirModalHistorial(){
 	listar_historialDia();
 } 
 
-$("#tabla_Consultahistorial").on('click','.enviar',function(){
-	//var data =tableConsultas.row($(this).parents('tr')).data();
-
-	alert("funciona");
+$('#tabla_Consultahistorial').on('click','.enviar',function(){
 	
+	var data =tableConsultas.row($(this).parents('tr')).data();
+
+	//alert(data.paciente);
+	alert(data.idhistoria_clinica);
+	$("#modal_historialDia_consultas").modal({backdrop:'static',keyboard:false});
+	$("#modal_historialDia_consultas").modal('hide')
+	$("#txt_codigo").val(data.idhistoria_clinica);	
+	$("#txt_pacienteMante").val(data.paciente);
+	$("#txt_descripcionMante").val(data.con_descripcion);
+	$("#txt_diagnosticoMante").val(data.con_diagnostico);
+	$("#txt_idConsulta").val(data.idconsulta);
+
+	
+
 })
+
