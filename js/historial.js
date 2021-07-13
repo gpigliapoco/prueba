@@ -187,3 +187,10 @@ function comboMedicamentos(){
 		}
 	})
 }
+
+function agregarProcedimientos(){
+	var id=$("#cbm_procedimientos").val();
+	var procedi=$("#cbm_procedimientos option:selected").text();
+
+	var agregarDatos=''
+}

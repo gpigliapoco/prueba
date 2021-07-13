@@ -55,7 +55,21 @@
                       </div>
                       <div class="col-lg-2">
                         <label>&nbsp;</label>
-                        <button class="btn btn-primary" style="width:100%"><i class="fa fa-plus-square"></i>&nbsp;agregar</button>
+                        <button class="btn btn-primary" style="width:100%" onclick="agregarProcedimiento()"><i class="fa fa-plus-square"></i>&nbsp;agregar</button>
+
+                      </div>
+                      <div class="col-lg-12 table-responsive"><br>
+                        <table id="tabla_procedimientos" style="width:100%" class="table">
+                          <thead bgcolor="black" style="color:#ffffff;">
+                            <th>ID</th>
+                            <th>PROCEDIMIENTO</th>
+                            <th>ACCION</th>
+                          </thead> 
+                          <tbody id="tbody_tabla_procedimientos">
+
+                          </tbody>
+
+                        </table>
 
                       </div>
                 </div>
