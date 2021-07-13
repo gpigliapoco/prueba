@@ -258,3 +258,75 @@ function stockInsumos(id){
 		}
 	})
 }
+
+function agregarInsumos(){
+	var id=$("#cbm_insumos").val();
+	var insu=$("#cbm_insumos option:selected").text();
+	var cantidadActual=$("#txt_INstock").val();
+	var cantidad=$("#txt_INcantidad").val();
+
+	if(parseInt(cantidad)>parseInt(cantidadActual)){
+		return Swal.fire("no hay suficiente stock","warning");
+	}
+	
+	if(verificarIDInsumos(id)){
+		return Swal.fire("ya existe en la tabla","warning");
+	}
+
+	var agregarDatos="<tr>";
+	 agregarDatos+= "<td for='id'>"+id+"</td>";
+	 agregarDatos+= "<td>"+insu+"</td>";
+	 agregarDatos+= "<td>"+cantidad+"</td>";
+	 agregarDatos+= "<td><button class='btn btn-danger' onclick='removeInsumos(this)'><i class='fa fa-trash'></i></button></td>";
+	 agregarDatos+= "</tr>";
+
+	 $("#tbody_tabla_insumos").append(agregarDatos);
+}
+
+function verificarIDInsumos(id){
+	let idverificar=document.querySelectorAll('#tabla_insumos td[for="id"] '); /// captura los datos 
+	return [].filter.call(idverificar, td=> td.textContent === id ).length===1; ///verifica si el id ya esta agregado en la tabla , para no agregar dos veces
+}
+
+function removeInsumos(t){
+	var td= t.parentNode;
+	var tr= td.parentNode;
+	var table= tr.parentNode;
+	table.removeChild(tr);
+}
+
+function agregarMedicamentos(){
+	var id=$("#cbm_medicamento").val();
+	var medi=$("#cbm_medicamento option:selected").text();
+	var cantidadActual=$("#txt_MEstock").val();
+	var cantidad=$("#txt_MEcantidad").val();
+
+	if(parseInt(cantidad)>parseInt(cantidadActual)){
+		return Swal.fire("no hay suficiente stock","warning");
+	}
+	
+	if(verificarIDmedicamento(id)){
+		return Swal.fire("ya existe en la tabla","warning");
+	}
+
+	var agregarDatos="<tr>";
+	 agregarDatos+= "<td for='id'>"+id+"</td>";
+	 agregarDatos+= "<td>"+medi+"</td>";
+	 agregarDatos+= "<td>"+cantidad+"</td>";
+	 agregarDatos+= "<td><button class='btn btn-danger' onclick='removeMedicamento(this)'><i class='fa fa-trash'></i></button></td>";
+	 agregarDatos+= "</tr>";
+
+	 $("#tbody_tabla_medicamentos").append(agregarDatos);
+}
+
+function verificarIDmedicamento(id){
+	let idverificar=document.querySelectorAll('#tabla_medicamentos td[for="id"] '); /// captura los datos 
+	return [].filter.call(idverificar, td=> td.textContent === id ).length===1; ///verifica si el id ya esta agregado en la tabla , para no agregar dos veces
+}
+
+function removeMedicamento(t){
+	var td= t.parentNode;
+	var tr= td.parentNode;
+	var table= tr.parentNode;
+	table.removeChild(tr);
+}
