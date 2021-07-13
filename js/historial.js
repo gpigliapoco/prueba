@@ -137,6 +137,8 @@ function comboInsumos(){
 				cadena+="<option value='"+data[i].idinsumos+"'>"+data[i].ins_nombre+"</option>";
 			}
 			$("#cbm_insumos").html(cadena);
+			var id=$("#cbm_insumos").val();
+			stockInsumos(id);
 			//$("#cbm_pacienteEditar").html(cadena);
 		}
 	})
@@ -183,6 +185,8 @@ function comboMedicamentos(){
 				cadena+="<option value='"+data[i].idmedicamentos+"'>"+data[i].medi_nombre+"</option>";
 			}
 			$("#cbm_medicamento").html(cadena);
+			var id=$("#cbm_medicamento").val();
+			stockMedicamentos(id);
 			//$("#cbm_pacienteEditar").html(cadena);
 		}
 	})
@@ -215,4 +219,42 @@ function remove(t){
 	var tr= td.parentNode;
 	var table= tr.parentNode;
 	table.removeChild(tr);
+}
+
+function stockMedicamentos(id){
+	$.ajax({
+		url: "../controlador/historial/control_stockMedicamentos.php",
+		type: "POST",
+		data:{
+			id:id
+		}
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	
+		if(data.length>0){
+		$("#txt_MEstock").val(data[0].medi_stock);
+			
+		}
+	})
+}
+
+function stockInsumos(id){
+	$.ajax({
+		url: "../controlador/historial/control_stockInsumos.php",
+		type: "POST",
+		data:{
+			id:id
+		}
+	}).done(function(resp){
+	//	alert(resp);  // para ver que datos trae
+		var data=JSON.parse(resp);
+		var cadena="";
+	
+		if(data.length>0){
+		$("#txt_INstock").val(data[0].ins_stock);
+			
+		}
+	})
 }

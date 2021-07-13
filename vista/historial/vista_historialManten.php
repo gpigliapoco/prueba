@@ -40,8 +40,8 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab_1" data-toggle="tab">Procedimientos</a></li>
-              <li><a href="#tab_2" data-toggle="tab">Medicamentos</a></li>
-              <li><a href="#tab_3" data-toggle="tab">Insumos</a></li>
+              <li><a href="#tab_2" data-toggle="tab">Insumos</a></li>
+              <li><a href="#tab_3" data-toggle="tab">Medicamentos</a></li>
               
             </ul>
             <div class="tab-content">
@@ -172,6 +172,17 @@ $(document).ready(function() {
   comboMedicamentos();
   comboInsumos();
   comboProcedimientos();
+
+  $("#cbm_medicamento").change(function(){ ////funcion para que cambie el combobox de medico
+        var id=$("#cbm_medicamento").val();
+        stockMedicamentos(id);
+    })
+  $("#cbm_insumos").change(function(){ ////funcion para que cambie el combobox de medico
+        var id=$("#cbm_insumos").val();
+        stockInsumos(id);
+    })  
+
+   
     
 } );
 

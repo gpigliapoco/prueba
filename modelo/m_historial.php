@@ -75,7 +75,31 @@
             }
         } 
        
- 
+        function stockMedicamento($id){
+            $consulta = "SELECT medi_nombre,medi_stock from medicamentos WHERE idmedicamentos = '$id'";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
+
+        function stockInsumos($id){
+            $consulta = "SELECT ins_nombre,ins_stock from insumos WHERE idinsumos = '$id'";
+            $arreglo = array();
+            if ($resultado = $this->conexion->conexion->query($consulta)) {
+                while ($consulta_VU = mysqli_fetch_array($resultado)) {
+                    $arreglo[]=$consulta_VU;
+    
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        } 
        
     }
 
