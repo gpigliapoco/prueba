@@ -192,5 +192,27 @@ function agregarProcedimientos(){
 	var id=$("#cbm_procedimientos").val();
 	var procedi=$("#cbm_procedimientos option:selected").text();
 
-	var agregarDatos=''
+	if(verificarID(id)){
+		return Swal.fire("ya existe en la tabla","warning");
+	}
+
+	var agregarDatos="<tr>";
+	 agregarDatos+= "<td for='id'>"+id+"</td>";
+	 agregarDatos+= "<td>"+procedi+"</td>";
+	 agregarDatos+= "<td><button class='btn btn-danger' onclick='remove(this)'><i class='fa fa-trash'></i></button></td>";
+	 agregarDatos+= "</tr>";
+
+	 $("#tbody_tabla_procedimientos").append(agregarDatos);
+}
+
+function verificarID(id){
+	let idverificar=document.querySelectorAll('#tabla_procedimientos td[for="id"] '); /// captura los datos 
+	return [].filter.call(idverificar, td=> td.textContent === id ).length===1; ///verifica si el id ya esta agregado en la tabla , para no agregar dos veces
+}
+
+function remove(t){
+	var td= t.parentNode;
+	var tr= td.parentNode;
+	var table= tr.parentNode;
+	table.removeChild(tr);
 }

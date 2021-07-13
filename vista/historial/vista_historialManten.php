@@ -55,7 +55,7 @@
                       </div>
                       <div class="col-lg-2">
                         <label>&nbsp;</label>
-                        <button class="btn btn-primary" style="width:100%" onclick="agregarProcedimiento()"><i class="fa fa-plus-square"></i>&nbsp;agregar</button>
+                        <button class="btn btn-primary" style="width:100%" onclick="agregarProcedimientos()"><i class="fa fa-plus-square"></i>&nbsp;agregar</button>
 
                       </div>
                       <div class="col-lg-12 table-responsive"><br>
