@@ -148,11 +148,16 @@
           </div>
           <!-- nav-tabs-custom -->
         </div>
+        <div class="col-lg-12" style="text-align:center">
+       <button class="btn btn-success btn-lg">Registrar</button>
+        </div>
             </div>
             <!-- /.box-body -->
     </div>
           <!-- /.box -->
+ 
 </div>
+
 <form autocomplete="false" onsubmit="return false">
     <div class="modal fade" id="modal_historialDia_consultas" role="dialog">
         <div class="modal-dialog modal-lg">

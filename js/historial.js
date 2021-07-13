@@ -330,3 +330,27 @@ function removeMedicamento(t){
 	var table= tr.parentNode;
 	table.removeChild(tr);
 }
+
+function registrarHistorial(){
+	var idHistoria=$("#txt_codigo").val();
+	var idConsulta=$("#txt_idConsulta").val();
+
+	$.ajax({
+		url: "../controlador/historial/control_registrar_fua.php",
+		type: "POST",
+		data: {
+			idHistoria:idHistoria,
+			idConsulta:idConsulta,
+			
+		}
+	}).done(function(resp){
+		alert(resp);
+		if(resp>0){
+			
+
+		}
+		else{
+			Swal.fire("Mensaje De Confirmacion","no se puede registrar fua","warning");
+		}
+	})
+}

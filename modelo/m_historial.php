@@ -100,6 +100,17 @@
                 $this->conexion->cerrar();
             }
         } 
+
+        function registrar_fua($idHistoria,$idConsulta){
+            $consulta = "CALL registrar_fua('$idHistoria','$idConsulta') ";	
+            
+            if($resultado = $this->conexion->conexion->query($consulta)){
+                if($row = mysqli_fetch_array($resultado) ){
+                    return $id = trim($row[0]);
+                }
+                $this->conexion->cerrar();
+            }
+        }
        
     }
 
