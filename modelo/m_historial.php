@@ -112,6 +112,29 @@
             }
         }
        
+        function registrar_detalleProcedimientos($id,$arregloPRO){
+          //  $consulta = "CALL registrar_detalleProcedimiento('$id','$arregloPRO') ";	    
+            $consulta = "INSERT INTO detalle_procedimientos(idfua,idprocedimientos) values('$id','$arregloPRO') ";
+
+            $resultado=$this->conexion->conexion->prepare($consulta);
+            if ($resultado->execute()) {                 
+              return 1;                 
+                 }
+                 $this->conexion->cerrar();
+
+        }
+
+        function registrar_detalleMedicamento($id,$arregloMedi,$arregloCanti){
+            //  $consulta = "CALL registrar_detalleProcedimiento('$id','$arregloPRO') ";	    
+              $consulta = "INSERT INTO detalle_medicamento(idfua,idmedicamentos,detM_cantidad) values('$id','$arregloMedi','$arregloCanti') ";
+  
+              $resultado=$this->conexion->conexion->prepare($consulta);
+              if ($resultado->execute()) {                 
+                return 1;                 
+                   }
+                   $this->conexion->cerrar();
+  
+          }
     }
 
 

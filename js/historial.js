@@ -344,9 +344,83 @@ function registrarHistorial(){
 			
 		}
 	}).done(function(resp){
-		alert(resp);
+		
 		if(resp>0){
+			registrar_detalle_procedimiento(parseInt(resp));
+			registrar_detalle_medicamento(parseInt(resp));
+		}
+		else{
+			Swal.fire("Mensaje De Confirmacion","no se puede registrar fua","warning");
+		}
+	})
+}
+
+function registrar_detalle_procedimiento(id){
+	var count=0;
+	var arreglo_procedimiento=new Array();
+
+	$("#tabla_procedimientos tbody#tbody_tabla_procedimientos tr").each(function(){
+		arreglo_procedimiento.push($(this).find('td').eq(0).text());
+		count++;
+
+	})
+	var arregloProcedimiento=arreglo_procedimiento.toString(); /// loc onvierte en string para enviar al controlador
+
+	if(count==0){
+		return;
+	}
+
+	$.ajax({
+		url: "../controlador/historial/control_detalleProcedimiento.php",
+		type: "POST",
+		data: {
+			id:id,
+			arregloProcedimiento:arregloProcedimiento,
 			
+		}
+	}).done(function(resp){
+		
+		if(resp>0){
+			Swal.fire("Mensaje De Confirmacion","detalle procedimiento registrado","warning");
+
+		}
+		else{
+			Swal.fire("Mensaje De Confirmacion","no se puede registrar fua","warning");
+		}
+	})
+}
+
+function registrar_detalle_medicamento(id){
+	var count=0;
+	var arreglo_medicamento=new Array();
+	var arreglo_cantidad=new Array();
+
+	$("#tabla_medicamentos tbody#tbody_tabla_medicamentos tr").each(function(){
+		arreglo_medicamento.push($(this).find('td').eq(0).text());
+		arreglo_cantidad.push($(this).find('td').eq(2).text());
+		count++;
+
+	})
+	var arregloMedicamentos=arreglo_medicamento.toString(); /// loc onvierte en string para enviar al controlador
+	var arregloCantidad=arreglo_cantidad.toString(); /// loc onvierte en string para enviar al controlador
+
+	if(count==0){
+		return;
+	}
+
+	$.ajax({
+		url: "../controlador/historial/control_detalleMedicamento.php",
+		type: "POST",
+		data: {
+			id:id,
+			arregloProcedimiento:arregloProcedimiento,
+			arregloCantidad:arregloCantidad
+			
+		}
+	}).done(function(resp){
+		
+		if(resp>0){
+			Swal.fire("Mensaje De Confirmacion","detalle procedimiento registrado","warning");
 
 		}
 		else{
