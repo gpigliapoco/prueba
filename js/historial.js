@@ -349,6 +349,11 @@ function registrarHistorial(){
 			registrar_detalle_procedimiento(parseInt(resp));
 			registrar_detalle_medicamento(parseInt(resp));
 			registrar_detalle_insumos(parseInt(resp));
+			Swal.fire("Mensaje De Confirmacion","Datos correctamente, Nuevo Usuario Registrado","success")            
+				.then ( ( value ) =>  {
+					$("#contenido_principal").load("historial/vista_historialManten.php");
+			
+			});
 		}
 		else{
 			Swal.fire("Mensaje De Confirmacion","no se puede registrar fua","warning");
