@@ -90,6 +90,7 @@ function registrarConsulta(){
 	var idCita= $("#cbm_paciente_consulta").val();
 	var diagnostico= $("#txt_diagnostico").val();
 	var descripcion= $("#txt_descripcion").val();
+	
 		
 		$.ajax({
 			url: "../controlador/consultas/control_registrar_consulta.php",
@@ -98,6 +99,7 @@ function registrarConsulta(){
 				idCita:idCita,
 				diagnostico:diagnostico,
 				descripcion:descripcion
+				
 			}
 		}).done(function(resp){
 			alert(resp);
