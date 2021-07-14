@@ -348,6 +348,7 @@ function registrarHistorial(){
 		if(resp>0){
 			registrar_detalle_procedimiento(parseInt(resp));
 			registrar_detalle_medicamento(parseInt(resp));
+			registrar_detalle_insumos(parseInt(resp));
 		}
 		else{
 			Swal.fire("Mensaje De Confirmacion","no se puede registrar fua","warning");
@@ -385,7 +386,7 @@ function registrar_detalle_procedimiento(id){
 
 		}
 		else{
-			Swal.fire("Mensaje De Confirmacion","no se puede registrar fua","warning");
+			Swal.fire("Mensaje De Confirmacion","no se puede registrar procedimiento","warning");
 		}
 	})
 }
@@ -413,18 +414,57 @@ function registrar_detalle_medicamento(id){
 		type: "POST",
 		data: {
 			id:id,
-			arregloProcedimiento:arregloProcedimiento,
+			arregloMedicamentos:arregloMedicamentos,
 			arregloCantidad:arregloCantidad
 			
 		}
 	}).done(function(resp){
 		
 		if(resp>0){
-			Swal.fire("Mensaje De Confirmacion","detalle procedimiento registrado","warning");
+			Swal.fire("Mensaje De Confirmacion","detalle medicamento registrado","warning");
 
 		}
 		else{
-			Swal.fire("Mensaje De Confirmacion","no se puede registrar fua","warning");
+			Swal.fire("Mensaje De Confirmacion","no se puede registrar medicamento","warning");
+		}
+	})
+}
+
+function registrar_detalle_insumos(id){
+	var count=0;
+	var arreglo_insumos=new Array();
+	var arreglo_cantidadIns=new Array();
+
+	$("#tabla_insumos tbody#tbody_tabla_insumos tr").each(function(){
+		arreglo_insumos.push($(this).find('td').eq(0).text());
+		arreglo_cantidadIns.push($(this).find('td').eq(2).text());
+		count++;
+
+	})
+	var arregloInsumos=arreglo_insumos.toString(); /// loc onvierte en string para enviar al controlador
+	var arregloCantidadIns=arreglo_cantidadIns.toString(); /// loc onvierte en string para enviar al controlador
+
+	if(count==0){
+		return;
+	}
+
+	$.ajax({
+		url: "../controlador/historial/control_detalleInsumos.php",
+		type: "POST",
+		data: {
+			id:id,
+			arregloInsumos:arregloInsumos,
+			arregloCantidadIns:arregloCantidadIns
+			
+		}
+	}).done(function(resp){
+		
+		if(resp>0){
+			Swal.fire("Mensaje De Confirmacion","detalle insumo registrado","warning");
+
+		}
+		else{
+			Swal.fire("Mensaje De Confirmacion","no se puede registrar insumo","warning");
 		}
 	})
 }

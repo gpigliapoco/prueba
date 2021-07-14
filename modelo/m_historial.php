@@ -135,6 +135,18 @@
                    $this->conexion->cerrar();
   
           }
+
+          function registrar_detalleInsumos($id,$arregloIns,$arregloCantiIns){
+            //  $consulta = "CALL registrar_detalleProcedimiento('$id','$arregloPRO') ";	    
+              $consulta = "INSERT INTO detalle_insumos(idfua,idinsumos,det_cantidad) values('$id','$arregloIns','$arregloCantiIns') ";
+  
+              $resultado=$this->conexion->conexion->prepare($consulta);
+              if ($resultado->execute()) {                 
+                return 1;                 
+                   }
+                   $this->conexion->cerrar();
+  
+          }  
     }
 
 
